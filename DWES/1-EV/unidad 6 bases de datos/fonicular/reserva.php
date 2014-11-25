@@ -17,23 +17,23 @@
 		<![endif]-->
 	</head>
 	<body>
-		<div class="row well text-center">
+		<div class="row  text-center">
 			<h1>Funicular</h1>
 		<?php 
 			include_once "conect.php";
 			include_once "funciones.php";
 		 ?>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class=" well col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" role="form">
 					<legend>Reserva de asiento</legend>
 					<div class="form-group">
 						<label>Nombre</label>
-						<input type="text" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-control" name="nombre" required placeholder="Nombre">
+						<input type="text"  name="nombre" required placeholder="Nombre">
 					</div>
 					<div class="form-group">
 						<label>DNI</label>
-						<input type="text " class="form-control responsive" required name="dni" placeholder="DNI">
+						<input type="text "  required name="dni" placeholder="DNI">
 					</div>
 					<div class="form-group">
 						<label>Asiento</label>

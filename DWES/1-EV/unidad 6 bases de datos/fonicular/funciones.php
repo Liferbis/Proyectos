@@ -47,7 +47,31 @@
 		$resultado = $dwes->query($c);
 		echo "Se ha reservado el asiento $a";
 	}
+	function cargaTabla (){
+		global $dwes;
 
-
-
- ?>
+		$plazas="SELECT * FROM plazas";
+		$resultado = $dwes->query($plazas);	
+				
+		while($pl=$resultado->fetch_object()){
+?>
+		<div class="form-group">
+			<label>
+				<?php 
+					echo $pl->numero; 
+				?>
+			</label>
+			<input type="text " class="precio" name=
+				<?php 
+				 	echo '"'.$pl->numero.'"';
+				?>
+			value=
+				 <?php 
+				 	echo '"'.$pl->precio.'"';
+				?>
+			>
+		</div>
+<?php 
+		}
+	}
+?>

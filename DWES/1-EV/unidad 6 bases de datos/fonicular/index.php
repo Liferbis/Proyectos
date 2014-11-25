@@ -33,6 +33,13 @@
 					</a>
 				</div>
 			</div>	
+			<div class="row well">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<a class="btn btn-info" href="actualiza.php" >
+						ACTUALIZA LOS PRECIOS 
+					</a>
+				</div>
+			</div>	
 		</div>
 		
 
