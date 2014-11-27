@@ -1,3 +1,12 @@
+<?php 
+			if(!isset($_SERVER['PHP_AUTH_USER'])){
+				header("www-Authenticate: Basic Realm='Contenido restringido'");
+				header("HTTP/1.0 401 Unauthorized");
+				echo "Usuario no reconocido";
+				exit();
+			}else{
+				include_once "conect.php";		
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -20,7 +29,6 @@
 		<div class="row text-center">
 			<h1 >Funicular</h1>
 			<?php 
-				include_once "conect.php";
 				include_once "funciones.php";
 			?>
 
@@ -43,9 +51,24 @@
 					VOLVER
 				</button>
 			</a>
-			<?php 
-				if (isset($_POST["actu"]))
+			<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" role="form">
+				<button type="submit" name="deslog" class="btn btn-primary">
+					DESLOGUEATE
+				</button>
+			</form>
+			<?php
+				if(isset($_POST["deslog"]) ){
+					DESLOGUEA();
+				} 
+				if (isset($_POST["actu"])){
+					global $dwes;
+					$dwes->autocommit(FALSE);
 					
+					if(!$dwes->commit()){
+						print("Falló la consignación de la transacción\n");
+    					exit();
+					}
+				}		
 			?>
 		</div>
 
@@ -55,3 +78,6 @@
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	</body>
 </html>
+<?php 
+}
+ ?>
