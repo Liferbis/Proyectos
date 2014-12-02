@@ -33,16 +33,36 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
-					<a href="tema1/la_empresa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 1: La empresa <b class="caret"></b></a>
+					<a href="la_empresa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 1: La empresa <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="tema1/la_empresa.php#concepto">Concepto</a></li>
-						<li><a href="tema1/la_empresa.php#objetivos">Objetivos</a></li>
-						<li><a href="tema1/la_empresa.php#forma">¿QUÉ FORMA UNA EMPRESA?</a></li>
-						<li><a href="tema1/la_empresa.php#tipos">Tipos de empresa</a></li>
+						<li><a href="la_empresa.php#concepto">Concepto</a></li>
+						<li><a href="la_empresa.php#objetivos">Objetivos</a></li>
+						<li><a href="la_empresa.php#forma">¿QUÉ FORMA UNA EMPRESA?</a></li>
+						<li><a href="la_empresa.php#tipos">Tipos de empresa</a></li>
 					</ul>
 				</li>
 				<li >
-					<a href="tema2/comparativa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 2: Sociedades <b class="caret"></b></a>
+					<a href="comparativa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 2: Sociedades <b class="caret"></b></a>
+				</li>
+				<li>
+					<a href="financiacion.php" class="dropdown-toggle" data-toggle="dropdown">Tema 3: FINANCIACION <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="financiacion.php#funciones">Funciones</a>
+						</li>
+						<li>
+							<a href="financiacion.php#fuentes" class="dropdown-toggle" data-toggle="dropdown">Fuentes de financiacion <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="financiacion.php#fuentesP">Fuentes PROPIAS de financiacion</a>
+								</li>
+								<li>
+									<a href="financiacion.php#fuentesA">Fuentes AJENAS de financiacion</a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
 				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->

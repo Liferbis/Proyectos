@@ -18,32 +18,55 @@
 	</head>
 	<body>
 <nav class="navbar navbar-default inverse" role="navigation">
-	<!-- Brand and toggle get grouped for better mobile display -->
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="..\index.php">EIE</a>
-	</div>
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php">EIE</a>
+		</div>
 
-	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav">
-			<li class="dropdown">
-				<a href="tema1/la_empresa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 1: La empresa <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="#concepto">Concepto</a></li>
-					<li><a href="#objetivos">Objetivos</a></li>
-					<li><a href="#forma">¿QUÉ FORMA UNA EMPRESA?</a></li>
-					<li><a href="#tipos">Tipos de empresa</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div><!-- /.navbar-collapse -->
-</nav>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="la_empresa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 1: La empresa <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="la_empresa.php#concepto">Concepto</a></li>
+						<li><a href="la_empresa.php#objetivos">Objetivos</a></li>
+						<li><a href="la_empresa.php#forma">¿QUÉ FORMA UNA EMPRESA?</a></li>
+						<li><a href="la_empresa.php#tipos">Tipos de empresa</a></li>
+					</ul>
+				</li>
+				<li >
+					<a href="comparativa.php" class="dropdown-toggle" data-toggle="dropdown">Tema 2: Sociedades <b class="caret"></b></a>
+				</li>
+				<li>
+					<a href="financiacion.php" class="dropdown-toggle" data-toggle="dropdown">Tema 3: FINANCIACION <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="financiacion.php#funciones">Funciones</a>
+						</li>
+						<li>
+							<a href="financiacion.php#fuentes" class="dropdown-toggle" data-toggle="dropdown">Fuentes de financiacion <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="financiacion.php#fuentesP">Fuentes PROPIAS de financiacion</a>
+								</li>
+								<li>
+									<a href="financiacion.php#fuentesA">Fuentes AJENAS de financiacion</a>
+								</li>
+							</ul>
+						</li>
+						
+					</ul>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</nav>
 		<h1 class="text-center">TEMA 1: LA EMPRESA</h1>
 
 		<div class="row well" id="concepto">
@@ -517,7 +540,11 @@
 				</ul>
 			</div>
 		</div>
-
+		<div class="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>OUTSOURCING :</strong><small>acto de subcontrar otras empresas</small> 
+		</div>
+		<br>
 		<div class="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			<strong>FLUJO CIRCULAR DE LA RENTA</strong> 

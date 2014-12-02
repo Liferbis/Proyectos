@@ -1,0 +1,11 @@
+body{
+	background: #000 url("img/casucas-vega-de-pas.jpg") no-repeat center; 
+	color:	#FF9933;
+}
+
+#tabla{
+	margin: 0 auto;
+	background:#3a3a3a;
+	width: 50%;
+	color:	#FF9933;
+}

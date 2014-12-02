@@ -2,7 +2,12 @@
 			if(!isset($_SERVER['PHP_AUTH_USER'])){
 				header("www-Authenticate: Basic Realm='Contenido restringido'");
 				header("HTTP/1.0 401 Unauthorized");
-				echo "Usuario no reconocido";
+?>
+				<div class="alert alert-danger">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Usuario no reconocido!!!</strong>
+				</div>
+<?php 	
 				exit();
 			}else{
 				include_once "conect.php";		
@@ -63,6 +68,9 @@
 				if (isset($_POST["actu"])){
 					global $dwes;
 					$dwes->autocommit(FALSE);
+					
+
+					
 					
 					if(!$dwes->commit()){
 						print("Falló la consignación de la transacción\n");
