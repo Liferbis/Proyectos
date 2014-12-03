@@ -46,29 +46,30 @@ else
         <link href="dwes.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1 class="text-center">ej13</h1>
+        <h1>ej13</h1>
+        <h3>Bienvenido</h3>
         <?php
         echo "Nombre de usuario: " . $_SERVER['PHP_AUTH_USER'] . "<br />";
         echo "Hash de la contraseña: " . md5($_SERVER['PHP_AUTH_PW']) . "<br />";
 
         session_start();
 
-        if(isset($_SESSION['visitas'])){
-            $_SESSION['visitas']++;
-        }else{
-            $_SESSION['visitas']=0;
-        }
-
         $_SESSION['misvisitas'][]=date('d/m/y H:i:s');
 
-        if ($_SESSION['visitas']=0){
-            echo "bienvenid@";
-        }else{
-            foreach ($_SESSION['misvisitas'] as $value) {
+        foreach ($_SESSION['misvisitas'] as $value) {
                 echo $value.'<br>';
-            }
         }
-            ?>
         
+            ?>
+        <form action="" method="POST">
+            <button type="submit" name="limpia" class="btn btn-large btn-block btn-info">Limpiar</button>
+        </form>
+
+        <?php 
+            if(isset($_POST['limpia'])){
+                session_unset($_SESSION["misvisitas"]);
+
+            }
+        ?>
     </body>
 </html>
