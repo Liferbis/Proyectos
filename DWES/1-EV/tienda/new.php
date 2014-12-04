@@ -9,6 +9,7 @@
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="estilo.css" rel="stylesheet">
+
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -26,18 +27,18 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./">LaTienduca</a>
+				<a class="navbar-brand" href="./">La Tienduca</a>
 			</div>
 		
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active">
+					<li >
 						<a href="registro.php">
 							<span class="glyphicon glyphicon-pencil"> Registrate</span>
 						</a>
 					</li>
-					<li>
+					<li >
 						<a href="productos.php">
 							<span class="glyphicon glyphicon-barcode"> Productos</span> 
 						</a>
@@ -52,7 +53,7 @@
 				</form>
 			-->
 				<ul class="nav navbar-nav navbar-right">
-					<li>
+					<li class="active">
 						<a href="login.php">		
 							<span class="glyphicon glyphicon-user"> Login</span>
 						</a>
@@ -70,7 +71,7 @@
 			</div><!-- /.navbar-collapse -->
 		</nav>
 
-
+		
 		<div class="row text-center">
 			<h1>La Tienduca</h1>
 		<?php 
@@ -111,57 +112,7 @@
 							<tr>
 								<div class="form-group">
 									<td>
-										<label>1º Apellido</label>
-									</td>
-									<td>
-										<input type="text"  name="apellido1" required placeholder="1º apellido">
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>2º Apellido </label>
-									</td>
-									<td>
-										<input type="text"  name="apellido2" required placeholder="2º Apellido">
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>Direccion</label>
-									</td>
-									<td>
-										<input type="text"  name="direccion" required placeholder="Direccion">
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>Codigo postal</label>
-									</td>
-									<td>
-										<input type="text"  name="cp" required placeholder="Codigo postal">
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>Comunidad autonoma</label>
-									</td>
-									<td>
-										<input type="text"  name="autonoma" required placeholder="Comunidad autonoma">
-									</td>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>Contraseña</label>
+										<label>Nueva Contraseña</label>
 									</td>
 									<td>
 										<input type="password"  name="contra" required placeholder="Contraseña">
@@ -171,35 +122,20 @@
 							<tr>
 								<div class="form-group">
 									<td>
-										<label>Repita Contraseña</label>
+										<label>Repita la contraseña</label>
 									</td>
 									<td>
 										<input type="password"  name="contra1" required placeholder="Repita la contraseña">
 									</td>
 								</div>
 							</tr>
-							<tr>
-								<div class="form-group">
-									<td>
-										<label>Provincia</label>
-									</td>
-									<td>
-										<label>España</label>
-									</td>
-								</div>
-							</tr>
 						</tbody>
 					</table>
 					<br><br>
-					<button type="submit" class="btn btn-primary">REGISTRARSE</button>
+					<button type="submit" name="aceptar" class="btn btn-primary">Aceptar</button>
 				</form>
-
-				<hr>
-			
 				<?php 
-					$guarda=false;
-					if(isset($_POST["nombre"]) && isset($_POST["dni"])&& isset($_POST["apellido1"]) && isset($_POST["apellido2"]) && isset($_POST["direccion"]) && isset($_POST["cp"]) && isset($_POST["autonoma"]) ){
-
+					if( isset($_POST["nombre"]) && isset($_POST["dni"]) ){
 						if( isset($_POST["contra"]) && isset($_POST["contra1"]) ){
 							$ctv=$_POST["contra"];
 							$aux=$_POST["contra1"];
@@ -218,20 +154,12 @@
 							$ctv=md5($ctv);	
 							$nombre=$_POST["nombre"];
 							$dni=$_POST["dni"];
-							$ap1=$_POST["apellido1"];
-							$ap2=$_POST["apellido2"];
-							$dire=$_POST["direccion"];
-							$cp=$_POST["cp"];
-							$a=$_POST["autonoma"];
 							//echo $nombre.$dni.$ap1.$ap2.$dire.$cp.$a.$ctv;
-							registrar ($nombre, $dni, $ap1, $ap2, $dire, $cp, $a, $ctv);
+							modifica ($nombre, $dni, $ctv);
 						}
 					}
 
-				?>
-			</div>
-		</div>
-		
+				?>				
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
