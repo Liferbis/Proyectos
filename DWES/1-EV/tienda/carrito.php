@@ -9,7 +9,6 @@
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="estilo.css" rel="stylesheet">
-
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -38,7 +37,7 @@
 							<span class="glyphicon glyphicon-pencil"> Registrate</span>
 						</a>
 					</li>
-					<li class="active">
+					<li>
 						<a href="productos.php">
 							<span class="glyphicon glyphicon-barcode"> Productos</span> 
 						</a>
@@ -58,7 +57,7 @@
 							<span class="glyphicon glyphicon-user"> Login</span>
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a href="carrito.php">
 							<span class="glyphicon glyphicon-shopping-cart"> Carrito</span>
 						</a>
@@ -72,39 +71,91 @@
 			</div><!-- /.navbar-collapse -->
 		</nav>
 
-<?php
-		session_start();
-		if(!$_SESSION['usuario']){
-			header('Location: login.php');
-		}else{
-?>
-		<div class="row  text-center">
-			<h1>La Tienduca</h1>
-			<h3>Nuestros Productos</h3>
 		<?php 
-			include_once "conecta.php";
-			include_once "funciones.php";
-		 ?>
-			<div class="row">
-				<?php 
-					cargaProductos();
+			session_start();
+			if ( !isset($_SESSION['usuario']) ){
+				header('Location: login.php');
+			}
+				if(isset($_SESSION['usuario']) && count($_SESSION['cesta'])==0 ) {
+		?>
+				<div class="row  text-center">	
+					<h1>La Tienduca</h1>
+					<h3>La cesta está vacia</h3>
+				</div>
+		<?php 
+				}else if(isset($_SESSION['usuario']) && count($_SESSION['cesta'])>0 ){
+					$suma=0;
+		?>
+				<div class="row  text-center">
+					<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<table id="tabla" class="table ">
+							<thead>
+								<tr>
+									<h3>TU CARRITO</h3>
+										
+								</tr>
+								<tr>
+									<th>Codigo</th>
+									<th>Articulo</th>
+									<th>Unidades</th>
+									<th>Precio Unidad</th>
+								</tr>
+							</thead>
+							<tbody>			
+		<?php 
+								foreach ($_SESSION['cesta'] as $producto) {
+									echo "<tr>";
+										echo "<td>";
+											echo $producto['codigo'];
+										echo "</td>";
+										echo "<td>";
+											echo $producto['articulo'];
+										echo "</td>";
+										echo "<td>";
+											echo $unidades;
+										echo "</td>";
+										echo "<td>";
+											echo $producto['precio'];
+										echo "</td>";
+									echo "</tr>";
 
-				 ?>
-			</div>	
-				<?php 
-					if ( isset($_POST["enviar"]) ){
-						
-						$producto["articulo"]=$_POST["articulo"];
-						$producto["precio"]=$_POST["precio"];
-						$_SESSION['cesta'][$_POST["codigo"]]=$producto;
-						$_SESSION['cesta'][$_POST['codigo']] ['unidades']++;
+									$suma= $suma+$producto['precio'];
 					}
-				?>
-		</div>
-<?php 
-		}
-?>
+		?>
+							</tbody>
+						</table>
+						<hr>
+						<h3 class="text-center">
+							Productos: 
+								<?php echo count($_SESSION['cesta']); ?> 
+							TOTAL: 
+								<?php echo $suma; ?>
+						</h3>
+					</div>
+				</div>
+				<div class="row text-center">
+			 		<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			 			<form action="" method="POST" role="form">
+			 				<button type="submit" name="vaciar" class="btn btn-danger">Vaciar</button>
+			 				<button type="submit" name="pagar" class="btn btn-danger">Pagar</button>
+			 			</form>
+			 		</div>
+			 	</div>
+		<?php 
+				}
+		 ?>
+			 	
 
+		<?php 
+				//if( isset($_POST['pagar']) ){
+
+				//} 
+
+				if ( isset($_POST["vaciar"]) ){
+					unset($_SESSION['cesta']);
+				}
+		?>
+		<br><br>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->

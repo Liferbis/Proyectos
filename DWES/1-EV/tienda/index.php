@@ -57,18 +57,36 @@
 							<span class="glyphicon glyphicon-user"> Login</span>
 						</a>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
+					<li>
+						<a href="carrito.php">
+							<span class="glyphicon glyphicon-shopping-cart"> Carrito</span>
+						</a>
+					</li>
+					<li>
+						<a href="contacto.php">
+							<span class="glyphicon glyphicon-envelope"> Contacta</span>
+						</a>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+
+		<div class="row  text-center">
+			<h1>La Tienduca</h1>
+			<h3>Bienvenisos a nuestro portal</h3>
+			<h3>Si tienes cualquier duda no dudes en contactar con nosotros</h3>
+			<a href="contacto.php">
+					<img src="img/sobre.png" alt="email">
+			</a>
+			</form>
+		</div>
+
+		<?php 
+
+			if(isset($_POST["mail"])){		
+				formulario();
+			}
+		 ?>
 
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>

@@ -58,14 +58,15 @@
 							<span class="glyphicon glyphicon-user"> Login</span>
 						</a>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
+					<li>
+						<a href="carrito.php">
+							<span class="glyphicon glyphicon-shopping-cart"> Carrito</span>
+						</a>
+					</li>
+					<li>
+						<a href="contacto.php">
+							<span class="glyphicon glyphicon-envelope"> Contacta</span>
+						</a>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

@@ -56,23 +56,30 @@
 					      <img src="<?php echo $prod->ruta ?>" >
 
 					      <div class="caption">
-					        <h3>
-					        	<?php 
-					        		echo $prod->articulo;
-					        	 ?>
-					        </h3>
-					        <p>
-					        	<?php 
-					        		echo "En stock tenemos: ".$prod->stock;
-					        	 ?>
-					        </p>
-					        <p>
-					        	<?php 
-					        		echo "Precio unidad: ".$prod->precio;
-					        	 ?>
-					        </p>
-					        <form>
-					        	<a href="#" class="btn btn-primary" role="button">Al carrito</a>
+					      	<form action="" method="POST" role="form">
+
+						        <h3>
+						        	<?php 
+						        		echo $prod->articulo;
+						        	 ?>
+						        	 
+						        </h3>
+						        <p>
+						        	<?php 
+						        		echo "En stock tenemos: ".$prod->stock;
+						        	 ?>
+						        </p>
+						        <p>
+						        	<?php 
+						        		echo "Precio unidad: ".$prod->precio."€"; // € alt+0128
+						        	 ?>
+						        </p>
+
+								<input type="hidden" name="codigo" value="<?php echo $prod->codigo ?>">
+						        <input type="hidden" name="articulo" value="<?php echo $prod->articulo ?>">
+						        <input type="hidden" name="precio" value="<?php echo $prod->precio ?>">
+								<input type="hidden" name="stock" value="<?php echo $prod->stock ?>">
+						        <button type="submit" name="enviar" class="btn btn-primary">Al carrito</button>
 					        </form>
 					      </div>
 					    </div>
@@ -129,7 +136,7 @@
 
 	function logea($nombre, $ctv){
 		global $dwes;
-
+		echo "hola";
 		$c="SELECT nombre, ctv FROM registro WHERE ctv='$ctv'";
 
 		$resultado = $dwes->query($c);
@@ -144,10 +151,22 @@
 			</div>
 <?php 
 		}else{
-			echo $resultado;
 			session_start();
 			$_SESSION['usuario'] = $acceso->nombre;
+			$_SESSION['cesta'][]=0;
+			header('Location: productos.php');
 		}
 	}
 
- ?>
+
+	function formulario($nombre, $dni, $mail, $asunto, $sms){
+		$para      = "liferbis@gmail.com";
+		$titulo    = $asunto;
+		$mensaje   = $sms;
+		$cabeceras = 'From: $nombre' . "\r\n" .
+		    'Reply-To: liferbis@gmail.com' . "\r\n" .
+		    'X-Mailer: PHP/' . phpversion();
+
+		mail($para, $titulo, $mensaje, $cabeceras);
+	}
+?>
