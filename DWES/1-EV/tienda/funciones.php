@@ -26,6 +26,7 @@
 		}
 	}
 
+
 	function cargaProductos(){
 		global $dwes;
 
@@ -74,7 +75,7 @@
 						        		echo "Precio unidad: ".$prod->precio."€"; // € alt+0128
 						        	 ?>
 						        </p>
-
+<!-- hidden te hace el input invisiible -->
 								<input type="hidden" name="codigo" value="<?php echo $prod->codigo ?>">
 						        <input type="hidden" name="articulo" value="<?php echo $prod->articulo ?>">
 						        <input type="hidden" name="precio" value="<?php echo $prod->precio ?>">
@@ -136,7 +137,6 @@
 
 	function logea($nombre, $ctv){
 		global $dwes;
-		echo "hola";
 		$c="SELECT nombre, ctv FROM registro WHERE ctv='$ctv'";
 
 		$resultado = $dwes->query($c);
@@ -157,16 +157,15 @@
 			header('Location: productos.php');
 		}
 	}
-
-
+?>
+<?php 
 	function formulario($nombre, $dni, $mail, $asunto, $sms){
-		$para      = "liferbis@gmail.com";
+		$to      = "liferbis@gmail.com";
+		$from 	   = $mail;
 		$titulo    = $asunto;
 		$mensaje   = $sms;
-		$cabeceras = 'From: $nombre' . "\r\n" .
-		    'Reply-To: liferbis@gmail.com' . "\r\n" .
-		    'X-Mailer: PHP/' . phpversion();
-
+		$cabeceras = 'From: $from' . "\r\n" .
+		    'CC: liferbis@gmail.com' ;
 		mail($para, $titulo, $mensaje, $cabeceras);
 	}
 ?>
