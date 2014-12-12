@@ -4,7 +4,7 @@
 			if ( !isset($_SESSION['usuario']) ){
 				header('Location: login.php');
 			}else{
-				if(isset($_SESSION['usuario']) && count($_SESSION['cesta'])==0 ) {
+				if(isset($_SESSION['usuario']) && empty($_SESSION['cesta']) ) {
 		?>
 					<div class="row  text-center">	
 						<h1>La Tienduca</h1>
@@ -57,7 +57,8 @@
 						<hr>
 						<h3 class="text-center">
 							Productos: 
-								<?php echo count($_SESSION['cesta']); ?> 
+								<?php 
+								echo count($_SESSION['cesta']); ?> 
 							TOTAL: 
 								<?php echo $suma; ?>
 						</h3>

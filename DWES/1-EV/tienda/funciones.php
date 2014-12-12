@@ -153,7 +153,7 @@
 		}else{
 			session_start();
 			$_SESSION['usuario'] = $acceso->nombre;
-			$_SESSION['cesta'][]=0;
+			$_SESSION['cesta'];
 			header('Location: productos.php');
 		}
 	}
