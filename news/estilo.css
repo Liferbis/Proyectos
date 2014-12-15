@@ -1,0 +1,25 @@
+
+#boton{
+	color:#121212;
+	font-weight: bold;
+}
+
+#redes{
+	background: #D3D3D3;
+}
+
+#not{
+	background: #000;
+	color: #fff;
+	text-align: center;
+}
+#notnew{
+	text-align: center;
+	margin: 0 auto;
+	background:#3a3a3a;
+	width: 50%;
+}
+
+#notnew label{
+	color:#00cc00;
+}
