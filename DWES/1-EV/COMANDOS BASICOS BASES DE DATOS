@@ -1,0 +1,31 @@
+COMANDOS BASICOS BASES DE DATOS
+
+SHOW database;       (muestra todas las bases de datos)
+SHOW tables;         (muestra todas las tablas de la base de datos)
+CREATE DATABASE nombreBBDD;
+USE nombreBBDD;
+CREATE TABLE mitabla ( id INT PRIMARY KEY, nombre VARCHAR(20) );
+INSERT INTO mitabla VALUES ( 1, 'Will' );
+	INSERT INTO mitabla VALUES ( 2, 'Marry' );
+	INSERT INTO mitabla VALUES ( 3, 'Dean' );
+SELECT id, nombre FROM mitabla WHERE id = 1;
+UPDATE mitabla SET nombre = 'Willy' WHERE id = 1;
+	SELECT id, nombre FROM mitabla;
+DELETE FROM mitabla (WHERE id = 1);
+	Borra el contenido de una tabla
+DROP DATABASE nombreBBDD; 
+
+PRIVILEGIOS 
+	
+
+CREATE USER 'alumno1'@'localhost' IDENTIFIED BY  '***';
+
+GRANT ALL PRIVILEGES ON * . * TO  'alumno1'@'localhost' IDENTIFIED BY  '***' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+GRANT ALL PRIVILEGES ON  `funicular` . * TO  'alumno1'@'localhost';
+
+
+$mysql_host = "mysql9.000webhost.com";
+$mysql_database = "a6530435_lidia";
+$mysql_user = "a6530435_liferbi";
+$mysql_password = "Abcdef11";
