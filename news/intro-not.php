@@ -34,12 +34,12 @@
 				    <br>
 				    <div class="form-group">
 				    	<label for="exampleInputPassword1">Enlace</label>
-				    	<input type="text" class="form-control" name="enlace" required placeholder="enlace a la noticia">
+				    	<input type="text" class="form-control" name="enlace" required placeholder="Enlace a la noticia">
 				    </div>
 				    <br>
 				    <div class="form-group">
 				    	<label for="exampleInputFile">Seleccione la imagen de la noticia</label>
-				    	<input type="file" name="notimg" id="exampleInputFile">
+				    	<input type="file" name="notimg" required id="exampleInputFile">
 				  	</div>
 				    <button type="submit" name="publicar" class="btn btn-success">Publicar</button>
 				    <br><br>
