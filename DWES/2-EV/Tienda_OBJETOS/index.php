@@ -1,7 +1,5 @@
 <?php 
 	include_once "header.php";
-	include_once "conecta.php";
-	include_once "funciones.php";
 ?>
 
 		<div class="row  text-center">
