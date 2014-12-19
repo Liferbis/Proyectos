@@ -12,7 +12,9 @@
 	</head>
 
 	<body>
-		
+<!-- Las noticias se cargan en un array noticias() 
+	en la clase noticias solo esta el constructor get y set   
+se muestras desde la clase util donde estan las funciones requeridas  -->		
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -20,7 +22,7 @@
 					<!--<img class="img-responsive" src="img/Logo.jpg"/>-->
 				</div>
 			</div>
-			<div class="row well">
+			<div class="row">
 				<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 ">
 					<img class="imagen-responsive" src="img/code1.jpg"/></br>
 				</div>
@@ -33,20 +35,13 @@
 					<a href="http://www.codelse.com" target="_black"><button type="button" id="boton" class="btn btn-large btn-block btn-success"><span class="glyphicon glyphicon-eye-open"/><b> Seguir leyendo</b></button></a>
 				</div>
 			</div>
-			<div class="row well">
-				<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 ">
-					<img class="imagen-responsive" src="img/centro-de-adultos-torrelavega.jpg"/></br>
-				</div>
-				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ">		
-					<h3><strong>Las obras del Centro de Adultos del Urban avanzan a buen ritmo y acabarán este año</strong></h3>
-					<p></p>	
-					<p class="text-justify">Las obras de construcción del Centro de Adultos y Ludoteca en la Inmobiliaria, uno de los principales proyectos del Plan Urban para Torrelavega, que supone una inversión de millones de euros, avanzan a buen ritmo y estarán finalizadas este año...</p>
-					<p></p>
-					<p></p>
-					<a href="http://www.gentedigital.es/santander/noticia/1397024/las-obras-del-centro-de-adultos-del-urban-avanzan-a-buen-ritmo-y-acabaran-este-ano/" target="_black"><button type="button" id="boton" class="btn btn-large btn-block btn-success" > <span class="glyphicon glyphicon-eye-open"/><b> Seguir leyendo</b></button></a>
-				</div>
+			<br>
+			<div class="noticias">
+				<?php 
+					$Anoticias=noticias::new();
+					util::mostrar($Anoticias);
+				 ?>
 			</div>
-
 			<div class="row well">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">		
 					<a href="https://www.google.es/maps/place/GRUPO+CODELSE/@43.328101,-4.037144,17z/data=!3m1!4b1!4m2!3m1!1s0xd493e6a15838ee3:0x8ea066788016a1ae" target="_black"><button type="button" id="boton" class="btn btn-large btn-block btn-success"> <span class="glyphicon glyphicon-map-marker"/><b>Poligono Industrial Tanos-Viernoles Parcela B-4</b></button></a>

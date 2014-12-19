@@ -73,14 +73,30 @@ class BD {
 		$resultado = $dwes->query($c);
 		$acceso=$resultado->fetch_object();
 		if(!$acceso){
+			$dwes->close();	
 			return false;
 		else{
+			$dwes->close();	
 			return true
 		}
 	}
 
 	public static function modifica($nombre, $dni, $ctv){
 		$dwes = BD::conect();
+		if(BD::dni($dni)){
+			$cons="UPDATE registro SET ctv=$ctv WHERE dni=$dni";
+			$resultado = $dwes->query($cons);
+			if(!$resultado){
+				$dwes->close();
+				return false;
+			}else{
+				$dwes->close();
+				return true;
+			}
+		}else{
+			$dwes->close();
+			return true;
+		}
 	}
 
 }

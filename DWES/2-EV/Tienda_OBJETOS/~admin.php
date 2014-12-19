@@ -53,7 +53,7 @@
 				$img=$_POST["notimg"];
 				$noticia=$_POST["noticia"];
 				$enlace=$_POST["enlace"];
-
+				º  
 				
 
 				$Parte1="<div class='row'>

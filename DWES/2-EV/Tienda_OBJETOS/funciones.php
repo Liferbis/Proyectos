@@ -58,47 +58,6 @@ class util {
 <?php 
 		
 	}
-
-	public static function modifica ($nombre, $dni, $ctv){
-		global $dwes;
-
-		$c="SELECT dni FROM registro WHERE dni=$dni";
-
-		$resultado = $dwes->query($c);
-		$acceso=$resultado->fetch_object();
-		if(!$acceso){
-?>
-			<div class="alert alert-danger">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<strong>FALLO</strong> El dni no es correcto o no existe
-			</div>
-<?php 
-		}else{
-
-			$dwes->autocommit(FALSE);
-
-			$cons="UPDATE registro SET ctv=$ctv WHERE dni=$dni";
-
-			$resultado = $dwes->query($cons);
-			
-			if(!$dwes->commit()){
-?>
-				<div class="alert alert-danger">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>FALLO</strong> Intentelo de nuevo Fallo en el servidor
-				</div>
-<?php 
-	    		exit();
-			}else{
-?>
-				<div class="alert alert-info">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>CORRECTO</strong> Los datos se han modificado correctamente
-				</div>
-<?php 
-			}
-		}
-	}
  
 	public static function formulario($nombre, $dni, $mail, $asunto, $sms){
 		$to      = "liferbis@gmail.com";
