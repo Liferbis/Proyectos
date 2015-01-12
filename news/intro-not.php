@@ -1,5 +1,10 @@
+<?php 
+	include_once "bd.php";
+	include_once "util.php";
+	include_once "noticias.php";
+ ?>
 <!DOCTYPE html>
-<html lang="">
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,7 +58,7 @@
 				$img=$_POST["notimg"];
 				$noticia=$_POST["noticia"];
 				$enlace=$_POST["enlace"];
-
+				bd::nueva($titulo, $noticia, $enlace, $img);
 				
 
 				$Parte1="<div class='row'>

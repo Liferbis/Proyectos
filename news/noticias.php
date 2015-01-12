@@ -7,16 +7,11 @@
 		private $ruta;
 
 
-		public function __construct($titulo, $noticia, $enlace, $ruta){
-			if(noticias::copyRuta($ruta)){
-				$this->titulo=$titulo;
-				$this->noticia=$noticia;
-				$this->enlace=$enlace;
-				$this->ruta='C:\wamp\www\GitHub\Proyectos\news\img';
-				return true;
-			}else{
-				return false;
-			}
+		public function __construct($codigo, $titulo, $noticia, $enlace, $ruta){
+			$this->titulo=$titulo;
+			$this->noticia=$noticia;
+			$this->enlace=$enlace;
+			$this->ruta="img/".$codigo.".jpg";
 		}
 
 		public function __set($var, $valor) {
@@ -34,10 +29,6 @@
 			return NULL;
 		}
 
-		public static mostrar($array){
-
-		}
-
 		public static function copyRuta($enlace){
 			$myRuta='C:\wamp\www\GitHub\Proyectos\news\img';
 			if(!copy($enlace, $miruta)){
@@ -46,10 +37,6 @@
 				return true;
 			}
 		}
-
-
-
-
 	}
 
  ?>

@@ -5,8 +5,8 @@
 class utli
 {
 	
-	public static function mustrar($array){
-		foreach ($productos as $p) {
+	public static function mostrar($array){
+		foreach ($array as $p) {
 	?>
 					<div class="row well">
 						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 ">

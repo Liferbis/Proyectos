@@ -1,3 +1,7 @@
+<?php 
+	include_once "bd.php";
+	include_once "util.php";
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -38,7 +42,7 @@ se muestras desde la clase util donde estan las funciones requeridas  -->
 			<br>
 			<div class="noticias">
 				<?php 
-					$Anoticias=noticias::new();
+					$Anoticias=bd::cargaNoticias();
 					util::mostrar($Anoticias);
 				 ?>
 			</div>
