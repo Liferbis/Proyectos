@@ -21,9 +21,9 @@
 					if ( isset($_POST["enviar"]) ){
 						$unidades=1;
 						$producto['codigo']=$_POST['codigo'];
-						$producto["articulo"]=$_POST["articulo"];
-						$producto["unidades"]=$unidades;
-						$producto["precio"]=$_POST["precio"];
+						$producto['articulo']=$_POST["articulo"];
+						$producto['unidades']=$unidades;
+						$producto['precio']=$_POST["precio"];
 						util::Productos($producto);
 					}
 				?>

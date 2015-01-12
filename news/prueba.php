@@ -20,7 +20,7 @@
 					<!--<img class="img-responsive" src="img/Logo.jpg"/>-->
 				</div>
 			</div>
-			<div class="row well">
+			<div class="row">
 				<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 ">
 					<img class="imagen-responsive" src="img/code1.jpg"/></br>
 				</div>

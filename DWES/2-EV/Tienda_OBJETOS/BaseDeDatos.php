@@ -75,7 +75,7 @@ class BD {
 		if(!$acceso){
 			return false;
 		else{
-			return true
+			return true;
 		}
 	}
 
