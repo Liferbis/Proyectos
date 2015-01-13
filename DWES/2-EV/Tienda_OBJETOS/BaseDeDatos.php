@@ -36,6 +36,20 @@ class BD {
 		return $verifica;
 	}
 
+	public static function codigo($codigo){
+		$dwes = BD::conect();
+
+		$c="SELECT * FROM productos WHERE codigo='$codigo'";
+		$resultado = $dwes->query($cons);
+		
+		$productos=array();
+		while($prod=$resultado->fetch_object()){
+			$productos [] = new producto( $prod->codigo,$prod->nomb, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );		
+		}
+		$dwes->close();	
+		return $productos;
+	}
+	
 	public static function registro($nombre, $dni, $ap1, $ap2, $dire, $cp, $a, $ctv){
 
 		$dwes = BD::conect();
@@ -73,14 +87,30 @@ class BD {
 		$resultado = $dwes->query($c);
 		$acceso=$resultado->fetch_object();
 		if(!$acceso){
+			$dwes->close();	
 			return false;
-		else{
+		}else{
+			$dwes->close();	
 			return true;
 		}
 	}
 
 	public static function modifica($nombre, $dni, $ctv){
 		$dwes = BD::conect();
+		if(BD::dni($dni)){
+			$cons="UPDATE registro SET ctv=$ctv WHERE dni=$dni";
+			$resultado = $dwes->query($cons);
+			if(!$resultado){
+				$dwes->close();
+				return false;
+			}else{
+				$dwes->close();
+				return true;
+			}
+		}else{
+			$dwes->close();
+			return true;
+		}
 	}
 
 }

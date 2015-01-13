@@ -1,7 +1,7 @@
 
 		<?php
 			include_once "header.php";
-			include_once "conecta.php";
+			include_once "BaseDeDatos.php";
 			include_once "funciones.php";
 		 ?>
 		<div class="row text-center">
@@ -69,8 +69,22 @@
 								$ctv=md5($ctv);	
 								$nombre=$_POST["nombre"];
 								$dni=$_POST["dni"];
-								BD::modifica($nombre, $dni, $ctv);
-							else{
+								if(BD::modifica($nombre, $dni, $ctv)){
+				?>
+									<div class="alert alert-info">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<strong>CORRECTO</strong> Los datos se han modificado correctamente
+									</div>
+				<?php 			
+								}else{
+				?>
+									<div class="alert alert-danger">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<strong>FALLO</strong> Los datos NO se han modificado
+									</div>
+				<?php	
+								}
+							}else{
 				?>
 								<div class="alert alert-danger">
 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -81,7 +95,7 @@
 				?>
 							<div class="alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-								<strong>ERROR</strong>!!!!!
+								<strong>ERROR</strong>Las contraseñas no son iguales !!!!
 							</div>
 				<?php 
 						}

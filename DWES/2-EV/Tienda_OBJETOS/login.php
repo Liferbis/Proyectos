@@ -51,7 +51,6 @@
 						$nombre=$_POST["nombre"];
 						$ctv=md5($_POST["contra"]);
 						if(BD::verifica($nombre, $ctv)){
-							session_start();
 							$_SESSION['usuario'] = $nombre;
 							header('Location: productos.php');
 						}else{

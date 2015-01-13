@@ -19,10 +19,9 @@
 			</div>	
 				<?php 
 					if ( isset($_POST["enviar"]) ){
-						$unidades=1;
 						$producto['codigo']=$_POST['codigo'];
 						$producto['articulo']=$_POST["articulo"];
-						$producto['unidades']=$unidades;
+						$producto['unidades']=1;
 						$producto['precio']=$_POST["precio"];
 						util::Productos($producto);
 					}

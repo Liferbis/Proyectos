@@ -8,6 +8,7 @@ class util {
 			return true;
 		}else{
 			return false;
+		}
 	}
 
 	public static function mostrar($productos){
@@ -59,45 +60,39 @@ class util {
 		
 	}
 
-	public static function modifica ($nombre, $dni, $ctv){
-		global $dwes;
-
-		$c="SELECT dni FROM registro WHERE dni=$dni";
-
-		$resultado = $dwes->query($c);
-		$acceso=$resultado->fetch_object();
-		if(!$acceso){
-?>
-			<div class="alert alert-danger">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<strong>FALLO</strong> El dni no es correcto o no existe
-			</div>
-<?php 
-		}else{
-
-			$dwes->autocommit(FALSE);
-
-			$cons="UPDATE registro SET ctv=$ctv WHERE dni=$dni";
-
-			$resultado = $dwes->query($cons);
-			
-			if(!$dwes->commit()){
-?>
-				<div class="alert alert-danger">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>FALLO</strong> Intentelo de nuevo Fallo en el servidor
-				</div>
-<?php 
-	    		exit();
+	public static function Productos($producto){
+		foreach ($_SESSION['cesta'] as $p) {
+			if($p->codigo==$producto->codigo){
+				$p->unidades++;
+				echo "dsgfsdgavs";
 			}else{
-?>
-				<div class="alert alert-info">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>CORRECTO</strong> Los datos se han modificado correctamente
-				</div>
-<?php 
+				$_SESSION['cesta'][]=$producto;
+				echo "else";
 			}
 		}
+	}
+
+	public static function muestraCesta(){
+		$suma=0;
+		foreach ($_SESSION['cesta'] as $producto) {
+			echo "<tr>";
+				echo "<td>";
+					echo $producto['codigo'];
+				echo "</td>";
+				echo "<td>";
+					echo $producto['articulo'];
+				echo "</td>";
+				echo "<td>";
+					echo $producto['unidades'];
+				echo "</td>";
+				echo "<td>";
+					echo $producto['precio'];
+				echo "</td>";
+			echo "</tr>";
+
+			$suma= $suma+$producto['precio'];
+		}
+		return $suma;
 	}
  
 	public static function formulario($nombre, $dni, $mail, $asunto, $sms){

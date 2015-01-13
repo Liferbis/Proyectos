@@ -12,7 +12,6 @@
 					</div>
 		<?php 
 				}else {
-					$suma=0;
 		?>
 					<div class="row  text-center">
 						<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -30,35 +29,17 @@
 									</tr>
 								</thead>
 								<tbody>			
-		<?php 
-								
-									foreach ($_SESSION['cesta'] as $producto) {
-										echo "<tr>";
-											echo "<td>";
-												echo $producto['codigo'];
-											echo "</td>";
-											echo "<td>";
-												echo $producto['articulo'];
-											echo "</td>";
-											echo "<td>";
-												echo $producto['unidades'];
-											echo "</td>";
-											echo "<td>";
-												echo $producto['precio'];
-											echo "</td>";
-										echo "</tr>";
-
-										$suma= $suma+$producto['precio'];
-									}
-					
-		?>
+									<?php 
+										$suma=util::muestraCesta();
+									?>
 								</tbody>
 						</table>
 						<hr>
 						<h3 class="text-center">
 							Productos: 
 								<?php 
-								echo count($_SESSION['cesta']); ?> 
+									echo count($_SESSION['cesta']); 
+								?> 
 							TOTAL: 
 								<?php echo $suma; ?>
 						</h3>
