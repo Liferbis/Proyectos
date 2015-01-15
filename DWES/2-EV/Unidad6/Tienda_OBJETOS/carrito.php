@@ -24,7 +24,6 @@
 									<tr>
 										<th>Codigo</th>
 										<th>Articulo</th>
-										<th>Unidades</th>
 										<th>Precio Unidad</th>
 									</tr>
 								</thead>
@@ -36,10 +35,10 @@
 						</table>
 						<hr>
 						<h3 class="text-center">
-							Productos: 
+							Productos totales: 
 								<?php 
 									echo count($_SESSION['cesta']); 
-								?> 
+								?>  
 							TOTAL: 
 								<?php echo $suma; ?>
 						</h3>

@@ -2,6 +2,7 @@
 	include_once "header.php";
 	include_once "BaseDeDatos.php";
 	include_once "funciones.php";
+	include_once "CestaCompra.php";
 	
 		if(!$_SESSION['usuario']){
 			header('Location: login.php');
@@ -19,11 +20,12 @@
 			</div>	
 				<?php 
 					if ( isset($_POST["enviar"]) ){
-						$producto['codigo']=$_POST['codigo'];
-						$producto['articulo']=$_POST["articulo"];
-						$producto['unidades']=1;
-						$producto['precio']=$_POST["precio"];
-						util::Productos($producto);
+						$codigo=$_POST['codigo'];
+						CestaCompra::nuevoArticulo($codigo);
+						// $producto['articulo']=$_POST["articulo"];
+						// $producto['unidades']=1;
+						// $producto['precio']=$_POST["precio"];
+						//util::Productos($producto);
 					}
 				?>
 		</div>
