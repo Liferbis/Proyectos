@@ -125,9 +125,17 @@
 			
 				<?php 
 					$guarda=false;
-					if(isset($_POST["nombre"]) && isset($_POST["dni"])&& isset($_POST["apellido1"]) && isset($_POST["apellido2"]) && isset($_POST["direccion"]) && isset($_POST["cp"]) && isset($_POST["autonoma"]) && isset($_POST["contra"]) && isset($_POST["contra1"]) ){
+					if( isset($_POST["nombre"]) &&
+						   isset($_POST["dni"])&&
+						   isset($_POST["apellido1"]) &&
+						   isset($_POST["apellido2"]) &&
+						   isset($_POST["direccion"]) &&
+						   isset($_POST["cp"]) &&
+						   isset($_POST["autonoma"]) &&
+						   isset($_POST["contra"]) &&
+						   isset($_POST["contra1"]) ){
 						$ctv=$_POST["contra"];
-						if(util::ctvs($ctv,$_POST["contra1"]){	
+						if(util::ctvs($ctv,$_POST["contra1"])){	
 							$ctv=md5($ctv);	
 							$nombre=$_POST["nombre"];
 							$dni=$_POST["dni"];
@@ -158,8 +166,8 @@
 									<strong>ERROR</strong> Las contraseñas no coinciden !!!!!
 								</div>
 				<?php	
-							}
 						}
+					}
 				?>
 			</div>
 		</div>
