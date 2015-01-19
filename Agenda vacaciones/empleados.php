@@ -31,5 +31,14 @@
 			}
 			return NULL;
 		}
+
+		public function vacaciones(){
+
+			
+		}
+		protected $diasPropios;
+		protected $PermisoRetribuido;
+		protected $NoRetribuido;
+		protected $baja;
 	}
  ?>
