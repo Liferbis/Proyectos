@@ -5,6 +5,7 @@ SHOW tables;         (muestra todas las tablas de la base de datos)
 CREATE DATABASE nombreBBDD;
 USE nombreBBDD;
 CREATE TABLE mitabla ( id INT PRIMARY KEY, nombre VARCHAR(20) );
+	ALTER TABLE  mitabla DROP PRIMARY KEY ,ADD PRIMARY KEY (  `nuevaClavePrimaria` ) ;
 INSERT INTO mitabla VALUES ( 1, 'Will' );
 	INSERT INTO mitabla VALUES ( 2, 'Marry' );
 	INSERT INTO mitabla VALUES ( 3, 'Dean' );
@@ -24,8 +25,3 @@ GRANT ALL PRIVILEGES ON * . * TO  'alumno1'@'localhost' IDENTIFIED BY  '***' WIT
 
 GRANT ALL PRIVILEGES ON  `funicular` . * TO  'alumno1'@'localhost';
 
-
-$mysql_host = "mysql9.000webhost.com";
-$mysql_database = "a6530435_lidia";
-$mysql_user = "a6530435_liferbi";
-$mysql_password = "Abcdef11";
