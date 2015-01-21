@@ -22,10 +22,6 @@ body{
 	background-color:silver;
 	color:red;
 }
-#calendar {
-	font-family:Arial;
-	font-size:12px;
-}
 
 head {
 	text-align:left;
@@ -39,10 +35,9 @@ head {
 	color:#fff;
 	width:40px;
 }
-#calendar td {
-	text-align:right;
+#contenido{
+	text-align:center;
 	padding:2px 5px;
-	background-color:;
 }
 #calendar .hoy {
 	background-color:#FFF;
