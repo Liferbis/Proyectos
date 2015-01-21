@@ -3,7 +3,7 @@
 	include_once "header.php";
  ?>
 
-	<h1>Ejemplo de un simple calendario en PHP</h1>
+	<h1 class="text-center">Año 2015</h1>
 
 		<div class='row responsive'>
 			
@@ -12,12 +12,7 @@
 					 $hoy->getTodosMeses();
 				 ?>
 		</div>
-		<div class="row">
-			<form method="post">
-				<input type="number" name="year">
-				<input type="submit">		
-			</form>
-		</div>
+		
 
 
 	<!-- jQuery -->

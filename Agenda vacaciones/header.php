@@ -5,10 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Vacaciones</title>
-<link href="estil.css" rel="stylesheet">
+
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-		
+		<link href="estil.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,14 +35,14 @@
 				<ul class="nav navbar-nav">
 					<li >
 						<a href="calendario.php">
-							<span class="glyphicon glyphicon-calendar"> Calendario</span> 
+							<span id="gliphicon" class="glyphicon glyphicon-calendar"></span> Calendario 
 						</a>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="login.php">		
-							<span class="glyphicon glyphicon-user"> Login</span>
+							<span id="gliphicon" class="glyphicon glyphicon-user"></span> Login
 						</a>
 					</li>
 				<?php 
@@ -51,7 +51,7 @@
 				?>
 					<li>
 						<a href="logout.php">
-							<span class="glyphicon glyphicon-off"> Login-Off</span>
+							<span id="gliphicon" class="glyphicon glyphicon-off"></span> Login-Off
 						</a>
 					</li>
 				<?php 
@@ -59,12 +59,12 @@
 				?>
 					<li>
 						<a href="gestion.php">
-							<span class="glyphicon glyphicon-edit"> NuevoEmpleado</span>
+							<span id="gliphicon" class="glyphicon glyphicon-edit"></span> NuevoEmpleado
 						</a>
 					</li>
 					<li>
 						<a href="contacto.php">
-							<span class="glyphicon glyphicon-cog"> Configuracion</span>
+							<span id="gliphicon" class="glyphicon glyphicon-cog"></span> Configuracion
 						</a>
 					</li>
 				</ul>

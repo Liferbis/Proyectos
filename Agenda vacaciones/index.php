@@ -2,7 +2,7 @@
 	include_once "header.php";
  ?>
 
-	<h1>Bienvenido al gestor de vacaciones</h1>
+	<h1 class="text-center" >Bienvenido al gestor de vacaciones</h1>
 	
 		<div class='row responsive'>
 		</div>

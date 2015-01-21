@@ -1,13 +1,33 @@
 body{
 	background: #000; 
-	color:	#FF9933;
+	color:	#00CC00;
 }
 
+#gliphicon{
+	color:#00CC00;	
+}
+
+.input{
+	text-align:center;
+}
+#table #mes{
+	text-align:center;
+	background-color:silver;
+	color:red;
+}
+#table #tbody{
+	background-color:#3F3F3F
+}
+#table #diaHoy{
+	background-color:silver;
+	color:red;
+}
 #calendar {
 	font-family:Arial;
 	font-size:12px;
 }
-#calendar caption {
+
+head {
 	text-align:left;
 	padding:5px 10px;
 	background-color:#003366;
@@ -22,7 +42,7 @@ body{
 #calendar td {
 	text-align:right;
 	padding:2px 5px;
-	background-color:silver;
+	background-color:;
 }
 #calendar .hoy {
 	background-color:#FFF;
