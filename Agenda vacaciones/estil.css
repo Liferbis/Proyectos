@@ -1,6 +1,8 @@
+
 body{
 	background: #000; 
 	color:	#00CC00;
+	font: 'Sansation';
 }
 
 #gliphicon{
@@ -10,14 +12,23 @@ body{
 .input{
 	text-align:center;
 }
+
+#table a{
+	text-decoration: none;
+	color:#00CC00;
+	background-color:silver;
+}
+
 #table #mes{
 	text-align:center;
 	background-color:silver;
 	color:red;
 }
+
 #table #tbody{
 	background-color:#3F3F3F
 }
+
 #table #diaHoy{
 	background-color:silver;
 	color:red;
