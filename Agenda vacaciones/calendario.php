@@ -5,7 +5,7 @@
 
 	<h1 class="text-center">Año 2015</h1>
 
-		<div class='row responsive'>
+		<div id='contenido' class='row responsive'>
 			
 				<?php 
 					 $hoy=new Calendario();

@@ -14,12 +14,37 @@
 				</thead>
 				<tbody>
 					<tr id='tbody'>
-						<a href="#"><h3>Ver vacaciones de ....</h3></a>
+						<div class="row ">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<h3>Ver vacaciones de ....</h3>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<select name="empleado" id="input" class="form-control" >
+									<option value="emple">empleado1</option>
+									<option value="emple">empleado2</option>
+								</select>
+							</div>
+						</div>
 					</tr>
+					<hr>
+					<tr>
+						<diw class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<h3>Ver vacaciones de ....</h3>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<select name="empleado" id="input" class="form-control" >
+									<option value="emple">empleado1</option>
+									<option value="emple">empleado2</option>
+								</select>
+							</div>
+						</diw>
+					</tr>
+					<hr>
 				</tbody>
 			</table>	
 				
-				<hr>
+				
 				
 
 				<form method="post">

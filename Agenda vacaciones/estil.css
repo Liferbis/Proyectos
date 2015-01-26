@@ -29,6 +29,10 @@ body{
 	background-color:#3F3F3F
 }
 
+#table #tbody #empleados{
+	width:80%;
+}
+
 #table #diaHoy{
 	background-color:silver;
 	color:red;
