@@ -13,19 +13,34 @@
 			<h3>Nuestros Productos</h3>
 		
 			<div class="row">
-				<?php 
-					$productos=BD::cargaProductos();
-					util::mostrar($productos);	 
-				?>
+				<?php $productos=BD::cargaProductos(); ?>
+				<?php foreach ($productos as $p) { ?>
+					<div class="col-sm-6 col-md-4">
+					    <div class="thumbnail">
+					      <img src="<?php echo $p->ruta ?>" >
+
+					      <div class="caption">
+					      	<form action="" method="POST" role="form">
+								<h3>
+									<?php echo $p->articulo; ?> 
+								</h3>
+								 <p>Precio unidad:
+						        	<?php echo $p->precio; ?>€
+						        </p>
+						      	<input type="hidden" name="codigo" value="<?php echo $p->codigo ?>">
+						      	<button type="submit" name="enviar" class="btn btn-primary">Al carrito</button>
+					        </form>
+					      </div>
+					    </div>
+					</div>
+
+				<?php } ?>
 			</div>	
 				<?php 
 					if ( isset($_POST["enviar"]) ){
 						$codigo=$_POST['codigo'];
 						CestaCompra::nuevoArticulo($codigo);
-						// $producto['articulo']=$_POST["articulo"];
-						// $producto['unidades']=1;
-						// $producto['precio']=$_POST["precio"];
-						//util::Productos($producto);
+						
 					}
 				?>
 		</div>

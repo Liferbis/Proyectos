@@ -1,12 +1,12 @@
 <?php 
 	class articulo{
 		protected $titulo;
-		protected $date;
+		protected $fecha;
 		protected $descripcion;
 		
-		function __construct($titulo, $descripcion){
+		function __construct($titulo, $fecha, $descripcion){
 		    $this->titulo=$titulo;
-			$this->date=date('D'-'d'-'n'-'Y');
+			$this->fecha=$fecha;
 			$this->descripcion=$descripcion;
 		}
 

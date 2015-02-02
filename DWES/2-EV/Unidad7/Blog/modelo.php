@@ -1,5 +1,6 @@
 <?php 
 require_once "articulo.php";
+require_once "usuario.php";
 
 class BD {
 	const localhost="localhost";
@@ -19,21 +20,20 @@ class BD {
 	}
 
 	public static function verifica($nombre, $ctv){
-		$verifica=false;
 		$dwes = BD::conect();
-		$c="SELECT nombre, ctv FROM registro WHERE nombre='$nombre' AND ctv='$ctv'";
+		$c="SELECT nombre FROM usuarios WHERE nombre='$nombre' AND ctv='$ctv'";
 
 		$resultado = $dwes->query($c);
-
 		$acceso=$resultado->fetch_object();
-
-		if(!$acceso){
-			$verifica=false;
+		if($acceso){
+			$usuario=new usuario($nombre);
+			$dwes->close();
+			return $usuario;
 		}else{
-			$verifica=true;
+			$dwes->close();
+			return null;
 		}
-		$dwes->close();
-		return $verifica;
+		
 	}
 
 	public function cargaArticulos(){
@@ -46,7 +46,7 @@ class BD {
 		$articulo=array();
 
 		while($arti=$resultado->fetch_object()){
-			$articulo [] = new articulo( $arti->titulo, $arti->descripcion);		
+			$articulo [] = new articulo( $arti->titulo, $arti->fecha, $arti->descripcion);		
 		}
 
 		$dwes->close();	

@@ -1,0 +1,37 @@
+-> Salario bruto (-irpf -ss)
+	+
+-> Seguridad Social a cargo de la empresa
+	+
+->Mutua
+
+
+----------------------------------------
+	BCC
+	---
+1-> Salario mensual (-h.extra -P.extra) 
+2-> Prorratear = (Suma p.extra) / 12
+3-> pasos 1 + paso 2
+
+	BCP
+	---
+1-> BCC+H.extra
+
+---------------------------------------
+
+
+Cuanto le cuesta a una empresa que cobra 1300€ brutoscon un contrato temporal y 14 pagas
+BCC
+	1300*2/12 = 216.67€ +1300 = 1516.67€
+BCP
+	1516.67
+
+Comunes
+	(bcc) 1516.67 * 23.6%
+Desempleo
+	(bcp) 1516.67 * 6.7%
+FP
+	(bcp) 1516.67 * 0.6%
+FGS
+	(bcp) 1516.67 * 0.2%
+Mutua
+	(bcp) 1516.67 * 1.65%

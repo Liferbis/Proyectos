@@ -1,9 +1,17 @@
 <?php 
+class Cliente{
+	protected $id;
+	protected $nombre;
+	protected $telefono;
+	protected $email;
 
-include_once "BaseDeDatos.php";
 
-class CestaCompra {
-	public $cesta;
+	function __construct($id, $nombre, $telefono, $email){
+		$this->id=$id;
+		$this->nombre=$nombre;
+		$this->telefono=$telefono;
+		$this->email=$email;
+	}
 
 	public function __set($var, $valor) {
 		if (property_exists(__CLASS__, $var)) {
@@ -19,12 +27,5 @@ class CestaCompra {
 		}
 		return NULL;
 	}
-
-	public static function nuevoArticulo($codigo){
-		$producto=BD::codigo($codigo);
-		$_SESSION['cesta'][]=$producto;
-		print_r($_SESSION['cesta']);
-	}
-
 }
  ?>

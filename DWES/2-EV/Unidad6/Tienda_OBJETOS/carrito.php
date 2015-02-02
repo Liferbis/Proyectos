@@ -28,9 +28,26 @@
 									</tr>
 								</thead>
 								<tbody>			
-									<?php 
-										$suma=util::muestraCesta();
-									?>
+									<?php
+										$suma=0;
+										foreach ($_SESSION['cesta'] as $producto) { ?>
+									<tr>
+										<td>
+											<?php echo $producto->codigo; ?>	
+										</td>
+										<td>
+											<?php echo $producto->articulo; ?>	
+										</td>
+										<td>
+											<?php echo $producto->precio; ?>	
+										</td>
+									</tr>
+
+										
+									<?php
+											$suma=$suma+$producto->precio;
+									 }
+									 ?>
 								</tbody>
 						</table>
 						<hr>

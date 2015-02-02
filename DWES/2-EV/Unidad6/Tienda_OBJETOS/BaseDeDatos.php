@@ -39,12 +39,11 @@ class BD {
 	public static function codigo($codigo){
 		$dwes = BD::conect();
 
-		$c="SELECT * FROM productos WHERE codigo='$codigo'";
+		$cons="SELECT * FROM productos WHERE codigo='$codigo'";
 		$resultado = $dwes->query($cons);
 		
-		$productos=array();
-		while($prod=$resultado->fetch_object()){
-			$productos [] = new producto( $prod->codigo,$prod->nomb, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );		
+		if($prod=$resultado->fetch_object()){
+			$productos  = new producto( $prod->codigo, $prod->nomb, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
 		}
 		$dwes->close();	
 		return $productos;

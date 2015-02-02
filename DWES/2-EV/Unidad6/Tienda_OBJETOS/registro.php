@@ -135,7 +135,7 @@
 						   isset($_POST["contra"]) &&
 						   isset($_POST["contra1"]) ){
 						$ctv=$_POST["contra"];
-						if(util::ctvs($ctv,$_POST["contra1"])){	
+						if($ctv==$_POST["contra1"]){	
 							$ctv=md5($ctv);	
 							$nombre=$_POST["nombre"];
 							$dni=$_POST["dni"];
@@ -171,6 +171,4 @@
 				?>
 			</div>
 		</div>
-<?php 
-	include_once "pie.php";
-?>
+<?php include_once "pie.php"; ?>
