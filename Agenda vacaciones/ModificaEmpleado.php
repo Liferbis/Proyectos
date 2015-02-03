@@ -102,9 +102,10 @@
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 									<h3>Comentarios</h3>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-									<input type="text" name="coment" required placeholder="Comentarios">
-									
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+									<input type="text" name="coment" placeholder="Comentarios">
+									</br>
+									<input type="checkbox" name="coment" value="Sincoment">Sin comentarios
 								</div>
 							</div>
 						</tr>

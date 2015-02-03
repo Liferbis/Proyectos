@@ -76,12 +76,12 @@
 									Modificar empleado
 								</a>
 							</li>
-							<!-- <li>
-								<a href="#">
-									<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
-									Another action
+							<li>
+								<a href="comentarios.php">
+									<span id="gliphicon" class="glyphicon glyphicon-tag"></span>
+									Añadir/Quitar comentario
 								</a>
-							</li> -->
+							</li>
 							<li>
 								<a href="BorrarEmpleado.php">
 									<span id="gliphicon" class="glyphicon glyphicon-remove"></span>

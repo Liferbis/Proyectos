@@ -38,7 +38,7 @@ class BD {
 
 	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios){
 		$dwes = BD::conect();
-		$c="INSERT INTO empleados (dni, nombre, apellido1, apellido2,  localidad, becario, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios')";
+		$c="INSERT INTO empleados (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios')";
 		$resultado = $dwes->query($cons);
 		if(!$resultado){
 			$dwes->close();
@@ -90,7 +90,6 @@ class BD {
 												$emple->apellido1, 
 												$emple->apellido2, 
 												$emple->localidadDeTrabajo,
-												$emple->becario,
 												$emple->movil,
 												$emple->comentarios);	
 			}

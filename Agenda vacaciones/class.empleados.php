@@ -7,11 +7,10 @@
 		private $apellido1;
 		private $apellido2;
 		private $localidad;
-		private $becario;
 		private $movil;
 		private $comentarios;
 
-		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios ){
+		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios ){
 
 			$this->codigo=$codigo;
 			$this->dni=$dni;
@@ -19,7 +18,6 @@
 			$this->apellido1=$apellido1;
 			$this->apellido2=$apellido2;
 			$this->localidad=$localidad;
-			$this->becario=$becario;
 			$this->movil=$movil;
 			$this->comentarios=$comentarios;
 
