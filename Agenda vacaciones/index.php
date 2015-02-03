@@ -13,44 +13,54 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr id='tbody'>
-						<div class="row ">
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-								<h3>Ver vacaciones de ....</h3>
+					<form method="post">
+						<tr id='tbody'>
+							<div class="row ">
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+									<h3>Ver vacaciones de ....</h3>
+								</div>
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									<select  id="input" class="form-control" >
+										<?php 
+											$empleados=BD::CargaEmpleados();
+											foreach ($empleados as $emple) { ?>
+											<option name="empleado" value="<?php echo $emple->codigo; ?>">
+												<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+											</option>
+										<?php } ?>	
+									</select>
+								</div>
 							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<select name="empleado" id="input" class="form-control" >
-									<option value="emple">empleado1</option>
-									<option value="emple">empleado2</option>
-								</select>
+						</tr>
+						<hr>
+						<tr>
+							<div id="vista" class="row">
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+									<h3>Formato de vista</h3>
+								</div>
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									<select id="input" class="form-control" >
+										<option name="vista" value="calendario">Calendario</option>
+										<option name="vista" value="informe">Informe</option>
+									</select>
+								</div>
 							</div>
+						</tr>
+						<hr>
+						<div class="row">
+							<button type="submit" class="btn btn-success">Cargar</button>
 						</div>
-					</tr>
-					<hr>
-					<tr>
-						<diw class="row">
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-								<h3>Ver vacaciones de ....</h3>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<select name="empleado" id="input" class="form-control" >
-									<option value="emple">empleado1</option>
-									<option value="emple">empleado2</option>
-								</select>
-							</div>
-						</diw>
-					</tr>
-					<hr>
+					</form>
 				</tbody>
 			</table>	
-				
-				
-				
-
-				<form method="post">
-					<input type="month" name="year">
-					<input type="submit">		
-				</form>
+			<div class="row">
+				<?php 
+					if(isset($_POST["empleado"]) && isset($_POST["vista"])){
+						echo $_POST["empleado"]."---".$_POST["vista"];
+						
+					}
+				 ?>
+			</div>				
 			</div>
 		</div>
 		

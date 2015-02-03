@@ -1,3 +1,4 @@
+<?php require_once "BaseDeDatos.php"; ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -59,14 +60,44 @@
 				?>
 					<li>
 						<a href="gestion.php">
-							<span id="gliphicon" class="glyphicon glyphicon-edit"></span> NuevoEmpleado
+							<span id="gliphicon" class="glyphicon glyphicon-check"></span> NuevoEmpleado
 						</a>
 					</li>
-					<li>
-						<a href="contacto.php">
-							<span id="gliphicon" class="glyphicon glyphicon-cog"></span> Configuracion
+					<li id="dropdown" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
+								Configuracion
+							<b class="caret"></b>
 						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="ModificaEmpleado.php">
+									<span id="gliphicon" class="glyphicon glyphicon-edit"></span>
+									Modificar empleado
+								</a>
+							</li>
+							<!-- <li>
+								<a href="#">
+									<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
+									Another action
+								</a>
+							</li> -->
+							<li>
+								<a href="BorrarEmpleado.php">
+									<span id="gliphicon" class="glyphicon glyphicon-remove"></span>
+									Borrar empleado
+								</a>
+							</li>
+							<!-- <li>
+								<a href="#">
+									<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
+									Separated link
+								</a>
+							</li> -->
+						</ul>
 					</li>
+					
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</nav>
+

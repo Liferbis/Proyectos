@@ -4,6 +4,9 @@ body{
 	color:	#00CC00;
 	font: 'Sansation';
 }
+#dropdown{
+	background: #000;
+}
 
 #gliphicon{
 	color:#00CC00;	
@@ -34,6 +37,12 @@ body{
 }
 
 #table #diaHoy{
+	background-color:silver;
+	color:red;
+}
+
+#table #vista{
+	text-align:center;
 	background-color:silver;
 	color:red;
 }

@@ -1,20 +1,28 @@
 <?php 
 
-	class personas{
+	class Empleado{
 		private $codigo;
-		private $nombre;
-		private $apellido;
 		private $dni;
+		private $nombre;
+		private $apellido1;
+		private $apellido2;
 		private $localidad;
 		private $becario;
+		private $movil;
+		private $comentarios;
 
-		public function __construct($codigo, $nombre, $apellido, $dni, $localidad, $becario ){
+		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios ){
+
 			$this->codigo=$codigo;
-			$this->nombre=$nombre;
-			$this->apellido=$apellido;
 			$this->dni=$dni;
+			$this->nombre=$nombre;
+			$this->apellido1=$apellido1;
+			$this->apellido2=$apellido2;
 			$this->localidad=$localidad;
 			$this->becario=$becario;
+			$this->movil=$movil;
+			$this->comentarios=$comentarios;
+
 		}
 
 		public function __set($var, $valor) {
