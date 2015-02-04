@@ -60,7 +60,7 @@
 				?>
 					<li>
 						<a href="gestion.php">
-							<span id="gliphicon" class="glyphicon glyphicon-check"></span> NuevoEmpleado
+							<span id="gliphicon" class="glyphicon glyphicon-check"></span> Alta Empleado
 						</a>
 					</li>
 					<li id="dropdown" class="dropdown">

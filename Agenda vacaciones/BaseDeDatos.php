@@ -82,20 +82,20 @@ class BD {
 
 		$resultado = $dwes->query($c);
 		
-			$empleados=array();
-			while($emple=$resultado->fetch_object()){
-				$empleados [] = new Empleado( $emple->codigo,
-												$emple->dni,
-												$emple->nombre, 
-												$emple->apellido1, 
-												$emple->apellido2, 
-												$emple->localidadDeTrabajo,
-												$emple->movil,
-												$emple->comentarios);	
-			}
-			$dwes->close();	
-			return $empleados;
-
+		$empleados=array();
+		
+		while($emple=$resultado->fetch_object()){
+			$empleados [] = new Empleado( $emple->codigo,
+											$emple->dni,
+											$emple->nombre, 
+											$emple->apellido1, 
+											$emple->apellido2, 
+											$emple->localidadDeTrabajo,
+											$emple->movil,
+											$emple->comentarios);	
+		}
+		$dwes->close();	
+		return $empleados;
 	}
 
 	public static function dni($dni){

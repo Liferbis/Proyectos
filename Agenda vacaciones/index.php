@@ -2,18 +2,38 @@
 	include_once "header.php";
  ?>
 	<div class="text-center">
-		<h1  >Bienvenido al gestor de vacaciones</h1>
+		<h1  >Gestor de vacaciones y otros permisos</h1>
 	
 		<div id='contenido' class='row responsive'>
 			<table id='table' class="table table-hover">
 				<thead>
 					<tr>
-						<h1>¿Qué deseas hacer?</h1>
+						<h1>Grupo Codelse</h1>
 						<hr>
 					</tr>
 				</thead>
 				<tbody>
 					<form method="post">
+						<tr>
+							<div class="row " >
+								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+									<h3>Opciones</h3>
+								</div>
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<select id="input" class="form-control" required="required">
+									<option name="vacaciones" value="intro">
+										<?php $intro=true; ?>
+										Introducir Vacaciones
+									</option>
+									<option name="vacaciones" value=""> 
+									<!-- 	<?php $intro=false; ?>-->
+										Consultar
+									</option>
+								</select>
+							</div>
+						</div>
+						</tr>
+						<hr>
 						<tr id='tbody'>
 							<div class="row ">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -40,8 +60,13 @@
 								</div>
 								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 									<select id="input" class="form-control" >
-										<option name="vista" value="calendario">Calendario</option>
-										<option name="vista" value="informe">Informe</option>
+										<?php if($intro) {?>
+											<option name="vista" value="informe">Informe</option>
+										<?php }else{ ?>
+											<option name="vista" value="calendario">Calendario</option>
+											<option name="vista" value="informe">Informe</option>
+
+										<?php } ?>
 									</select>
 								</div>
 							</div>
