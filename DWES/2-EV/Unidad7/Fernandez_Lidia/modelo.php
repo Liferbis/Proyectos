@@ -25,7 +25,7 @@ class BD {
 	public function getFutbolista($dorsal){
 		$dwes = BD::conect();
 
-		$cons="SELECT * FROM futbolistas WHERE dorsal='$dorsal";
+		$cons="SELECT * FROM futbolistas WHERE dorsal='$dorsal'";
 
 		$resultado = $dwes->query($cons);
 

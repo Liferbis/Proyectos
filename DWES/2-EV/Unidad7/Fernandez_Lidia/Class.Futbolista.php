@@ -7,8 +7,8 @@ class Futbolista extends Empleado implements IFutbol{
 	protected $goles;
 	private static $numero=0;
 
-	function __construct($dni, $idCliente, $nombre, $sueldo, $dorsal, $goles){
-		parent::__construct($dni, $idCliente, $nombre, $sueldo);
+	function __construct($dni, $nombre, $sueldo, $dorsal, $goles){
+		parent::__construct($dni, $nombre, $sueldo);
 		$this->dorsal= $dorsal;
 		$this->goles= $goles;
 		self::$numero++;
@@ -17,7 +17,7 @@ class Futbolista extends Empleado implements IFutbol{
 	public function getSueldo() {
 		$sueldo=parent::getSueldo();
 		if($goles>0){
-			$sueldo=$sueldo+($this->goles*5000);
+			$sueldo=$sueldo+($goles*5000);
 			return $sueldo;
 		}else{
 			return $sueldo;

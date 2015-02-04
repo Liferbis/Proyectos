@@ -6,7 +6,7 @@ abstract  class Empleado {
 	protected $sueldo;
 
 
-	public function __construct($dni, $idCliente, $nombre, $sueldo){
+	public function __construct($dni, $nombre, $sueldo){
 		$this->dni= $dni;
 		$this->nombre= $nombre;
 		$this->sueldo= $sueldo;

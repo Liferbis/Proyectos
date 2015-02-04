@@ -4,8 +4,8 @@ require_once "Class.Empleado.php";
 abstract class CuerpoTecnico extends Empleado{
 	protected $puesto;
 
-	function __construct($dni, $idCliente, $nombre, $sueldo, $puesto){
-		parent::__construct($dni, $idCliente, $nombre, $sueldo);
+	function __construct($dni, $nombre, $sueldo, $puesto){
+		parent::__construct($dni, $nombre, $sueldo);
 		$this->puesto= $puesto;
 	}
 	

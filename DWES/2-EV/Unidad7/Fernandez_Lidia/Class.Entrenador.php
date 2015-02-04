@@ -6,18 +6,18 @@ require_once "Class.CuerpoTecnico.php";
 class Entrenador extends CuerpoTecnico {
 	protected $aniosEnClub;
 
-	function __construct($dni, $idCliente, $nombre, $sueldo, $aniosEnClub){
-		parent::__construct($dni, $idCliente, $nombre, $sueldo);
+	function __construct($dni, $nombre, $sueldo, $aniosEnClub){
+		parent::__construct($dni, $nombre, $sueldo);
 		$this->aniosEnClub= $aniosEnClub;
 	}
 
 	public function getSueldo(){
 		$sueldo=parent::getSueldo();
 		if( ($this->aniosEnClub)>=10 && ($this->aniosEnClub)<=20 ){
-			$sueldo+=($sueldo*0.01);
+			$sueldo+=($sueldo*0.1);
 			return $sueldo;
 		}else if ($this->aniosEnClub>20){
-			$sueldo+=($sueldo*0.02);
+			$sueldo+=($sueldo*0.2);
 			return $sueldo;
 		}else{
 			return $sueldo;
