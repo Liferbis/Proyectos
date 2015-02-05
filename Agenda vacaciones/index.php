@@ -12,82 +12,78 @@
 						<hr>
 					</tr>
 				</thead>
-				<tbody>
-					<form method="post">
-						<tr>
-							<div class="row " >
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-									<h3>Opciones</h3>
-								</div>
+				<tbody id='tbody'>
+					<form action="" method="POST" role="form">
+					<tr>
+						<div class="row ">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<h3>Selecciona el empleado</h3>
+							</div>
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<select id="input" class="form-control" required="required">
-									<option name="vacaciones" value="intro">
-										<?php $intro=true; ?>
-										Introducir Vacaciones
-									</option>
-									<option name="vacaciones" value=""> 
-									<!-- 	<?php $intro=false; ?>-->
-										Consultar
-									</option>
+								<select  name="empleado" id="input" class="form-control" >
+									<?php 
+										$empleados=BD::CargaEmpleados();
+										foreach ($empleados as $emple) { ?>
+										<option  value="<?php echo $emple->codigo; ?>">
+											<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+										</option>
+									<?php } ?>	
 								</select>
 							</div>
 						</div>
-						</tr>
-						<hr>
-						<tr id='tbody'>
-							<div class="row ">
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-									<h3>Ver vacaciones de ....</h3>
+					</tr>
+					<hr>
+					<tr>
+						<div class="row " >
+							<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+								<h3>Opciones</h3>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+									<button type="submit" name="introducir"  class="btn btn-success">Introducir Vacaciones</button>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-									<select  id="input" class="form-control" >
-										<?php 
-											$empleados=BD::CargaEmpleados();
-											foreach ($empleados as $emple) { ?>
-											<option name="empleado" value="<?php echo $emple->codigo; ?>">
-												<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
-											</option>
-										<?php } ?>	
-									</select>
+								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+									<button type="submit" name="consulta" class="btn btn-success">Consultar</button>
 								</div>
 							</div>
-						</tr>
-						<hr>
-						<tr>
+						</div>
+					</tr>
+					<hr>
+					<?php if(isset($_POST["consulta"]) ){ ?>
+					<tr>
+						<form action="" method="POST" role="form">
 							<div id="vista" class="row">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 									<h3>Formato de vista</h3>
 								</div>
-								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-									<select id="input" class="form-control" >
-										<?php if($intro) {?>
-											<option name="vista" value="informe">Informe</option>
-										<?php }else{ ?>
-											<option name="vista" value="calendario">Calendario</option>
-											<option name="vista" value="informe">Informe</option>
-
-										<?php } ?>
+								<div id="tipo" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									<select  class="form-control" >
+											<option name="vista" value="calendario">
+												Calendario
+											</option>
+											<option name="vista" value="informe">
+												Informe
+											</option>
 									</select>
 								</div>
 							</div>
-						</tr>
-						<hr>
-						<div class="row">
-							<button type="submit" class="btn btn-success">Cargar</button>
-						</div>
-					</form>
+					</tr>
+					<hr>
+					<tr>
+							<div class="row">
+								<button type="submit" name="cargar" class="btn btn-success">Cargar</button>
+							</div>
+						</form>
+					</tr>
+					<hr>
+					<?php }else if(isset($_POST["introducir"])){ 
+						$cod_emple=$_POST["empleado"];
+						header('Location: MasVacacion.php');
+					} ?>
 				</tbody>
-			</table>	
-			<div class="row">
-				<?php 
-					if(isset($_POST["empleado"]) && isset($_POST["vista"])){
-						echo $_POST["empleado"]."---".$_POST["vista"];
-						
-					}
-				 ?>
-			</div>				
-			</div>
+			</table>					
 		</div>
+	</div>
 		
 
 <?php 
