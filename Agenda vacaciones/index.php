@@ -22,6 +22,7 @@
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 								<select  name="empleado" id="input" class="form-control" >
 									<?php 
+										//BD::conect();
 										$empleados=BD::CargaEmpleados();
 										foreach ($empleados as $emple) { ?>
 										<option  value="<?php echo $emple->codigo; ?>">

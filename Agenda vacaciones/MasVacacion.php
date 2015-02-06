@@ -33,82 +33,74 @@
 						</div>
 					</tr>
 					<hr>
-					<tr ><div class="group-radio" >
+					<tr>
 						<div class="row">
-							<div  class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<h3>Fecha Inicio</h3>
 							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<h3>Tipo: </h3>
+							<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
+								<input type="date" name="" id="input" class="form-control" value="" required="required" title="">
 							</div>
 						</div>
-						
-							<div class="row">
-								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-									
-								</div>
-								<div  class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-										<label>
-											Vacaciones										
-											<input type="radio" name="tipo" id="input" value="v" checked="checked">	
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class=" col-sm-6 col-md-6 col-lg-6">
-									
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-										<label>
-											Permiso Retribuido
-											<input type="radio" name="tipo" id="input" value="pr" >
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class=" col-sm-6 col-md-6 col-lg-6">
-									
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-										<label>
-											Permiso NO Retribuido
-											<input type="radio" name="tipo" id="input" value="pnr" >
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class=" col-sm-6 col-md-6 col-lg-6">
-									
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-										<label>
-											Baja Enfermedad Comun
-											<input type="radio" name="tipo" id="input" value="bec" >
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class=" col-sm-6 col-md-6 col-lg-6">
-									
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-										<label>
-											Baja accidente de trabajo
-											<input type="radio" name="tipo" id="input" value="bat" >
-										</label>
-									</div>
-								</div>
-							</div>
 					</tr>
 					<hr>
+					<tr>
+						<div class="row">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<h3>Fecha Fin</h3>
+							</div>
+							<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
+								<input type="date" name="" id="input" class="form-control" value="" required="required" title="">
+							</div>
+						</div>
+					</tr>
+					<hr>
+					<tr >
+						<div class="group-radio" >
+							<div class="row">
+								<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									<h3>Tipo: </h3>
+								</div>
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									Vacaciones										
+									<input type="radio" name="tipo" id="input" value="v" checked="checked">	
+								</div>
+								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+									Permiso Retribuido
+									<input type="radio" name="tipo" id="input" value="pr" >
+								</div>
+							</div>	
+							<div  class="row">
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										Permiso NO Retribuido
+										<input type="radio" name="tipo" id="input" value="pnr" >
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										Baja Enfermedad Comun
+										<input type="radio" name="tipo" id="input" value="bec" >
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										Baja accidente de trabajo
+										<input type="radio" name="tipo" id="input" value="bat" >
+									</div>
+							</div>
+						</div>	
+					</tr>
+					<hr>
+					<tr>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<button type="button" name="baceptar" class="btn btn-success">Aceptar</button>
+							<button type="button" name="bacsol" class="btn btn-success">Aceptar y solicitar</button>
+							<button type="button" name="bcanc" class="btn btn-success">Cancelar</button>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							
+						</div>
+						
+					</tr>
 					<?php if(isset($_POST["consulta"]) ){ ?>
 					<tr>
 						<form action="" method="POST" role="form">

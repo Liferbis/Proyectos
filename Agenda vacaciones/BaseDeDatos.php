@@ -7,9 +7,8 @@ class BD {
 	const ctv="";
 	const bd="vacaciones";
 
-
 	public static function conect(){
-        $dwes = new mysqli(BD::localhost, BD::usu , BD::ctv, BD::bd);
+		 $dwes = new mysqli(BD::localhost, BD::usu , BD::ctv, BD::bd);
 		return $dwes;
 	}
 
