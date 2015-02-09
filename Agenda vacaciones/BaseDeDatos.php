@@ -97,6 +97,29 @@ class BD {
 		return $empleados;
 	}
 
+	public static function DameEmpleado($codigo){
+		
+		$dwes = BD::conect();
+		$c="SELECT * FROM empleados WHERE codigo='$codigo'";
+
+		$resultado = $dwes->query($c);
+		
+		$empleado=array();
+		
+		while($emple=$resultado->fetch_object()){
+			$empleado [] = new Empleado( $emple->codigo,
+											$emple->dni,
+											$emple->nombre, 
+											$emple->apellido1, 
+											$emple->apellido2, 
+											$emple->localidadDeTrabajo,
+											$emple->movil,
+											$emple->comentarios);	
+		}
+		$dwes->close();	
+		return $empleado;
+	}
+
 	public static function dni($dni){
 		$dwes = BD::conect();
 		$c="SELECT dni FROM usuarios WHERE dni=$dni";
@@ -110,6 +133,7 @@ class BD {
 			return true;
 		}
 	}
+/////////////////////////////////////////////////////////////////////CREA CARPETAS
 
 
 
