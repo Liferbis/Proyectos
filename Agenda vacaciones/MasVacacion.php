@@ -33,13 +33,19 @@
 							</div>
 						</tr>
 						<hr>
-						<!-- <tr>
+						<tr>
 							<div class="row">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 									<h3>Fecha Inicio</h3>
 								</div>
 								<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
 									<input type="date" name="" id="input" class="form-control" value="" required="required" title="">
+									<p>
+										<div class="checkbox">
+											Medio Dia
+											<input type="checkbox" value="">
+										</div>
+									</p>
 								</div>
 							</div>
 						</tr>
@@ -51,12 +57,34 @@
 								</div>
 								<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
 									<input type="date" name="" id="input" class="form-control" value="" required="required" title="">
+									<p>
+										<div class="checkbox">
+											Medio Dia
+											<input type="checkbox" value="">
+										</div>
+									</p>
 								</div>
 							</div>
 						</tr>
 						<hr>
 						<tr >
-							<div class="group-radio" >
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<h3>Tipo:</h3>
+								</div>
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<select name="" id="input" class="form-control" required="required">
+										<option value="">Vacaciones	</option>
+										<option value="">Permiso Retribuido</option>
+										<option value="">Permiso no retribuido</option>
+										<option value="">Baja enfermedad comun</option>
+										<option value="">Baja accidente laboral</option>
+									</select>
+								</div>
+							
+							</div>
+
+							<!-- <div class="group-radio" >
 								<div class="row">
 									<div  class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 										<h3>Tipo: </h3>
@@ -84,9 +112,9 @@
 											<input type="radio" name="tipo" id="input" value="bat" >
 										</div>
 								</div>
-							</div>	
+							</div>	 -->
 						</tr>
-						<hr> -->
+						<hr>
 						<tr>
 							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 								
