@@ -43,12 +43,40 @@ class BD {
 		$resultado = $dwes->query($cons);
 		
 		if($prod=$resultado->fetch_object()){
-			$productos  = new producto( $prod->codigo, $prod->nomb, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
+			$productos  = new producto( $prod->codigo, $prod->nombre, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
+		}
+		$dwes->close();	
+		return $productos;
+	}
+
+	public static function buscador($palabra){
+		$string="%".$palabra."%";
+		$dwes = BD::conect();
+
+		$cons="SELECT * FROM productos WHERE nombre LIKE '$string'";
+		$resultado = $dwes->query($cons);
+		
+		if($prod=$resultado->fetch_object()){
+			$productos  = new producto( $prod->codigo, $prod->nombre, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
 		}
 		$dwes->close();	
 		return $productos;
 	}
 	
+	public static function getMayorPrecio(){
+		$dwes = BD::conect();
+		$auxarray=array();
+		$cons="SELECT * FROM productos WHERE precio = (SELECT max(precio) FROM productos)";
+		$resultado = $dwes->query($cons);
+		
+		if($prod=$resultado->fetch_object()){
+			$producto  = new producto( $prod->codigo, $prod->nombre, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
+			
+		}
+		$dwes->close();	
+		return $producto;
+	}
+
 	public static function registro($nombre, $dni, $ap1, $ap2, $dire, $cp, $a, $ctv){
 
 		$dwes = BD::conect();
@@ -64,6 +92,7 @@ class BD {
 			return true;
 		}
 	}
+
 
 	public function cargaProductos(){
 		$dwes = BD::conect();

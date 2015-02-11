@@ -60,17 +60,6 @@ class util {
 		
 	}
 
-	// public static function Productos($cesta){
-	// 	foreach ($_SESSION['cesta'] as $p) {
-	// 		if($p->codigo==$cesta->codigo){
-	// 			// $p->unidades++;
-	// 			echo "dsgfsdgavs";
-	// 		}else{
-	// 			$_SESSION['cesta'][]=$cesta;
-	// 			echo "elseeeef";
-	// 		}
-	// 	}	
-	// }
 
 	public static function muestraCesta(){
 		$suma=0;

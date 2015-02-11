@@ -23,7 +23,6 @@ class CestaCompra {
 	public static function nuevoArticulo($codigo){
 		$producto=BD::codigo($codigo);
 		$_SESSION['cesta'][]=$producto;
-		print_r($_SESSION['cesta']);
 	}
 
 }
