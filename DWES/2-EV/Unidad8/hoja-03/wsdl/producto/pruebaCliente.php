@@ -8,11 +8,12 @@ try{
 	$precio=$cliente->getPrecio(1);
 	echo "<br>El precio del articulo con codigo 1 es: ".$precio;
 	
-	// $articulo=$cliente->getProducto(1);
-	// echo "<br>El articulo con codigo 1 es: ";
-	// var_dump($articulo);
+	$articulo=$cliente->getProducto(1);
+	echo "<br>El articulo con codigo 1 es: ";
+	var_dump($articulo);
 	
 	$productos=$cliente->getProductos();
+	echo "<br>Todos los articulos: ";
 	var_dump($productos);
 
 	$palabra=$cliente->busqueda("micro");
