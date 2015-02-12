@@ -22,7 +22,6 @@
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 								<select  name="empleado" id="input" class="form-control" >
 									<?php 
-										//BD::conect();
 										$empleados=BD::CargaEmpleados();
 										foreach ($empleados as $emple) { ?>
 										<option  value="<?php echo $emple->codigo; ?>">
@@ -79,7 +78,7 @@
 					<hr>
 					<?php }else if(isset($_POST["introducir"])){ 
 						$cod_emple=$_POST["empleado"];
-						header('Location: MasVacacion.php');
+						require_once "MasVacacion.php";
 					} ?>
 				</tbody>
 			</table>					
