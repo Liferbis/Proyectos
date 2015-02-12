@@ -37,7 +37,7 @@ class BD {
 
 	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios){
 		$dwes = BD::conect();
-		$c="INSERT INTO empleados (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios')";
+		$c="INSERT INTO empleoficina (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios')";
 		$resultado = $dwes->query($cons);
 		if(!$resultado){
 			$dwes->close();
@@ -51,7 +51,7 @@ class BD {
 
 	public static function borraEmpleado($codigo){
 		$dwes=BD::conect();
-		$c="DELETE FROM empleados (WHERE codigo = '$codigo');";
+		$c="DELETE FROM empleoficina (WHERE codigo = '$codigo');";
 		$resultado = $dwes->query($c);
 		$dwes->close();
 	}
@@ -77,7 +77,7 @@ class BD {
 
 	public static function CargaEmpleados(){
 		$dwes = BD::conect();
-		$c="SELECT * FROM empleados";
+		$c="SELECT * FROM empleoficina";
 
 		$resultado = $dwes->query($c);
 		
@@ -100,7 +100,7 @@ class BD {
 	public static function DameEmpleado($codigo){
 		
 		$dwes = BD::conect();
-		$c="SELECT * FROM empleados WHERE codigo='$codigo'";
+		$c="SELECT * FROM empleoficina WHERE codigo='$codigo'";
 
 		$resultado = $dwes->query($c);
 		

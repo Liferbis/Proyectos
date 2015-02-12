@@ -1,5 +1,5 @@
 <?php 
-	include_once "header.php";
+	require_once "header.php";
  ?>
 	<div class="text-center">
 		<h1  >Introducir vacaciones y otros permisos</h1>
@@ -191,5 +191,5 @@
 		
 
 <?php 
-	include_once "pie.php";
+	require_once "pie.php";
  ?>
