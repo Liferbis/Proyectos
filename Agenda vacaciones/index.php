@@ -1,4 +1,9 @@
 <?php 
+	session_start();
+	if ( !isset($_SESSION["usuario"]) ) {
+		header("Location: login.php");
+	} else {
+
 	include_once "header.php";
  ?>
 	<div class="text-center">
@@ -88,5 +93,6 @@
 
 <?php 
 	include_once "pie.php";
+}
  ?>
 
