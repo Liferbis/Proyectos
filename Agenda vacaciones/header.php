@@ -51,25 +51,26 @@
 					if (isset($_SESSION["usuario"])){
 				?>
 					<li>
-						<a href="logout.php">
+						<a href="log-out.php">
 							<span id="gliphicon" class="glyphicon glyphicon-off"></span> Login-Off
 						</a>
 					</li>
 				<?php 
 					}
 				?>
-					<li>
-						<a href="gestion.php">
-							<span id="gliphicon" class="glyphicon glyphicon-check"></span> Alta Empleado
-						</a>
-					</li>
+					
 					<li id="dropdown" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
-								Configuracion
+								Configuracion Empleados
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
+							<li>
+								<a href="gestion.php">
+									<span id="gliphicon" class="glyphicon glyphicon-check"></span> Alta Empleado
+								</a>
+							</li>
 							<li>
 								<a href="ModificaEmpleado.php">
 									<span id="gliphicon" class="glyphicon glyphicon-edit"></span>

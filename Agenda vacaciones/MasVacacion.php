@@ -85,9 +85,9 @@
 									die('Creado correctamente');
 								}
 							}else if($_POST["aceptar"]==1){
-								header("Location: informe.php");
+								require_once "informe.php";
 							}else if ($_POST["aceptar"]==2){
-								header("Location: indexx.php");
+								header("Location: index.php");
 							}
 
 					} ?>

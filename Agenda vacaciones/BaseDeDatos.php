@@ -34,6 +34,10 @@ class BD {
 			return true;
 		}
 	}
+	
+	public static function privilegios(){
+		$sentencia="GRANT [permiso] ON [nombre de bases de datos].[nombre de tabla] TO '[nombre de usuario]'@'localhost'";
+	}
 
 	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios){
 		$dwes = BD::conect();
@@ -47,6 +51,7 @@ class BD {
 			return true;
 		}
 	}
+
 ///////////////////////   BORRAR    //////////////////////////////////////////////////////////////
 
 	public static function borraEmpleado($codigo){
@@ -60,7 +65,7 @@ class BD {
 
 	public static function verifica($usuario, $ctv){
 		$dwes = BD::conect();
-		$c="SELECT nombre, ctv FROM usuarios WHERE usuario='$usuario' AND ctv='$ctv'";
+		$c="SELECT usuario, ctv FROM usuarios WHERE usuario='$usuario' AND ctv='$ctv'";
 
 		$resultado = $dwes->query($c);
 
