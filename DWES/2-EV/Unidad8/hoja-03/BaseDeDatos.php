@@ -55,7 +55,9 @@ class BD {
 
 		$cons="SELECT * FROM productos WHERE nombre LIKE '$string'";
 		$resultado = $dwes->query($cons);
-		
+		if(!$resultado){
+			
+		}
 		if($prod=$resultado->fetch_object()){
 			$productos  = new producto( $prod->codigo, $prod->nombre, $prod->articulo, $prod->precio, $prod->stock, $prod->ruta );
 		}
