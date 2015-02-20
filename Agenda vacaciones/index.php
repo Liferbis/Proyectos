@@ -1,7 +1,7 @@
 <?php 
-	if ( !isset($_SESSION["usuario"]) ) {
-		header("Location: login.php");
-	} else {
+	// if ( !isset($_SESSION["usuario"]) ) {
+	// 	header("Location: login.php");
+	// } else {
 
 	include_once "header.php";
  ?>
@@ -92,6 +92,6 @@
 
 <?php 
 	include_once "pie.php";
-}
+//}
  ?>
 

@@ -67,6 +67,7 @@
 						</tr>
 					</form>
 					<?php if(isset($_POST["aceptar"])){ 
+						echo 'dentro de boton';
 							if($_POST["aceptar"]==0){
 								
 								$cod_emple=$_POST["empleado"];
@@ -79,19 +80,21 @@
 								}
 								$fecha=date('Y-m-d');
 								$ruta="C:\GestorDeVacaciones\ ".$nombre."_".$apellido1."_".$fecha;
-								if(!mkdir($ruta, 0600, true)){
+								$folder=mkdir($ruta, 0600, true);
+								if(!$folder){
 									die('Fallo en la ruta de la carpeta');
 								}else{
 									die('Creado correctamente');
+									require_once "informe.php";
 								}
 							}else if($_POST["aceptar"]==1){
+								echo "aceptar y solicitar";
 								require_once "informe.php";
 							}else if ($_POST["aceptar"]==2){
+								echo "cancelar";
 								header("Location: index.php");
 							}
-
 					} ?>
-					
 				</tbody>
 			</table>					
 		</div>

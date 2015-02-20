@@ -57,19 +57,19 @@
 				$worksheet->write(1, 11, 'Comentarios');
 				$worksheet->write(1, 12, 'Usuario');
 
-				$worksheet->write(0, 0, '');
-				$worksheet->write(0, 1, '');
-				$worksheet->write(0, 2, '');
-				$worksheet->write(0, 3, '');
-				$worksheet->write(0, 4, '');
-				$worksheet->write(0, 5, '');
-				$worksheet->write(0, 6, '');
-				$worksheet->write(0, 7, '');
-				$worksheet->write(0, 8, '');
-				$worksheet->write(0, 9, '');
-				$worksheet->write(0, 10, '');
-				$worksheet->write(0, 11, '');
-				$worksheet->write(0, 12, '');				
+				$worksheet->write(2, 0, '');
+				$worksheet->write(2, 1, '');
+				$worksheet->write(2, 2, '');
+				$worksheet->write(2, 3, '');
+				$worksheet->write(2, 4, '');
+				$worksheet->write(2, 5, '');
+				$worksheet->write(2, 6, '');
+				$worksheet->write(2, 7, '');
+				$worksheet->write(2, 8, '');
+				$worksheet->write(2, 9, '');
+				$worksheet->write(2, 10, '');
+				$worksheet->write(2, 11, '');
+				$worksheet->write(2, 12, '');				
 				
 
 				// We still need to explicitly close the workbook
