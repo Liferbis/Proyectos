@@ -11,7 +11,12 @@ require_once "BaseDEdatos.php";
 	<?php 
 		$xajax->printJavascript();
 	 ?>
-	 <script type="text/javascript" src="validarFutbolistas.js"></script>
+	 <script type="text/javascript" >
+	 	function busqueda(){
+			xajax_listadoFutbolistas(document.getElementsByName("txtbusqueda")[0].value);
+		}
+
+	 </script>
 	 
 </head>
 <body>

@@ -33,7 +33,7 @@ class BD {
 	}
 }
 
-$xajax = new xajax();
+
 //$xajax->configure("debug",true);
 
 function listadoFutbolistas($letras){
@@ -47,10 +47,11 @@ function listadoFutbolistas($letras){
 	$texto.='</ul>';
 	
 	$respuesta->assign("listado","innerHTML",$texto);
-	
+	var_dump($respuesta);
 	return $respuesta;
 }
 
+$xajax = new xajax();
 $xajax->register(XAJAX_FUNCTION,"listadoFutbolistas");
 $xajax->configure('javascript URI','../../../librerias/xajax-0.6');
 $xajax->processRequest();
