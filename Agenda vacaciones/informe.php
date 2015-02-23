@@ -24,6 +24,10 @@
 				</tbody>
 			</table>
 			<?php
+
+
+//Crear excel con php    http://www.taringa.net/posts/linux/15716598/Crear-documentos-excel-con-PHP.html
+
 				// We give the path to our file here
 				$workbook = new Spreadsheet_Excel_Writer('$ruta\prueba1.xls');
 

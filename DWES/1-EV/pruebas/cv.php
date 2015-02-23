@@ -24,7 +24,7 @@
 		<li><strong>D.N.I.</strong> número: 72.123.456-A</li>  
 		</ul>
 		
-		<h2><a Experiencia laboral</h2>  
+		<h2>Experiencia laboral</h2>  
 		<dl>
 		<dt><strong>1922-1957: </strong></dt>
 			<dd>carpintera SL. C./ Campos de miel, nº 371 (Castellón). Empresa dedicada a la creación de objetos hechos con madera. Ocupé el puesto de carpintera.</dd> 

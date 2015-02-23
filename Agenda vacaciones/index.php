@@ -17,25 +17,7 @@
 					</tr>
 				</thead>
 				<tbody id='tbody'>
-					<form action="" method="POST" role="form">
-					<tr>
-						<div class="row ">
-							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-								<h3>Selecciona el empleado</h3>
-							</div>
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<select  name="empleado" id="input" class="form-control" >
-									<?php 
-										$empleados=BD::CargaEmpleados();
-										foreach ($empleados as $emple) { ?>
-										<option  value="<?php echo $emple->codigo; ?>">
-											<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
-										</option>
-									<?php } ?>	
-								</select>
-							</div>
-						</div>
-					</tr>
+					
 					<hr>
 					<tr>
 						<div class="row " >
@@ -44,7 +26,9 @@
 							</div>
 							<div class="row">
 								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-									<button type="submit" name="introducir"  class="btn btn-success">Introducir Vacaciones</button>
+									<a href="MasVacacion.php" >
+										<button type="submit" name="introducir"  class="btn btn-success">Introducir Vacaciones</button>
+									</a>
 								</div>
 								<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 									<button type="submit" name="consulta" class="btn btn-success">Consultar</button>
@@ -55,7 +39,7 @@
 					<hr>
 					<?php if(isset($_POST["consulta"]) ){ ?>
 					<tr>
-						<form action="" method="POST" role="form">
+						<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" role="form">
 							<div id="vista" class="row">
 								<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 									<h3>Formato de vista</h3>
@@ -81,8 +65,9 @@
 					</tr>
 					<hr>
 					<?php }else if(isset($_POST["introducir"])){ 
-						$cod_emple=$_POST["empleado"];
-						require_once "MasVacacion.php";
+						$_SESSION['empleado']=$_POST["empleado"];
+						//header("Location: MasVacacion.php");
+						//require_once "MasVacacion.php";
 					} ?>
 				</tbody>
 			</table>					

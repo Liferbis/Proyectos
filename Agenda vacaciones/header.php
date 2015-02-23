@@ -57,8 +57,7 @@
 					</li>
 				<?php 
 					}
-				?>
-					
+				?>					
 					<li id="dropdown" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
