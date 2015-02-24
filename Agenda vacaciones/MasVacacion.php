@@ -73,17 +73,11 @@ require_once "header.php";
 	</tr>
 	<hr>
 	<tr>
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-			
-		</div>
-		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<input type="submit" name="aceptar" value="Aceptar" class="btn btn-success"/>
-			<input type="submit" name="acepsol" value="Aceptar y solicitar" class="btn btn-success"/>
-			<a class="navbar-brand" ><input type="button" name="cancelar" value="Cancelar" class="btn btn-success"/></a>
-			<button type="button" href="index.php" class="btn btn-success">button</button>
 		</div>
-		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<input type="submit" name="acepsol" value="Aceptar y solicitar" class="btn btn-success"/>
 		</div>
 
 	</tr>
@@ -109,6 +103,7 @@ require_once "header.php";
 }
 if(isset($_POST["acepsol"])){
 	echo "aceptar y solicitar";
+	echo "<br><br>";
 	require_once "informe.php";
 }
 ?>

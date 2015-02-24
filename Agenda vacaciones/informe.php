@@ -1,4 +1,5 @@
 <?php require_once "header.php" ?>
+<?php require_once "./libreria/Excel-PHP/PHPExcel.php" ?>
 	<div class="text-center">
 		<h1  >Informe de vacaciones y otros permisos</h1>
 
@@ -24,60 +25,78 @@
 				</tbody>
 			</table>
 			<?php
+				$objPHPExcel = new PHPExcel();
+
+				$objPHPExcel->getProperties()
+					->setCreator("Cattivo")
+					->setLastModifiedBy("Cattivo")
+					->setTitle("Documento Excel de Prueba")
+					->setSubject("Documento Excel de Prueba")
+					->setDescription("Demostracion sobre como crear archivos de Excel desde PHP.")
+					->setKeywords("Excel Office 2007 openxml php")
+					->setCategory("Pruebas de Excel");
 
 
 //Crear excel con php    http://www.taringa.net/posts/linux/15716598/Crear-documentos-excel-con-PHP.html
 
 				// We give the path to our file here
-				$workbook = new Spreadsheet_Excel_Writer('$ruta\prueba1.xls');
+				// $workbook = new Spreadsheet_Excel_Writer('$ruta/prueba1.xls');
 
-				$worksheet =& $workbook->addWorksheet('My first worksheet');
+				// $worksheet = $workbook->addWorksheet('My first worksheet');
 
-				$worksheet->write(0, 0, 'Empleado');
-				$worksheet->write(0, 1, 'Vacaciones');
-				$worksheet->write(0, 2, '');
-				$worksheet->write(0, 3, '');
-				$worksheet->write(0, 4, '');
-				$worksheet->write(0, 5, '');
-				$worksheet->write(0, 6, '');
-				$worksheet->write(0, 7, 'Otros');
-				$worksheet->write(0, 8, '');
-				$worksheet->write(0, 9, 'Baja');
-				$worksheet->write(0, 10, '');
-				$worksheet->write(0, 11, 'Datos');
-				$worksheet->write(0, 12, '');
+				$objPHPExcel->setActiveSheetIndex(0)	
+					->setCellValue('A1','Empleado')
+					->setCellValue('B1', 'Vacaciones')
+					->setCellValue('C1', '')
+					->setCellValue('D1', '')
+					->setCellValue('E1', '')
+					->setCellValue('F1', '')
+					->setCellValue('G1', '')
+					->setCellValue('H1', 'Otros')
+					->setCellValue('I1', '')
+					->setCellValue('J1', 'Baja')
+					->setCellValue('K1', '')
+					->setCellValue('L1', 'Datos')
+					->setCellValue('M1', '')
 
-				$worksheet->write(1, 0, 'Empleado');
-				$worksheet->write(1, 1, 'Fecha Inicio');
-				$worksheet->write(1, 2, 'Fecha Fin');
-				$worksheet->write(1, 3, 'Dias Naturales');
-				$worksheet->write(1, 4, 'Dias laborables');
-				$worksheet->write(1, 5, 'Aumento Vac.');
-				$worksheet->write(1, 6, 'Saldo');
-				$worksheet->write(1, 7, 'Permiso Retribuido');
-				$worksheet->write(1, 8, 'Permiso NO Retribuido');
-				$worksheet->write(1, 9, 'Baja AL');
-				$worksheet->write(1, 10, 'Baja EC');
-				$worksheet->write(1, 11, 'Comentarios');
-				$worksheet->write(1, 12, 'Usuario');
+					->setCellValue('A2', 'Empleado')
+					->setCellValue('B2', 'Fecha Inicio')
+					->setCellValue('C2', 'Fecha Fin')
+					->setCellValue('D2', 'Dias Naturales')
+					->setCellValue('E2', 'Dias laborables')
+					->setCellValue('F2', 'Aumento Vac.')
+					->setCellValue('G2', 'Saldo')
+					->setCellValue('H2', 'Permiso Retribuido')
+					->setCellValue('I2', 'Permiso NO Retribuido')
+					->setCellValue('J2', 'Baja AL')
+					->setCellValue('K2', 'Baja EC')
+					->setCellValue('L2', 'Comentarios')
+					->setCellValue('M2', 'Usuario')
 
-				$worksheet->write(2, 0, '');
-				$worksheet->write(2, 1, '');
-				$worksheet->write(2, 2, '');
-				$worksheet->write(2, 3, '');
-				$worksheet->write(2, 4, '');
-				$worksheet->write(2, 5, '');
-				$worksheet->write(2, 6, '');
-				$worksheet->write(2, 7, '');
-				$worksheet->write(2, 8, '');
-				$worksheet->write(2, 9, '');
-				$worksheet->write(2, 10, '');
-				$worksheet->write(2, 11, '');
-				$worksheet->write(2, 12, '');				
+					->setCellValue('A3', 'Empleado')
+					->setCellValue('B3', 'Fecha Inicio')
+					->setCellValue('C3', 'Fecha Fin')
+					->setCellValue('D3', 'Dias Naturales')
+					->setCellValue('E3', 'Dias laborables')
+					->setCellValue('F3', 'Aumento Vac.')
+					->setCellValue('G3', 'Saldo')
+					->setCellValue('H3', 'Permiso Retribuido')
+					->setCellValue('I3', 'Permiso NO Retribuido')
+					->setCellValue('J3', 'Baja AL')
+					->setCellValue('K3', 'Baja EC')
+					->setCellValue('L3', 'Comentarios')
+					->setCellValue('M3', 'Usuario');
+
+					$objPHPExcel->getActiveSheet()->setTitle('Prueba1');			
 				
-
-				// We still need to explicitly close the workbook
-				$workbook->close();
+				// header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+				// header('Content-Disposition: attachment;filename=""');
+				// header('Cache-Control: max-age=0');
+				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+				$objWriter->save('pruebaReal.xlsx');
+				exit;
+				// We still need toC explicitly close the workbook
+				//$workbook->close();
 				?>
 		</div>
 	</div>
