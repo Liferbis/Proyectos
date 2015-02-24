@@ -1,0 +1,1 @@
+texto cargado desde texto.txt
