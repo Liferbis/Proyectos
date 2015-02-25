@@ -80,6 +80,10 @@ class BD {
 		}
 	}
 
+	public static function cargaExcel(){
+		
+	}
+
 	public static function CargaEmpleados(){
 		$dwes = BD::conect();
 		$c="SELECT * FROM empleoficina";

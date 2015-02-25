@@ -90,15 +90,18 @@ require_once "header.php";
 		$nombre=$emple->nombre;
 		$apellido1=$emple->apellido1;
 	}
-	if(ex)
-	$fecha=date('Y-m-d');
-	$ruta="C:/GestorDeVacaciones/".$nombre."_".$apellido1."_".$fecha;
-	$folder=mkdir($ruta, 0600, true);
-	if(!$folder){
-		die('Fallo en la ruta de la carpeta');
-	}else{
-		die('Creado correctamente');
-		require_once "informe.php";
+	$dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+	if(file_exists($dir){
+		$ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
+		$fecha=date('Y-m-d');//'2015-01-01';
+		
+		$folder=mkdir($ruta, 0755, true);
+		if(!$folder){
+			die('Fallo en la ruta de la carpeta');
+		}else{
+			die('Creado correctamente');
+			//require_once "informe.php";
+		}
 	}
 }
 if(isset($_POST["acepsol"])){
