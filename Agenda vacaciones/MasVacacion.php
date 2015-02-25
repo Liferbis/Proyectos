@@ -82,7 +82,8 @@ require_once "header.php";
 
 	</tr>
 </form>
-<?php if(isset($_POST["aceptar"])){ 
+<?php 
+if(isset($_POST["aceptar"])){ 
 	$cod_emple=$_POST["empleado"];
 
 	$emp=BD::DameEmpleado($cod_emple);
@@ -91,7 +92,7 @@ require_once "header.php";
 		$apellido1=$emple->apellido1;
 	}
 	$dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
-	if(file_exists($dir){
+	if(file_exists($dir)){
 		$ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
 		$fecha=date('Y-m-d');//'2015-01-01';
 		
