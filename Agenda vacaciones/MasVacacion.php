@@ -2,6 +2,20 @@
 require_once "header.php";
 ?>
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" role="form">
+	<!-- <tr>
+		<div class="row ">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<h3>Selecciona el tipo de empleado</h3>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<select  name="tabla" id="input" class="form-control" >
+					<option value=""> Selecciona Tipo </option>
+					<option value="emplealmacen">Almacen </option>
+					<option value="empleoficina">Oficina </option>
+				</select>
+			</div>
+		</div>
+	</tr> -->
 	<tr>
 		<div class="row ">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -10,12 +24,20 @@ require_once "header.php";
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<select  name="empleado" id="input" class="form-control" >
 					<?php 
-					$empleados=BD::CargaEmpleados();
-					foreach ($empleados as $emple) { ?>
-					<option  value="<?php echo $emple->codigo; ?>">
-						<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
-					</option>
-					<?php } ?>	
+					//if(isset($_POST["tabla"])){ 
+						$tabla=$_POST["tabla"];
+						$empleados=BD::CargaEmpleados($sesion);
+						foreach ($empleados as $emple) { ?>
+							<option  value="<?php echo $emple->codigo; ?>">
+								<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+							</option>
+					<?php 
+						}
+					//} else{ ?>
+<!-- 						<option value="vacio"> NO HA SELECCIONADO TIPO DE EMPLEADO!!</option>
+ -->					
+				
+					?>	
 				</select>
 			</div>
 		</div>
@@ -106,6 +128,7 @@ if(isset($_POST["aceptar"])){
 	}
 }
 if(isset($_POST["acepsol"])){
+	$cod_emple=$_POST["empleado"];
 	echo "aceptar y solicitar";
 	echo "<br><br>";
 	require_once "informe.php";
@@ -115,8 +138,6 @@ if(isset($_POST["acepsol"])){
 </table>					
 </div>
 </div>
-
-
 <?php 
 require_once "pie.php";
 ?>

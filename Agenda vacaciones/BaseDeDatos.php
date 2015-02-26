@@ -62,7 +62,7 @@ class BD {
 	}
 
 //////////////////////    SELECT    //////////////////////////////////////////////////////////////
-
+	
 	public static function verifica($usuario, $ctv){
 		$dwes = BD::conect();
 		$c="SELECT usuario, ctv FROM usuarios WHERE usuario='$usuario' AND ctv='$ctv'";
@@ -79,14 +79,29 @@ class BD {
 			return true;
 		}
 	}
+		//el siguiente metodo nos devuelve la tabla a la que tiene acceso el usuario que se ha logeado
+	public function sesiones(){  //($usu){ 
+		$dwes = BD::conect();
 
-	public static function cargaExcel(){
-		
+		$c="SELECT tabla FROM usuarios WHERE usuario='$usu' ";
+
+		$resultado = $dwes->query($c);
+		$tabla=$resultado->fetch_object();
+
+		if(!$tabla){
+			$dwes->close();
+			return "error";
+		}else{
+			$dwes->close();
+			//return $tabla;
+			return "empleoficina";
+		}
 	}
 
-	public static function CargaEmpleados(){
+	public static function CargaEmpleados($tabla){
 		$dwes = BD::conect();
-		$c="SELECT * FROM empleoficina";
+
+		$c="SELECT * FROM $tabla ";
 
 		$resultado = $dwes->query($c);
 		
@@ -106,10 +121,13 @@ class BD {
 		return $empleados;
 	}
 
-	public static function DameEmpleado($codigo){
+	public static function DameEmpleado($sesion){
 		
 		$dwes = BD::conect();
-		$c="SELECT * FROM empleoficina WHERE codigo='$codigo'";
+
+		$sesion=BD::sesiones();
+
+		$c="SELECT * FROM '$sesion' WHERE codigo='$codigo'";
 
 		$resultado = $dwes->query($c);
 		
@@ -142,7 +160,29 @@ class BD {
 			return true;
 		}
 	}
-/////////////////////////////////////////////////////////////////////CREA CARPETAS
+
+//// EXCEL ////////// Funcion que genera todos los datos del EXCEL ////////////////////////////////
+	
+	public static function cargaExcel($codigo){
+		$dwes = BD::conect();
+		
+		$c="SELECT * FROM vacaciones WHERE codigo='$codigo'";
+
+		$resultado = $dwes->query($c);
+		
+		$vbpcomen=array();
+		
+		while($vaca=$resultado->fetch_object()){
+			$vbpcomen [] = $vaca["codigoEmpleado"],
+							$vaca["desde"],
+							$vaca["hasta"],
+							$vaca["comentario"],
+							$vaca["codigoVacacion"],
+
+	}
+
+
+////////////  CREA CARPETAS  /////////////////////////////////////////////////////////
 
 
 
