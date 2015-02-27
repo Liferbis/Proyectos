@@ -7,24 +7,41 @@
 		<legend>Calculador de dias</legend>
 
 		<div class="form-group">
-			<label for="">La fecha</label>
-			<input type="date" class="form-control" name="fecha" >
+			<label for="">La fecha In</label>
+			<input type="date" class="form-control" name="fechaI" >
+		</div>
+		<div class="form-group">
+			<label for="">La fecha fin</label>
+			<input type="date" class="form-control" name="fechaF" >
 		</div>
 		<button type="submit" class="btn btn-primary">dale</button>
 	</form>
 
 	<?php 
-		if (isset($_POST["fecha"])){
-			$dfecha=$_POST["fecha"];
+		if (isset($_POST["fechaI"])){
+			$fechaI=$_POST["fechaI"];
+			$fechaF=$_POST["fechaF"];
 			//list es donde guardas los valores que explode te descomprime
-			list($y,$m,$d)=explode("-", $fecha);
-			if(checkdate($m, $d, $y)){
-				echo "<p>la fecha ".$dfecha. " es correcta</>";
-			}else{
-				$hoy=date("j-m-Y");
-				$dias=(strtotime($hoy)-strtotime($dfecha))/86400;
-				echo "Los dias son: ".$dias;
+			$dias=(strtotime($fechaF)-strtotime($fechaI))/86400;
+			$i=$dias;
+			list($Y,$m,$d)=explode("-", $fechaI );
+			$date = new DateTime('$Y-$m-$d');
+			echo "<p>¡¡¡¡la fechaI ".$fechaI."</p>";
+			for ($j=1; $j <= $i ; $j++) { 
+				echo $d=$d+$j;
+				echo date_format($date, 'Y-m-d');
+				echo "<p>¡¡¡¡la fechaI ".$aux."</p>";	
 			}
+			
+			list($Y,$m,$d)=explode("-", $fechaF);
+			//if(checkdate($Y, $m, $d)){
+				echo "<p>la fechaI ".$fechaI;//. " es correcta</p>";
+				echo "<p>la fechaF ".$fechaF;//. " es correcta</p>";
+				echo "<br>";
+				//$hoy=date("j-m-Y");
+				$dias=(strtotime($fechaF)-strtotime($fechaI))/86400;
+				echo "Los dias son: ".$dias;
+			//}
 		}else{
 			$fecha="";
 		}

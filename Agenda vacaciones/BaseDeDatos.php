@@ -1,4 +1,13 @@
 <?php 
+
+//////////////////////////////////////////////////////////////
+//////////// Esta es la clase baseDeDatos ////////////////////
+//////////////////////////////////////////////////////////////
+//////////// aqui se encuentran todos los metodos  ///////////
+//////////// que hacen referencia a la base de datos /////////
+/////////////se aconseja que si no sabes no toques ///////////
+//////////////////////////////////////////////////////////////
+
 require_once "class.empleados.php";
 
 class BD {
@@ -80,7 +89,7 @@ class BD {
 		}
 	}
 		//el siguiente metodo nos devuelve la tabla a la que tiene acceso el usuario que se ha logeado
-	public function sesiones(){  //($usu){ 
+	public function sesiones(){//($usu){ 
 		$dwes = BD::conect();
 
 		$c="SELECT tabla FROM usuarios WHERE usuario='$usu' ";
@@ -125,9 +134,9 @@ class BD {
 		
 		$dwes = BD::conect();
 
-		$sesion=BD::sesiones();
+		$tabla=BD::sesiones($sesion);
 
-		$c="SELECT * FROM '$sesion' WHERE codigo='$codigo'";
+		$c="SELECT * FROM '$tabla' WHERE codigo='$codigo'";
 
 		$resultado = $dwes->query($c);
 		
@@ -147,6 +156,26 @@ class BD {
 		return $empleado;
 	}
 
+	public static function damefestivos(){
+		$dwes = BD::conect();
+		$festivos=array();
+		$c="SELECT * FROM festivos";
+		$resultado = $dwes->query($c);
+		while($fes=$resultado->fetch_object()){
+			$festivos [] =  $fes["ambito"],
+							$fes["fecha"],
+							$fes["comentario"];
+		}
+		$dwes->close();	
+		return $festivos;
+	}
+
+	public static function damedias(){
+		$dwes = BD::conect();
+		$dias=array();
+		$dwes->close();
+	}
+
 	public static function dni($dni){
 		$dwes = BD::conect();
 		$c="SELECT dni FROM usuarios WHERE dni=$dni";
@@ -161,23 +190,226 @@ class BD {
 		}
 	}
 
-//// EXCEL ////////// Funcion que genera todos los datos del EXCEL ////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+////*/***EXCEL TODAS LAS FUNCIONES PARA EL EXCEL///*/***///////////////
+///////   |   /////   |   //////////   |   ///////   |   //////////////
+///////   V   /////   V   //////////   V   ///////   V   //////////////
+/////// EXCEL ////////// Funcion que genera todos los datos del EXCEL /
+///////    en funcion del CODIGO de empleado  /////////////////////////
 	
 	public static function cargaExcel($codigo){
 		$dwes = BD::conect();
 		
-		$c="SELECT * FROM vacaciones WHERE codigo='$codigo'";
+		$c="SELECT * FROM dias WHERE cod_empleado='$codigo'";
 
 		$resultado = $dwes->query($c);
 		
 		$vbpcomen=array();
 		
 		while($vaca=$resultado->fetch_object()){
-			$vbpcomen [] = $vaca["codigoEmpleado"],
-							$vaca["desde"],
-							$vaca["hasta"],
-							$vaca["comentario"],
-							$vaca["codigoVacacion"],
+			$vbpcomen [] = 
+							$vaca["cod_dias"],
+							$vaca["cod_empleado"],
+							$vaca["FechaInicio"],
+							$vaca["FechaFin"],
+							$vaca["dias_Natu"],
+							$vaca["dias_lab"],
+							$vaca["aumentoDias"],
+							$vaca["SALDO_DIAS"],
+							$vaca["vacaciones"],
+							$vaca["PerRetri"],
+							$vaca["PerNoRetri"],
+							$vaca["Bec"],							
+							$vaca["Bal"],
+							$vaca["Comentarios"],
+							$vaca["user_login"];
+		}
+		$dwes->close();	
+		return $vbpcomen;
+
+	}
+
+//// EXCEL ////////// Funcion que genera todos los datos del EXCEL de ///
+////////// TODOSSSS los empleados  //////////////////////////////////////
+	public static function cargaExcel(){
+		$dwes = BD::conect();
+		
+		$c="SELECT * FROM dias ";
+
+		$resultado = $dwes->query($c);
+		
+		$vbpcomen=array();
+		
+		while($vaca=$resultado->fetch_object()){
+			$vbpcomen [] = 
+							$vaca["cod_dias"],
+							$vaca["cod_empleado"],
+							$vaca["FechaInicio"],
+							$vaca["FechaFin"],
+							$vaca["dias_Natu"],
+							$vaca["dias_lab"],
+							$vaca["aumentoDias"],
+							$vaca["SALDO_DIAS"],
+							$vaca["vacaciones"],
+							$vaca["PerRetri"],
+							$vaca["PerNoRetri"],
+							$vaca["Bec"],							
+							$vaca["Bal"],
+							$vaca["Comentarios"],
+							$vaca["user_login"];
+		}
+
+		$dwes->close();	
+		return $vbpcomen;
+	}
+
+/////// EXCEL ////////// Funcion que genera todos los datos del EXCEL ///////
+///////    en funcion del CODIGO de empleado y la CLASE de dias libre  //////
+	
+	public static function cargaExcel($codigo, $clase){
+		
+		if($clase=="vaca"){
+			$dwes = BD::conect();
+		
+			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' ";
+
+			$resultado = $dwes->query($c);
+			
+			$vbpcomen=array();
+			
+			while($vaca=$resultado->fetch_object()){
+				if(){
+				$vbpcomen [] = 
+								$vaca["cod_dias"],
+								$vaca["cod_empleado"],
+								$vaca["FechaInicio"],
+								$vaca["FechaFin"],
+								$vaca["dias_Natu"],
+								$vaca["dias_lab"],
+								$vaca["aumentoDias"],
+								$vaca["SALDO_DIAS"],
+								$vaca["vacaciones"],
+								$vaca["Comentarios"],
+								$vaca["user_login"];
+			}
+		}
+
+		if($clase=="PerRetri"){
+			$dwes = BD::conect();
+		
+			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' ";
+
+			$resultado = $dwes->query($c);
+			
+			$vbpcomen=array();
+			
+			while($vaca=$resultado->fetch_object()){
+				if(){
+				$vbpcomen [] = 
+								$vaca["cod_dias"],
+								$vaca["cod_empleado"],
+								$vaca["FechaInicio"],
+								$vaca["FechaFin"],
+								$vaca["dias_Natu"],
+								$vaca["dias_lab"],
+								$vaca["aumentoDias"],
+								$vaca["SALDO_DIAS"],
+								$vaca["PerRetri"],
+								$vaca["Comentarios"],
+								$vaca["user_login"];
+			}
+		}
+
+		if($case=="PerNoRetri"){
+			$dwes = BD::conect();
+		
+			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' ";
+
+			$resultado = $dwes->query($c);
+			
+			$vbpcomen=array();
+			
+			while($vaca=$resultado->fetch_object()){
+				if(){
+				$vbpcomen [] = 
+								$vaca["cod_dias"],
+								$vaca["cod_empleado"],
+								$vaca["FechaInicio"],
+								$vaca["FechaFin"],
+								$vaca["dias_Natu"],
+								$vaca["dias_lab"],
+								$vaca["aumentoDias"],
+								$vaca["SALDO_DIAS"],
+								$vaca["PerNoRetri"],
+								$vaca["Comentarios"],
+								$vaca["user_login"];
+			}
+		}
+
+		if($clase=="Bec"){
+			$dwes = BD::conect();
+		
+			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' ";
+
+			$resultado = $dwes->query($c);
+			
+			$vbpcomen=array();
+			
+			while($vaca=$resultado->fetch_object()){
+				if(){
+				$vbpcomen [] = 
+								$vaca["cod_dias"],
+								$vaca["cod_empleado"],
+								$vaca["FechaInicio"],
+								$vaca["FechaFin"],
+								$vaca["dias_Natu"],
+								$vaca["dias_lab"],
+								$vaca["aumentoDias"],
+								$vaca["SALDO_DIAS"],
+								$vaca["Bec"],
+								$vaca["Comentarios"],
+								$vaca["user_login"];
+			}
+		}
+
+		if($clase=="Bal"){
+			$dwes = BD::conect();
+		
+			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' ";
+
+			$resultado = $dwes->query($c);
+			
+			$vbpcomen=array();
+			
+			while($vaca=$resultado->fetch_object()){
+				if(){
+				$vbpcomen [] = 
+								$vaca["cod_dias"],
+								$vaca["cod_empleado"],
+								$vaca["FechaInicio"],
+								$vaca["FechaFin"],
+								$vaca["dias_Natu"],
+								$vaca["dias_lab"],
+								$vaca["aumentoDias"],
+								$vaca["SALDO_DIAS"],							
+								$vaca["Bal"],
+								$vaca["Comentarios"],
+								$vaca["user_login"];
+			}
+		}
+		
+		$dwes->close();	
+		return $vbpcomen;	
+	}
+
+///////////////////////////////////////////////////////////////////////
+////*/***//* COPIA SEGURIDAD DE LA BASE DE DATOS *//***/*//////////////
+///////   |   /////   |   //////////   |   ///////   |   //////////////
+///////   V   /////   V   //////////   V   ///////   V   //////////////
+/////// BASE DE DATOS ////////// Funcion que genera todos los dias ////
+///////    una copia de seguridad por lo que pueda pasar   ////////////
+///////////////////////////////////////////////////////////////////////
+	public static function copiabd(){
 
 	}
 
