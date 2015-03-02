@@ -17,7 +17,10 @@
 					</tr>
 				</thead>
 				<tbody id='tbody'>
-					
+					<?php 
+						$festivos=BD::damefestivos();
+						var_dump($festivos);
+					?>
 					<hr>
 					<tr>
 						<div class="row " >

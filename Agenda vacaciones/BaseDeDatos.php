@@ -159,12 +159,12 @@ class BD {
 	public static function damefestivos(){
 		$dwes = BD::conect();
 		$festivos=array();
-		$c="SELECT * FROM festivos";
+		$c="SELECT * FROM 'festivos' ORDER BY 'fecha' ASC";
 		$resultado = $dwes->query($c);
 		while($fes=$resultado->fetch_object()){
-			$festivos [] =  $fes["ambito"],
-							$fes["fecha"],
-							$fes["comentario"];
+			$festivos [] =  $fes["ambito"];
+			$festivos [] =	$fes["comentarios"];
+			$festivos [] =	$fes["fecha"];
 		}
 		$dwes->close();	
 		return $festivos;
@@ -207,8 +207,7 @@ class BD {
 		$vbpcomen=array();
 		
 		while($vaca=$resultado->fetch_object()){
-			$vbpcomen [] = 
-							$vaca["cod_dias"],
+			$vbpcomen [] =  $vaca["cod_dias"],
 							$vaca["cod_empleado"],
 							$vaca["FechaInicio"],
 							$vaca["FechaFin"],
