@@ -23,10 +23,12 @@ require_once "header.php";
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<select  name="empleado" id="input" class="form-control" >
+					<option  value=" "> -- Seleciona un empleado -- </option>
 					<?php 
 					//if(isset($_POST["tabla"])){ 
-						$tabla=$_POST["tabla"];
-						$empleados=BD::CargaEmpleados($sesion);
+						//$tabla=$_POST["tabla"];
+						$empleados=BD::CargaEmpleados();
+						echo($empleados);
 						foreach ($empleados as $emple) { ?>
 							<option  value="<?php echo $emple->codigo; ?>">
 								<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
