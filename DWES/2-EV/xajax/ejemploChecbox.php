@@ -12,7 +12,7 @@ require_once 'lib-xajaxCHECq.php';
 	<div id="contenedor">
 		<div id="mensaje"></div>
 		<form name="formulario">
-			<input type="checkbox" name="si" value="1" onclick="xajax_metodo(document.formulario.si.checked)">
+			<input type="checkbox" name="si" value="1" onclick="xajax_pulsaBoton()">
 			Chequeanteee!!
 			<div id="mensaje"></div>
 		</form>
