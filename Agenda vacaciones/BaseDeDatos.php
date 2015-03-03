@@ -156,20 +156,33 @@ class BD {
 		return $empleado;
 	}
 
-	// public static function damefestivos(){
-	// 	$dwes = BD::conect();
-	// 	$festivo=array();
-	// 	$c="SELECT * FROM 'festivos' ORDER BY 'fecha' ASC";
-	// 	$resultado = $dwes->query($c);
-	// 	while($fes=$resultado->fetch_object()){
-	// 		$festivo [] =  new Festivos( 
-	// 							$fes["ambito"],
-	// 							$fes["comentarios"],
-	// 							$fes["fecha"]);
-	// 	}
-	// 	$dwes->close();	
-	// 	return $festivo;
-	// }
+	public static function damefestivos(){
+		$dwes = BD::conect();
+		$festivo=array();
+		$c="SELECT * FROM 'festivos' ORDER BY 'fecha' ASC";
+		$resultado = $dwes->query($c);
+		while($fes=$resultado->fetch_object()){
+			$festivo [] =  new Festivos( 
+								$fes["ambito"],
+								$fes["comentarios"],
+								$fes["fecha"]);
+		}
+		$dwes->close();	
+		return $festivo;
+	}
+
+	public static function damefestivosfechas(){
+		$dwes = BD::conect();
+		$festivo=array();
+		$c="SELECT fecha FROM 'festivos' ORDER BY 'fecha' ASC";
+		$resultado = $dwes->query($c);
+		while($fes=$resultado->fetch_object()){
+			$festivo [] =  new Festivos( 
+								$fes["fecha"]);
+		}
+		$dwes->close();	
+		return $festivo;
+	}
 
 	public static function damedias(){
 		$dwes = BD::conect();
