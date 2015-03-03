@@ -27,18 +27,16 @@ class BD {
 		}
 	}
 
-	public static function CargaAlumnos($numMatricula){
+	public static function CargaAlumno($numMatricula){
 		$dwes = BD::conect();
 		$c="SELECT * FROM alumno WHERE numMatricula='$numMatricula'";
 
 		$resultado = $dwes->query($c);
-		
-		$alumnos=array();
-		
+				
 		while($alumno=$resultado->fetch_object()){
-			$alumnos [] = new Alumno( $alumno->numMatricula,
-										$alumno->nombre,
-										$alumno->curso 
+			$alumnos = new Alumno( $alumno->numMatricula,
+									$alumno->nombre,
+									$alumno->curso 
 										);	
 		}
 		$dwes->close();	

@@ -12,6 +12,7 @@ require_once "head.php";
 				<li class="list-group-item"><?php echo $alumno->numMatricula; ?> -- <?php  echo $alumno->nombre; ?> -- <?php  echo $alumno->curso; ?></li>
 			<?php } ?>
 			</ul>
+		</div>
 <?php 
 require_once "pie.php";
  ?>

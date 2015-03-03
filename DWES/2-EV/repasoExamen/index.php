@@ -17,5 +17,10 @@ if(empty($_GET)){
 }else if($_GET['pagina']=='mostrar'){	
 	$alumnos=BD::CargaAlumnos();
 	include_once "vistaMatri.php";
+
+} else if($_GET['pagina']=='wsdl'){
+	include_once "vistaWSDLAlumno.php";
 }
+
+
  ?>
