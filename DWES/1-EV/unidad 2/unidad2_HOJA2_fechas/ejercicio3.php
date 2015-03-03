@@ -21,27 +21,23 @@
 		if (isset($_POST["fechaI"])){
 			$fechaI=$_POST["fechaI"];
 			$fechaF=$_POST["fechaF"];
-			//list es donde guardas los valores que explode te descomprime
 			$dias=(strtotime($fechaF)-strtotime($fechaI))/86400;
 			$i=$dias;
-			list($Y,$m,$d)=explode("-", $fechaI );
-			$date = new DateTime('$Y-$m-$d');
-			echo "<p>¡¡¡¡la fechaI ".$fechaI."</p>";
+			echo "Fecha Inicio: ".$fechaI;
+			$fechaI = new DateTime($fechaI);
 			for ($j=1; $j <= $i ; $j++) { 
-				echo $d=$d+$j;
-				echo date_format($date, 'Y-m-d');
-				echo "<p>¡¡¡¡la fechaI ".$aux."</p>";	
+
+				$intervalo = new DateInterval('P1D');
+
+				$fechaI->add($intervalo);
+				if($fechaI->format('Y-m-d') == $fechaF){
+					echo "<br>Fecha FIN: ".$fechaF;
+				}else{
+					echo "<br>Fecha Inicio + ".$j." : ";
+					echo $fechaI->format('Y-m-d');
+				}
+
 			}
-			
-			list($Y,$m,$d)=explode("-", $fechaF);
-			//if(checkdate($Y, $m, $d)){
-				echo "<p>la fechaI ".$fechaI;//. " es correcta</p>";
-				echo "<p>la fechaF ".$fechaF;//. " es correcta</p>";
-				echo "<br>";
-				//$hoy=date("j-m-Y");
-				$dias=(strtotime($fechaF)-strtotime($fechaI))/86400;
-				echo "Los dias son: ".$dias;
-			//}
 		}else{
 			$fecha="";
 		}
