@@ -36,10 +36,7 @@ class Runner{
 	public function mostrar(){
 		if($this->tiempo>0){
 			$t=$this->tiempo/60;
-		}else{
-			$t=0;
-		}
-		$cadena="<li>Nombre: ".$this->nombreYapallidos.
+			$cadena="<li>Nombre: ".$this->nombreYapallidos.
 					"<ul>
 						<li>Dni: ".$this->dni."</li>
 						<li>Sexo: ".$this->sexo."</li>
@@ -48,7 +45,10 @@ class Runner{
 						<li>Tiempo: ".$t."</li>
 					</ul>
 				</li>";
-		return $cadena;
+			return $cadena;
+		}else{
+			return null;
+		}
 	}
 }
 

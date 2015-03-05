@@ -20,18 +20,13 @@ class BD {
 		$resultado = $dwes->query($c);
 		
 		while($run=$resultado->fetch_object()){
-			$runner = new Runner( $run->dni,
-										$run->nombre,
-										$run->sexo,
-										$run->talla,
-										$run->dorsal,
-										$run->tiempo 
-										);	
+			$Trunner =$run->tiempo ;	
 		}
+		$Trunner=$Trunner/60;
 		$dwes->close();	
-		return $runner;
+		return $Trunner;
 	}
-	public static function getMejor(){
+	public static function getMejores(){
 		$dwes = BD::conect();
 		$c="SELECT * FROM runners ORDER BY tiempo DESC";
 

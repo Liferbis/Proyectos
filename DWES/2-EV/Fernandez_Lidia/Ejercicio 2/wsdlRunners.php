@@ -6,7 +6,7 @@ class MediaMaratonWebService {
 	/**
 	 * devuelve solo un corredor con el dni introducido
 	 * @param  string $dni 
-	 * @return Runner
+	 * @return float
 	 */
 	public function getTiempo($dni){
 		$runer=BD::getTiem($dni);
@@ -18,7 +18,7 @@ class MediaMaratonWebService {
 	 * @return Runner[]
 	 */
 	public function getMejor(){
-		$runer=BD::getMejor();
+		$runer=BD::getMejores();
 		return $runer;
 	}
 }
