@@ -1,0 +1,9 @@
+.error{
+font-size:10px;
+text-decoration: underline;
+background: #ffdddd;
+color: #ee2211;
+}
+.oculto{
+    display: none;
+}

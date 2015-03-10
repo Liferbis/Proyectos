@@ -117,9 +117,21 @@ if(isset($_POST["aceptar"])){
 	}
 	$dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
 	if(file_exists($dir)){
-		$ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
 		$fecha=date('Y-m-d');//'2015-01-01';
+		$ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
 		
+		
+		$folder=mkdir($ruta, 0755, true);
+		if(!$folder){
+			die('Fallo en la ruta de la carpeta');
+		}else{
+			die('Creado correctamente');
+			//require_once "informe.php";
+		}
+	}else{
+		$dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+		$fecha=date('Y-m-d');//'2015-01-01';
+		$ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
 		$folder=mkdir($ruta, 0755, true);
 		if(!$folder){
 			die('Fallo en la ruta de la carpeta');
