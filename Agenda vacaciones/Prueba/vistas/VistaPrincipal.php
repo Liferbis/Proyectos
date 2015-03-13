@@ -30,12 +30,7 @@ include_once "header.php";
 							</div>
 						</div>
 					</form>
-				</tr>
-				<hr>
-			</tbody>
-		</table>					
-	</div>
-</div>
+				
 
 
 <?php 

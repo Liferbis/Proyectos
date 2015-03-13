@@ -1,6 +1,8 @@
 <?php
 require_once "header.php"; 
  ?>
+
+ 
 <hr>
 <tr>
 	<div class="row">
