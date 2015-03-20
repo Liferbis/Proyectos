@@ -28,7 +28,7 @@ require_once "header.php";
 			<h3>Fecha Inicio</h3>
 		</div>
 		<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
-			<input type="date" name="fechaInicio" class="form-control">
+			<input type="date" name="fechaI" class="form-control">
 			<p>
 				<div class="checkbox">
 					Medio Dia
@@ -45,7 +45,7 @@ require_once "header.php";
 			<h3>Fecha Fin</h3>
 		</div>
 		<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
-			<input type="date" name="fechaFin" class="form-control" >
+			<input type="date" name="fechaF" class="form-control" >
 			<p>
 				<div class="checkbox">
 					Medio Dia
@@ -71,7 +71,7 @@ require_once "header.php";
 				<option value="bal">Baja accidente laboral</option>
 			</select>
 		</div>
-	</div>
+	</div> 
 </tr>
 <hr>
 <tr>

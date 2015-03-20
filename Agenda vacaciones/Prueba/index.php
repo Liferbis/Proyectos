@@ -6,25 +6,29 @@ if (isset($_GET['gestor'])) {
     $gestor = $_GET['gestor'];
     if ($gestor == "calendario") {
         include ('vistas/VistaCalendario.php');
-    } elseif ($gestor == "log-out") {
+
+    } else if ($gestor == "log-out") {
         include ('vistas/VistaLog-Out.php');
-    } elseif ($gestor == "gestion") {
+
+    } else if ($gestor == "gestion") {
         include ('vistas/VistaGestion.php');
     }
 } else {
-require_once "vistas/vistaPrincipal.php";
+    require_once "vistas/vistaPrincipal.php";
+}
+
 if (isset($_POST['consultar'])) {
-    require_once "vistas/VistaConsultar.php";
-    if(isset($_POST["informe"])){
-            echo "dentro de informe";
-            //require_once "vistas/VistaInforme.php";
-    }else if(isset($_POST["calendario"])){
-        require_once "vistas/VistaCalendario.php";
-    }
+        require_once "vistas/VistaConsultar.php";
+
 }else if (isset($_POST['introducir'])){
     $empleados=BD::CargaEmpleados();
     require_once "vistas/VistaIntroducir.php";
-    if (isset($_POST["aceptar"])){ 
+
+}else if(isset($_POST["informe"])){
+        require_once "vistas/VistaInforme.php";
+}else if(isset($_POST["calendario"])){
+        require_once "vistas/VistaCalendario.php";
+}else if (isset($_POST["aceptar"])){ 
         $cod_emple=$_POST["empleado"];
 
         $emp=BD::DameEmpleado($cod_emple);
@@ -36,8 +40,7 @@ if (isset($_POST['consultar'])) {
         if(file_exists($dir)){
         $fecha=date('Y-m-d');//'2015-01-01';
         $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
-        
-        
+        echo $ruta;
         $folder=mkdir($ruta, 0755, true);
             if(!$folder){
                 die('Fallo en la ruta de la carpeta');
@@ -45,7 +48,7 @@ if (isset($_POST['consultar'])) {
                 die('Creado correctamente');
             }
         }else{
-            $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+        $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
             $fecha=date('Y-m-d');//'2015-01-01';
             $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
             $folder=mkdir($ruta, 0755, true);
@@ -55,14 +58,12 @@ if (isset($_POST['consultar'])) {
                 die('Creado correctamente');            
             }
         }
-    }else if(isset($_POST["acepsol"])){
-        $cod_emple=$_POST["empleado"];
-        echo "aceptar y solicitar";
-        echo "<br><br>";
-        require_once "informe.php";
-    } 
-}
-}
+}else if(isset($_POST["acepsol"])){
+    $cod_emple=$_POST["empleado"];
+    echo "aceptar y solicitar";
+    echo "<br><br>";
+    require_once "vistas/VistaInforme.php";
+}else if (isset($_POST[""]))
 
 // }
 
