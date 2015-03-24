@@ -61,6 +61,25 @@ class BD {
 		}
 	}
 
+	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $saldo, $tipo){
+		
+		if($tipo=="vacaciones"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '', '', '', '', '', '', '', 'si', '-', '-', '-', '-', '', '')";
+		}else if($tipo=="PerRe"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '', '', '', '', '', '', '', '-', 'si', '-', '-', '-', '', '')";
+		}else if($tipo=="PerNoRe"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '', '', '', '', '', '', '', '-', '-', 'si', '-', '-', '', '')";
+		}else if($tipo=="bec"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '', '', '', '', '', '', '', '-', '-', '-', 'si', '-', '', '')";
+		}else if($tipo=="bal"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '', '', '', '', '', '', '', '-', '-', '-', '-', 'si', '', '')";
+		}
+
+		$dwes=BD::conect();
+		$resultado = $dwes->query($c);
+		$dwes->close();
+	}
+
 ///////////////////////   BORRAR    //////////////////////////////////////////////////////////////
 
 	public static function borraEmpleado($codigo){
