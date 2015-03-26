@@ -39,6 +39,7 @@ if (isset($_POST['consultar'])) {
 
         for( $fechaI; $fechaI<=$fechaF; $fechaI=strtotime( '+1 day ' . date('Y-m-d',$fechaI) ) ){
             $dias++;
+            ////// excluye del array los sabados y domingos/////////
             if( (strcmp (date('D',$fechaI),'Sun')!=0) & (strcmp(date('D',$fechaI),'Sat')!=0) ){
                 for ($i=0; $i <= $num-1; $i++) { 
                     if( $fechaI==strtotime($festivos[$i]) ){
@@ -99,7 +100,21 @@ if (isset($_POST['consultar'])) {
     echo "aceptar y solicitar";
     echo "<br><br>";
     require_once "vistas/VistaInforme.php";
-}else if (isset($_POST[""]))
+}else if (isset($_POST["generar"])){
+    if(isset($_POST["excel"])==0){
+
+    }else if(isset($_POST["excel"])==1 & isset($_POST["num1"])){
+
+    }else if(isset($_POST["excel"])==2){
+
+    }else if(isset($_POST["excel"])==3 & isset($_POST["num2"])){
+
+    }else if(isset($_POST["excel"])==4 isset($_POST["anio1"])){
+
+    }else if(isset($_POST["excel"])==5 & isset($_POST["anio2"]) & isset($_POST["num3"])){
+
+    }
+}
 
 // }
 

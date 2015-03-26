@@ -32,7 +32,7 @@ require_once "header.php";
 			<p>
 				<div class="checkbox">
 					Medio Dia
-					<input type="checkbox" name="medio1">
+					<input type="checkbox" value="1" name="medio1">
 				</div>
 			</p>
 		</div>

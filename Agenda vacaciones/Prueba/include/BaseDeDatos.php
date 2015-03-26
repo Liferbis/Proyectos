@@ -252,7 +252,7 @@ class BD {
 								$vaca["vacaciones"],
 								$vaca["PerRetri"],
 								$vaca["PerNoRetri"],
-								$vaca["Bec"],							
+								$vaca["Bec"],	
 								$vaca["Bal"],
 								$vaca["Comentarios"],
 								$vaca["user_login"]);
