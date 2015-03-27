@@ -24,6 +24,13 @@ if (isset($_POST['consultar'])) {
     require_once "vistas/VistaIntroducir.php";
 }else if(isset($_POST["informe"])){
         require_once "vistas/VistaInforme.php";
+        if(isset($_POST["generar"])){
+            if(isset($_POST["excel"])==0){
+                echo "Dentro de value=0 ";
+            }else if(isset($_POST["excel"])==1 & isset($_POST["num1"])){
+                echo "Dentro de value=1 ";
+            }
+        }
 }else if(isset($_POST["calendario"])){
         require_once "vistas/VistaCalendario.php";
 }else if (isset($_POST["aceptar"])){
@@ -102,29 +109,19 @@ if (isset($_POST['consultar'])) {
     require_once "vistas/VistaInforme.php";
 }else if (isset($_POST["generar"])){
     if(isset($_POST["excel"])==0){
-
+        echo "Dentro de value=0 ";
     }else if(isset($_POST["excel"])==1 & isset($_POST["num1"])){
-
+        echo "Dentro de value=1 ";
     }else if(isset($_POST["excel"])==2){
-
+        echo "Dentro de value=2 ";
     }else if(isset($_POST["excel"])==3 & isset($_POST["num2"])){
-
-    }else if(isset($_POST["excel"])==4 isset($_POST["anio1"])){
-
+        echo "Dentro de value=3 ";
+    }else if(isset($_POST["excel"])==4 & isset($_POST["anio1"])){
+        echo "Dentro de value=4 ";
     }else if(isset($_POST["excel"])==5 & isset($_POST["anio2"]) & isset($_POST["num3"])){
-
+        echo "Dentro de value=5 ";
     }
 }
 
-// }
 
-// if (isset($_POST['crearRunner'])) {
-//     $dni = $_POST['dni'];
-//     $nombre = $_POST['nombre'];
-//     $sexo = $_POST['sexo'];
-//     $talla = $_POST['talla'];
-
-//     $runner = new Runner($dni, $nombre, $sexo, $talla);
-//     BD_Modelo::guardaRunner($runner);
-// }
 ?>
