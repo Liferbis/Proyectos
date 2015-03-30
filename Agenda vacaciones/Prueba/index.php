@@ -23,14 +23,8 @@ if (isset($_POST['consultar'])) {
     $empleados=BD::CargaEmpleados();
     require_once "vistas/VistaIntroducir.php";
 }else if(isset($_POST["informe"])){
-        require_once "vistas/VistaInforme.php";
-        if(isset($_POST["generar"])){
-            if(isset($_POST["excel"])==0){
-                echo "Dentro de value=0 ";
-            }else if(isset($_POST["excel"])==1 & isset($_POST["num1"])){
-                echo "Dentro de value=1 ";
-            }
-        }
+    $empleados=BD::CargaEmpleados();
+    require_once "vistas/VistaInforme.php";
 }else if(isset($_POST["calendario"])){
         require_once "vistas/VistaCalendario.php";
 }else if (isset($_POST["aceptar"])){
@@ -109,16 +103,29 @@ if (isset($_POST['consultar'])) {
     require_once "vistas/VistaInforme.php";
 }else if (isset($_POST["generar"])){
     if(isset($_POST["excel"])==0){
+        $empleados=BD::cargaExcel();
         echo "Dentro de value=0 ";
     }else if(isset($_POST["excel"])==1 & isset($_POST["num1"])){
+        $empl=$_POST["num1"];
+        $empleados=BD::cargaExcel();
         echo "Dentro de value=1 ";
     }else if(isset($_POST["excel"])==2){
+        $tipo=$_POST["tipo"];
+        $empleados=BD::cargaExcel($tipo);
         echo "Dentro de value=2 ";
     }else if(isset($_POST["excel"])==3 & isset($_POST["num2"])){
+        $tipo=$_POST["tipo"];
+        $empl=$_POST["num2"];
+        $empleados=BD::cargaExcel($tipo);
         echo "Dentro de value=3 ";
     }else if(isset($_POST["excel"])==4 & isset($_POST["anio1"])){
+        $anio=$_POST["anio1"];
+        $empleados=BD::cargaExcel();
         echo "Dentro de value=4 ";
     }else if(isset($_POST["excel"])==5 & isset($_POST["anio2"]) & isset($_POST["num3"])){
+        $anio=$_POST["anio2"];
+        $empl=$_POST["num3"];
+        $empleados=BD::cargaExcel();
         echo "Dentro de value=5 ";
     }
 }

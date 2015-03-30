@@ -60,6 +60,7 @@ head {
 	width:40px;
 }
 #contenido{
+	margin: 2px;
 	text-align:center;
 	padding:2px 5px;
 }
