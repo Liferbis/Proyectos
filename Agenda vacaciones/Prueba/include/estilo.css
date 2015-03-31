@@ -1,0 +1,73 @@
+
+body{
+	background: #FFF; 
+	color:	#00CC00;
+	font: 'Sansation';
+}
+#dropdown{
+	background: #000;
+}
+
+#gliphicon{
+	color:#00CC00;	
+}
+
+.input{
+	text-align:center;
+}
+
+#table a{
+	text-decoration: none;
+	color:#00CC00;
+	background-color:silver;
+}
+
+#table #mes{
+	text-align:center;
+	background-color:silver;
+	color:red;
+}
+
+#table #tbody{
+	background-color:#3F3F3F
+}
+
+#table #tbody #empleados{
+	width:80%;
+}
+
+#table #diaHoy{
+	background-color:silver;
+	color:red;
+}
+
+#table #vista{
+	text-align:center;
+	background-color:silver;
+	color:red;
+}
+
+head {
+	text-align:left;
+	padding:5px 10px;
+	background-color:#003366;
+	color:#fff;
+	font-weight:bold;
+}
+#calendar th {
+	background-color:#006699;
+	color:#fff;
+	width:40px;
+}
+#contenido{
+	margin: 2px;
+	text-align:center;
+	padding:2px 5px;
+}
+#calendar .hoy {
+	background-color:#FFF;
+	color:#000;
+}
+#todo{
+	text-align:center;
+}

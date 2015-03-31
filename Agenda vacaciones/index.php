@@ -40,7 +40,9 @@
 						</div>
 					</tr>
 					<hr>
-					<?php if(isset($_POST["consulta"]) ){ ?>
+					<?php if(isset($_POST["consulta"]) ){ 
+						echo "consultar";
+						?>
 					<tr>
 						<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" role="form">
 							<div id="vista" class="row">
