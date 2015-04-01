@@ -63,7 +63,9 @@ class BD {
 	}
 
 	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $saldo, $tipo, $comentario, $sesion){
-		
+
+		$saldo=BD::DameSaldo($cEmpleado);
+
 		if($tipo=="vacaciones"){
 			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', 'si', '-', '-', '-', '-', '$comentario', '$sesion')";
 		}else if($tipo=="PerRe"){
@@ -77,6 +79,7 @@ class BD {
 		}
 
 		$dwes=BD::conect();
+
 		$resultado = $dwes->query($c);
 		$dwes->close();
 	}
