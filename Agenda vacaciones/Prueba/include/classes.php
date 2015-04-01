@@ -20,8 +20,9 @@
 		private $localidad;
 		private $movil;
 		private $comentarios;
+		private $saldo;
 
-		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios ){
+		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios, $saldo ){
 
 			$this->codigo=$codigo;
 			$this->dni=$dni;
@@ -31,6 +32,7 @@
 			$this->localidad=$localidad;
 			$this->movil=$movil;
 			$this->comentarios=$comentarios;
+			$this->saldo=$saldo;
 
 		}
 

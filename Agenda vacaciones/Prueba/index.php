@@ -28,6 +28,7 @@ if (isset($_POST['consultar'])) {
 }else if(isset($_POST["calendario"])){
         require_once "vistas/VistaCalendario.php";
 }else if (isset($_POST["aceptar"])){
+        $tipo=$_POST["tipe"];
     //////  RECOGEMOS DE LA BASE DE DATOS UN ARRAY CON LOS DIAS!!!! FESTIVOS DE EL AÑO EN CUESTION  ////////////////////////////
         $festivos=BD::damefestivosfechas();
     //////  CALCULA LOS DIAS NATURALES Y LABORABLES EXCLULLENDO LOS FESTIVOS               /////////
@@ -46,18 +47,18 @@ if (isset($_POST['consultar'])) {
                     if( $fechaI==strtotime($festivos[$i]) ){
                         $fiesta++;
                         $fies=true;
-                        echo '<h1>'.date('Y-m-d',$fechaI) . '->FESTIVOOOOOOO!!!!</h1><br />';
+                        //echo '<h1>'.date('Y-m-d',$fechaI) . '->FESTIVOOOOOOO!!!!</h1><br />';
                     }
                 }
                 if($fies==true){
                     $fies=false;
                 }else{
-                    echo date('Y-m-d',$fechaI) . '<br />';
+                    //echo date('Y-m-d',$fechaI) . '<br />';
                     $diaslab++;
                 }                     
-            }else{
-                echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
-            }
+             }//else{
+            //     echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
+            // }
         }
         if(isset($_POST["medio1"])){
             $diaslab=$diaslab-0.5;
@@ -66,8 +67,12 @@ if (isset($_POST['consultar'])) {
         }
         
         $cod_emple=$_POST["empleado"];
-
+        $comentario=$_POST["comentario"];
         $emp=BD::DameEmpleado($cod_emple);
+        $saldo=BD::DameSaldo($cod_emple);
+        $saldo= $saldo-$diaslab;
+        BD::newSaldo($cod_emple, $saldo);
+        BD::dias($cod_emple, $fechaI, $fechaF, $dias, $diaslab, $aumento, $saldo, $comentario);
         foreach ($emp as $emple) {
             $nombre=$emple->nombre;
             $apellido1=$emple->apellido1;
@@ -96,11 +101,8 @@ if (isset($_POST['consultar'])) {
             }
         }
         
-}else if(isset($_POST["acepsol"])){
-    $cod_emple=$_POST["empleado"];
-    echo "aceptar y solicitar";
-    echo "<br><br>";
-    require_once "vistas/VistaInforme.php";
+}else if(isset($_POST["cancelar"])){
+    require_once "vistas/vistaPrincipal.php";
 }else if (isset($_POST["generar"])){
     if(isset($_POST["excel"])==0){
         $empleados=BD::cargaExcel();

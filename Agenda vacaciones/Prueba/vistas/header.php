@@ -61,7 +61,7 @@
 					<li id="dropdown" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
-								Configuracion Empleados
+								Empleados
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
@@ -88,12 +88,6 @@
 									Borrar empleado
 								</a>
 							</li>
-							<!-- <li>
-								<a href="#">
-									<span id="gliphicon" class="glyphicon glyphicon-cog"></span>
-									Separated link
-								</a>
-							</li> -->
 						</ul>
 					</li>
 					
