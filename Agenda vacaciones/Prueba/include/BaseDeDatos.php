@@ -84,13 +84,35 @@ class BD {
 		$dwes->close();
 	}
 
+///////////////////////  MODIFICAR  //////////////////////////////////////////////////////////////
+
+	public static function modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentario){
+		$dwes=BD::conect();
+		$c="UPDATE empleoficina SET dni='$dni', nombre='$nombre', apellido1='$apellido1', apellido2 = '$apellido2', localidad='$localidad' movil='$movil', comentarios='$comentario', saldo='$saldo' WHERE codigo=$cod ;";
+		
+		if($resultado = $dwes->query($c)){
+			$dwes->close();
+			return true;
+		}else{
+			$dwes->close();
+			return false;
+		}	
+	}
+
+
 ///////////////////////   BORRAR    //////////////////////////////////////////////////////////////
 
 	public static function borraEmpleado($codigo){
 		$dwes=BD::conect();
-		$c="DELETE FROM empleoficina (WHERE codigo = '$codigo');";
+		$c="DELETE FROM empleoficina WHERE codigo = '$codigo';";
 		$resultado = $dwes->query($c);
-		$dwes->close();
+		if($resultado = $dwes->query($c)){
+			$dwes->close();
+			return true;
+		}else{
+			$dwes->close();
+			return false;
+		}
 	}
 
 //////////////////////    SELECT    //////////////////////////////////////////////////////////////
@@ -145,7 +167,7 @@ class BD {
 											$emple->nombre, 
 											$emple->apellido1, 
 											$emple->apellido2, 
-											$emple->localidadDeTrabajo,
+											$emple->localidad,
 											$emple->movil,
 											$emple->comentarios,
 											$emple->saldo);	
@@ -172,7 +194,7 @@ class BD {
 											$emple->nombre, 
 											$emple->apellido1, 
 											$emple->apellido2, 
-											$emple->localidadDeTrabajo,
+											$emple->localidad,
 											$emple->movil,
 											$emple->comentarios,
 											$emple->saldo);	
@@ -198,7 +220,7 @@ class BD {
 											$emple->nombre, 
 											$emple->apellido1, 
 											$emple->apellido2, 
-											$emple->localidadDeTrabajo,
+											$emple->localidad,
 											$emple->movil,
 											$emple->comentarios,
 											$emple->saldo);	
@@ -480,7 +502,6 @@ class BD {
 	}
 
 
-////////////  CREA CARPETAS  /////////////////////////////////////////////////////////
 
 
 

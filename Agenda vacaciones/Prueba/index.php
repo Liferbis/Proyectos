@@ -7,26 +7,55 @@ if (isset($_GET['gestor'])) {
     if ($gestor == "calendario") {
         include ('vistas/VistaCalendario.php');
 
+    } else if ($gestor == "modiE") {
+        include ('vistas/VistaModificar.php');
+        
+    } else if ($gestor == "borrarE") {
+        include ('vistas/VistaEliminar.php');
+
     } else if ($gestor == "log-out") {
         include ('vistas/VistaLog-Out.php');
 
-    } else if ($gestor == "gestion") {
+    } else if ($gestor == "login") {
         include ('vistas/VistaGestion.php');
+
     }
 } else {
     require_once "vistas/vistaPrincipal.php";
 }
 
-if (isset($_POST['consultar'])) {
-        require_once "vistas/VistaConsultar.php";
+
+if (isset($_POST['modificar'])) {
+    $empleado=BD::DameEmpleado($_POST["empleado"]);
+    include ("vistas/VistaModifica.php");
+}else if(isset($_POST['modifica'])){
+    $estado=BD::modificaEmpleado($_POST["cod"], $_POST["nombre"], $_POST["dni"], $_POST["apellido1"], $_POST["apellido2"],  $_POST["localidad"], $_POST["movil"], $_POST["vacas"], $_POST["comentario"]);
+    if($estado==true){
+        require_once "vistas/VistaTerminado.php";
+    }else{
+        require_once "vistas/VistaTerminadoE.php";
+    }
+}else if(isset($_POST["borra"])){
+    $estado=BD::borraEmpleado($_POST["empleado"]) ;
+    if($estado==true){
+        require_once "vistas/VistaTerminado.php";
+    }else{
+        require_once "vistas/VistaTerminadoE.php";
+    }
+}else if (isset($_POST['consultar'])) {
+    require_once "vistas/VistaConsultar.php";
+
 }else if (isset($_POST['introducir'])){
     $empleados=BD::CargaEmpleados();
     require_once "vistas/VistaIntroducir.php";
+
 }else if(isset($_POST["informe"])){
     $empleados=BD::CargaEmpleados();
     require_once "vistas/VistaInforme.php";
+
 }else if(isset($_POST["calendario"])){
-        require_once "vistas/VistaCalendario.php";
+    require_once "vistas/VistaCalendario.php";
+
 }else if (isset($_POST["aceptar"])){
         $tipo=$_POST["tipe"];
     //////  RECOGEMOS DE LA BASE DE DATOS UN ARRAY CON LOS DIAS!!!! FESTIVOS DE EL AÑO EN CUESTION  ////////////////////////////

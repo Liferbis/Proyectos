@@ -42,7 +42,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="login.php">		
+						<a href="index.php?gestor=login">		
 							<span id="gliphicon" class="glyphicon glyphicon-user"></span> Login
 						</a>
 					</li>
@@ -71,19 +71,19 @@
 								</a>
 							</li>
 							<li>
-								<a href="ModificaEmpleado.php">
+								<a href="index.php?gestor=modiE">
 									<span id="gliphicon" class="glyphicon glyphicon-edit"></span>
 									Modificar empleado
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="comentarios.php">
 									<span id="gliphicon" class="glyphicon glyphicon-tag"></span>
 									Añadir/Quitar comentario
 								</a>
-							</li>
+							</li> -->
 							<li>
-								<a href="BorrarEmpleado.php">
+								<a href="index.php?gestor=borrarE">
 									<span id="gliphicon" class="glyphicon glyphicon-remove"></span>
 									Borrar empleado
 								</a>
