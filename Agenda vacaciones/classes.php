@@ -20,8 +20,9 @@
 		private $localidad;
 		private $movil;
 		private $comentarios;
+		private $saldo;
 
-		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios ){
+		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios, $saldo ){
 
 			$this->codigo=$codigo;
 			$this->dni=$dni;
@@ -31,6 +32,7 @@
 			$this->localidad=$localidad;
 			$this->movil=$movil;
 			$this->comentarios=$comentarios;
+			$this->saldo=$saldo;
 
 		}
 
@@ -87,18 +89,40 @@ class Festivos {
 /////////////////////    la clase VACACION     ////////////////////////
 
 class vacacion {
-	protected $diasPropios;
-	protected $PermisoRetribuido;
-	protected $NoRetribuido;
-	protected $baja;
-	protected $ambito;
-	protected $fecha;
-	protected $comentarios;
+	protected $cod_dias;
+	protected $cod_emplead;
+	protected $FechaInicio;
+	protected $FechaFin;
+	protected $dias_Natu;
+	protected $dias_lab;
+	protected $aumentoDias;
+	protected $SALDO_DIAS;
+	protected $vacaciones;
+	protected $PerRetri;
+	protected $PerNoRetri;
+	protected $Bec;
+	protected $Bal;
+	protected $Comentarios;
+	protected $user_login;
 
-	function __construct($ambito, $fecha, $comentarios){
-		$this->ambito=$ambito;
-		$this->fecha=$fecha;
-		$this->comentarios=$comentarios;
+	function __construct( $cod_dias, $cod_emplead, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
+		
+		$this->cod_dias;
+		$this->cod_emplead;
+		$this->FechaInicio;
+		$this->FechaFin;
+		$this->dias_Natu;
+		$this->dias_lab;
+		$this->aumentoDias;
+		$this->SALDO_DIAS;
+		$this->vacaciones;
+		$this->PerRetri;
+		$this->PerNoRetri;
+		$this->Bec;
+		$this->Bal;
+		$this->Comentarios;
+		$this->user_login;
+		
 	}
 
 	public function __set($var, $valor) {

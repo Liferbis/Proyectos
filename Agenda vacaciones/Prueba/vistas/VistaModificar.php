@@ -19,21 +19,22 @@ include_once "header.php";
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<form action="index.php" method="POST">
-							<select  name="empleado" id="input" class="form-control" >
-								<option name="empleado" value=""> ---- Seleccione empleado ---- </option>
-								
-								<?php 
-								$empleados=BD::CargaEmpleados();
-								foreach ($empleados as $emple) { 
-									?>
+								<select  name="empleado" id="input" class="form-control" >
 									
-										<option  value="<?php echo $emple->codigo; ?>">
+
+									<?php 
+									$empleados=BD::CargaEmpleados();
+									foreach ($empleados as $emple) { 
+										?>
+
+										<option  value="<?php echo $emple->codigo; ?>" selected="true">
 											<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
 										</option>
 										<?php 
 									} 
-									?>	
-							</select>
+									?>
+									<option name="empleado" value="" selected="true"> ---- Seleccione empleado ---- </option>	
+								</select>
 						</div>
 					</div>
 				</tr>
@@ -42,11 +43,12 @@ include_once "header.php";
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<button type="submit" name="modificar" class="btn btn-success">MODIFICAR</button>
 					</div>
-									</form>
 				</tr>
+				</form>
+					
 </tbody>
-		</table>	
-	</div>
+</table>	
+</div>
 </div>
 
 

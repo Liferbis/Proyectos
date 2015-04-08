@@ -29,8 +29,53 @@ if (isset($_POST['modificar'])) {
     $empleado=BD::DameEmpleado($_POST["empleado"]);
     include ("vistas/VistaModifica.php");
 }else if(isset($_POST['modifica'])){
-    $estado=BD::modificaEmpleado($_POST["cod"], $_POST["nombre"], $_POST["dni"], $_POST["apellido1"], $_POST["apellido2"],  $_POST["localidad"], $_POST["movil"], $_POST["vacas"], $_POST["comentario"]);
-    if($estado==true){
+    $cod=$_POST["cod"];
+    $empleado=BD::DameEmpleado($cod);
+    foreach ($empleado as $emple) {
+        if(empty($_POST["c1"])){
+            $nombre=$_POST["nombre"];
+        }else{
+            $nombre=$emple->nombre; 
+        } 
+        if(empty($_POST["c2"])){
+            $dni=$_POST["dni"];
+        }else{
+            $dni=$emple->dni;
+        }
+        if(empty($_POST["c3"])){
+            $apellido1=$_POST["apellido1"];
+        }else{
+            $apellido1=$emple->apellido1;
+        }
+        if(empty($_POST["c4"])){
+            $apellido2=$_POST["apellido2"];
+        }else{
+            $apellido2=$emple->apellido2;
+        }
+        if(empty($_POST["c5"])){
+            $localidad=$_POST["localidad"];
+        }else{
+            $localidad=$emple->localidad;
+        }
+        if(empty($_POST["c6"])){
+            $movil=$_POST["movil"];
+        }else{
+            $movil=$emple->movil;
+        }
+        if(empty($_POST["c7"])){
+            $saldo=$_POST["vacas"];
+        }else{
+           $saldo=$emple->saldo;
+        }
+        if(empty($_POST["c8"])){
+           $comentario=$_POST["comentario"];
+        }else{ 
+            $comentario=$emple->comentarios;
+        }
+    }
+    echo $cod."///".$nombre."///".$dni."///".$apellido1."///".$apellido2."///". $localidad."///".$movil."///".$saldo."///".$comentario;
+    //$estado=BD::modificaEmpleado($_POST["cod"], $_POST["nombre"], $_POST["dni"], $_POST["apellido1"], $_POST["apellido2"],  $_POST["localidad"], $_POST["movil"], $_POST["vacas"], $_POST["comentario"]);
+    if(BD::modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentario)){
         require_once "vistas/VistaTerminado.php";
     }else{
         require_once "vistas/VistaTerminadoE.php";

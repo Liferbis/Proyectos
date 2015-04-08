@@ -50,7 +50,8 @@ class BD {
 
 	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios){
 		$dwes = BD::conect();
-		$c="INSERT INTO empleoficina (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios')";
+		$saldo=22;
+		$c="INSERT INTO empleoficina (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios','$saldo')";
 		$resultado = $dwes->query($cons);
 		if(!$resultado){
 			$dwes->close();
@@ -61,13 +62,57 @@ class BD {
 		}
 	}
 
+	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $saldo, $tipo, $comentario, $sesion){
+
+		$saldo=BD::DameSaldo($cEmpleado);
+
+		if($tipo=="vacaciones"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', 'si', '-', '-', '-', '-', '$comentario', '$sesion')";
+		}else if($tipo=="PerRe"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', 'si', '-', '-', '-', '$comentario', '$sesion')";
+		}else if($tipo=="PerNoRe"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '-', '$comentario', '$sesion')";
+		}else if($tipo=="bec"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '$comentario', '$sesion')";
+		}else if($tipo=="bal"){
+			$c="INSERT INTO dias (cod_dias, cod_empleado, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', '-', '-', 'si', '$comentario', '$sesion')";
+		}
+
+		$dwes=BD::conect();
+
+		$resultado = $dwes->query($c);
+		$dwes->close();
+	}
+
+///////////////////////  MODIFICAR  //////////////////////////////////////////////////////////////
+
+	public static function modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentario){
+		$dwes=BD::conect();
+		$c="UPDATE empleoficina SET dni='$dni', nombre='$nombre', apellido1='$apellido1', apellido2 = '$apellido2', localidad='$localidad' movil='$movil', comentarios='$comentario', saldo='$saldo' WHERE codigo=$cod ;";
+		
+		if($resultado = $dwes->query($c)){
+			$dwes->close();
+			return true;
+		}else{
+			$dwes->close();
+			return false;
+		}	
+	}
+
+
 ///////////////////////   BORRAR    //////////////////////////////////////////////////////////////
 
 	public static function borraEmpleado($codigo){
 		$dwes=BD::conect();
-		$c="DELETE FROM empleoficina (WHERE codigo = '$codigo');";
+		$c="DELETE FROM empleoficina WHERE codigo = '$codigo';";
 		$resultado = $dwes->query($c);
-		$dwes->close();
+		if($resultado = $dwes->query($c)){
+			$dwes->close();
+			return true;
+		}else{
+			$dwes->close();
+			return false;
+		}
 	}
 
 //////////////////////    SELECT    //////////////////////////////////////////////////////////////
@@ -122,9 +167,10 @@ class BD {
 											$emple->nombre, 
 											$emple->apellido1, 
 											$emple->apellido2, 
-											$emple->localidadDeTrabajo,
+											$emple->localidad,
 											$emple->movil,
-											$emple->comentarios);	
+											$emple->comentarios,
+											$emple->saldo);	
 		}
 		$dwes->close();	
 		return $empleados;
@@ -148,12 +194,40 @@ class BD {
 											$emple->nombre, 
 											$emple->apellido1, 
 											$emple->apellido2, 
-											$emple->localidadDeTrabajo,
+											$emple->localidad,
 											$emple->movil,
-											$emple->comentarios);	
+											$emple->comentarios,
+											$emple->saldo);	
 		}
 		$dwes->close();	
 		return $empleado;
+	}
+
+	public static function DameSaldo($codigo){
+		$dwes = BD::conect();
+
+		$tabla=BD::sesiones();
+
+		$c="SELECT * FROM empleoficina WHERE codigo='$codigo'";
+
+		$resultado = $dwes->query($c);
+		
+		$empleado=array();
+		
+		while($emple=$resultado->fetch_object()){
+			$empleado [] = new Empleado( $emple->codigo,
+											$emple->dni,
+											$emple->nombre, 
+											$emple->apellido1, 
+											$emple->apellido2, 
+											$emple->localidad,
+											$emple->movil,
+											$emple->comentarios,
+											$emple->saldo);	
+		}
+		$saldo=$empleado["saldo"];
+		$dwes->close();	
+		return $saldo;
 	}
 
 	public static function damefestivos(){
@@ -163,9 +237,9 @@ class BD {
 		$resultado = $dwes->query($c);
 		while($fes=$resultado->fetch_object()){
 			$festivo [] =  new Festivos( 
-								$fes["ambito"],
-								$fes["comentarios"],
-								$fes["fecha"]);
+								$fes->ambito,
+								$fes->comentarios,
+								$fes->fecha);
 		}
 		$dwes->close();	
 		return $festivo;
@@ -178,7 +252,7 @@ class BD {
 		$resultado = $dwes->query($c);
 		while($fes=$resultado->fetch_object()){
 			$festivo [] =  new Festivos( 
-								$fes["fecha"]);
+								$fes->fecha);
 		}
 		$dwes->close();	
 		return $festivo;
@@ -233,7 +307,7 @@ class BD {
 								$vaca["vacaciones"],
 								$vaca["PerRetri"],
 								$vaca["PerNoRetri"],
-								$vaca["Bec"],							
+								$vaca["Bec"],	
 								$vaca["Bal"],
 								$vaca["Comentarios"],
 								$vaca["user_login"]);
@@ -428,7 +502,6 @@ class BD {
 	}
 
 
-////////////  CREA CARPETAS  /////////////////////////////////////////////////////////
 
 
 

@@ -4,7 +4,7 @@
 		<table id='table' class="table table-hover">
 			<thead>
 				<tr>
-					<h2>Datos del empleado</h2>
+					<h2>Datos del empleado</h2><small>Si no quiere modificar los datos, n escriba nada en la casilla</small>
 					<hr>
 				</tr>
 			</thead>
@@ -21,6 +21,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 			<label><?php echo $emple->codigo; ?></label>
+			<input type="hidden" name="cod" value="<?php echo $emple->codigo; ?>">
 		</div>
 	</div>
 </tr>
@@ -30,9 +31,11 @@
 			<h3>Nombre</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input type="text"  name="nombre" required placeholder="
+			<input type="text" name="nombre" placeholder="
 			<?php echo $emple->nombre; ?>
-			">('<?php echo $emple->nombre; ?>')
+			">
+			<input type="checkbox" name="c1">
+			<?php echo $emple->nombre; ?> 
 		</div>
 	</div>
 </tr>
@@ -42,9 +45,11 @@
 			<h3>DNI</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input type="text " required name="dni" placeholder="
+			<input type="text " name="dni" placeholder="
 			<?php echo $emple->dni; ?>
-			">('<?php echo $emple->dni; ?>')
+			">
+			<input type="checkbox" name="c2">
+			<?php echo $emple->dni; ?>
 		</div>
 	</div>
 </tr>
@@ -54,9 +59,11 @@
 			<h3>1º Apellido</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input type="text"  name="apellido1" required placeholder="
+			<input type="text"  name="apellido1" placeholder="
 			<?php echo $emple->apellido1; ?>
-			">('<?php echo $emple->apellido1; ?>')
+			">
+			<input type="checkbox" name="c3">
+			<?php echo $emple->apellido1; ?>
 		</div>
 	</div>
 </tr>
@@ -66,9 +73,11 @@
 			<h3>2º Apellido </h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input type="text"  name="apellido2" required placeholder="
+			<input type="text"  name="apellido2"  placeholder="
 			<?php echo $emple->apellido2; ?>
-			">('<?php echo $emple->apellido2; ?>')
+			">
+			<input type="checkbox" name="c4">
+			<?php echo $emple->apellido2; ?>
 		</div>
 	</div>
 </tr>
@@ -78,9 +87,11 @@
 			<h3>Localidad de trabajo</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input witype="text" width="60" name="localidad" required placeholder="
+			<input witype="text" width="60" name="localidad" placeholder="
 			<?php echo $emple->localidad; ?>
-			">('<?php echo $emple->localidad; ?>')
+			">
+			<input type="checkbox" name="c5">
+			<?php echo $emple->localidad; ?>
 		</div>
 	</div>
 </tr>
@@ -91,9 +102,11 @@
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 
-			<input type="text"  name="movil" required placeholder="
+			<input type="text"  name="movil"placeholder="
 			<?php echo $emple->movil; ?>
-			">('<?php echo $emple->movil; ?>')
+			">
+			<input type="checkbox" name="c6">
+			<?php echo $emple->movil; ?>
 
 		</div>
 	</div>
@@ -104,9 +117,11 @@
 			<h3>Saldo de dias de vacaciones</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-			<input type="text" name="vacas" required placeholder="
+			<input type="text" name="vacas" placeholder="
 			<?php echo $emple->saldo; ?>
-			">('<?php echo $emple->saldo; ?>')
+			">
+			<input type="checkbox" name="c7">
+			<?php echo $emple->saldo; ?>
 		</div>
 	</div>
 </tr>
@@ -116,25 +131,30 @@
 			<h3>Comentarios</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-			<textarea class="form-control" name="comentario" required rows="3" placeholder="
+			<textarea class="form-control" name="comentario"  rows="3" placeholder="
 			<?php echo $emple->comentarios; ?>
 			">
 			</textarea>
 			<br>
-			<label >('<?php echo $emple->comentarios; ?>')</label>
+			<label >
+				<input type="checkbox" name="c8">
+				<?php echo $emple->comentarios; ?>
+			</label>
 			
 </div>
 </div>
 </tr>
 <?php } ?>
 <tr>
+
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<button type="submit" name="modifica" class="btn btn-success">MODIFICAR EL EMPLEADO</button>
 	</div>
 </tr>
+</form>
 <hr>
 
-</form>
+
 </tbody>
 		</table>	
 	</div>

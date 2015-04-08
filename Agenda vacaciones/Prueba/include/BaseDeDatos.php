@@ -90,12 +90,16 @@ class BD {
 		$dwes=BD::conect();
 		$c="UPDATE empleoficina SET dni='$dni', nombre='$nombre', apellido1='$apellido1', apellido2 = '$apellido2', localidad='$localidad' movil='$movil', comentarios='$comentario', saldo='$saldo' WHERE codigo=$cod ;";
 		
-		if($resultado = $dwes->query($c)){
-			$dwes->close();
-			return true;
-		}else{
+		$resultado = $dwes->query($c);
+		
+		$acceso=$resultado->fetch_object();
+
+		if(!$acceso){
 			$dwes->close();
 			return false;
+		}else{
+			$dwes->close();
+			return true;
 		}	
 	}
 
