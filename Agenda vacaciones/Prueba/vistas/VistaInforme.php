@@ -8,7 +8,9 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-           Ver codigo de los empleados
+           <span class="glyphicon glyphicon-chevron-down"></span>
+           <strong>~ Ver codigo de los empleados ~</strong>
+           <span class="glyphicon glyphicon-chevron-down"></span>
         </a>
       </h4>
     </div>

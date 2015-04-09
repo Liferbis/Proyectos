@@ -9,3 +9,6 @@ require_once "header.php";
 		$hoy->getTodosMeses();
 	?>
 </div>
+<?php 
+include_once "pie.php";
+?>

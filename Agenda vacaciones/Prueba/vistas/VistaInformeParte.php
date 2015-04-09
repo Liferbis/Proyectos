@@ -1,3 +1,6 @@
+<?php 
+include_once "header.php";
+?>
 <div >
 			<table class="table table-responsive table-hover" style="border:1px">
 				<thead>
@@ -92,3 +95,6 @@
 				</tbody>
 			</table>
 		</div>
+		<?php 
+include_once "pie.php";
+?>

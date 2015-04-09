@@ -1,3 +1,6 @@
+<?php 
+include_once "header.php";
+?>
 <div class="text-center">
 	<form action="index.php" method="POST" role="form">
 		<div class="row" >

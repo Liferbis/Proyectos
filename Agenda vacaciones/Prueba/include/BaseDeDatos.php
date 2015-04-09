@@ -48,17 +48,19 @@ class BD {
 		$sentencia="GRANT [permiso] ON [nombre de bases de datos].[nombre de tabla] TO '[nombre de usuario]'@'localhost'";
 	}
 
-	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil, $comentarios){
+	public static function nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil,$saldo, $comentarios){
 		$dwes = BD::conect();
-		$saldo=22;
-		$c="INSERT INTO empleoficina (dni, nombre, apellido1, apellido2,  localidad, movil, comentarios) VALUES ('$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', '$comentarios','$saldo')";
+		$verifica="false";
+
+		$c="INSERT INTO empleoficina (codigo, dni, nombre, apellido1, apellido2,  localidad, movil, saldo, comentarios) VALUES (NULL,'$dni','$nombre', '$apellido1', '$apellido2',  '$localidad', '$becario', '$movil', $saldo, '$comentarios')";
 		$resultado = $dwes->query($cons);
 		if(!$resultado){
 			$dwes->close();
-			return false;
+			return $verifica;
 		}else{
 			$dwes->close();
-			return true;
+			$verifica="true";
+			return $verifica;
 		}
 	}
 
@@ -86,20 +88,24 @@ class BD {
 
 ///////////////////////  MODIFICAR  //////////////////////////////////////////////////////////////
 
-	public static function modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentario){
+	public static function modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentarios){
+		$verifica="false";
 		$dwes=BD::conect();
-		$c="UPDATE empleoficina SET dni='$dni', nombre='$nombre', apellido1='$apellido1', apellido2 = '$apellido2', localidad='$localidad' movil='$movil', comentarios='$comentario', saldo='$saldo' WHERE codigo=$cod ;";
+		//UPDATE `vacaciones`.`empleoficina` SET `nombre` = 'Lidia55' WHERE `empleoficina`.`codigo` = 15;
+		$c="UPDATE empleoficina SET dni = '$dni', nombre = '$nombre', apellido1 = '$apellido1', apellido2 = '$apellido2', localidad = '$localidad', movil = '$movil', comentarios = '$comentarios', saldo = '$saldo' WHERE codigo = '$cod' ;";
 		
 		$resultado = $dwes->query($c);
 		
-		$acceso=$resultado->fetch_object();
+		//$acceso=$resultado->fetch_object();
 
-		if(!$acceso){
+		if(!$resultado){
+			
 			$dwes->close();
-			return false;
+			return $verifica;
 		}else{
 			$dwes->close();
-			return true;
+			$verifica="true";
+			return $verifica;
 		}	
 	}
 
@@ -108,14 +114,16 @@ class BD {
 
 	public static function borraEmpleado($codigo){
 		$dwes=BD::conect();
+		$verifica="false";
 		$c="DELETE FROM empleoficina WHERE codigo = '$codigo';";
 		$resultado = $dwes->query($c);
-		if($resultado = $dwes->query($c)){
+		if(!$resultado){
 			$dwes->close();
-			return true;
+			return $verifica;
 		}else{
 			$dwes->close();
-			return false;
+			$verifica="true";
+			return $verifica;
 		}
 	}
 

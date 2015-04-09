@@ -22,7 +22,7 @@
 		private $comentarios;
 		private $saldo;
 
-		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2,  $localidad, $movil, $comentarios, $saldo ){
+		public function __construct($codigo, $dni, $nombre, $apellido1, $apellido2, $localidad, $movil, $comentarios, $saldo ){
 
 			$this->codigo=$codigo;
 			$this->dni=$dni;

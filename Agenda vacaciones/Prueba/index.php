@@ -7,6 +7,9 @@ if (isset($_GET['gestor'])) {
     if ($gestor == "calendario") {
         include ('vistas/VistaCalendario.php');
 
+    } else if ($gestor == "gestion") {
+        include ('vistas/VistaGestion.php');
+         
     } else if ($gestor == "modiE") {
         include ('vistas/VistaModificar.php');
         
@@ -17,72 +20,126 @@ if (isset($_GET['gestor'])) {
         include ('vistas/VistaLog-Out.php');
 
     } else if ($gestor == "login") {
-        include ('vistas/VistaGestion.php');
+        include ('vistas/VistaLogin.php');
 
     }
-} else {
-    require_once "vistas/vistaPrincipal.php";
-}
 
+}else if(isset($_POST["altaE"])){
+    $dni=$_POST["dni"];
+    $nombre=$_POST["nombre"];
+    $apellido1=$_POST["apellido1"];
+    $apellido2=$_POST["apellido2"];
+    $localidad=$_POST["localidad"];
+    $movil=$_POST["movil"];
+    $comentarios=$_POST["coment"];
+    $saldo=$_POST["vacas"];
+    $estado=BD::nuevoEmpleado($dni, $nombre, $apellido1, $apellido2,  $localidad, $becario, $movil,$saldo, $comentarios);
+    if($estado=="true"){
+        require_once "vistas/VistaTerminado.php";
+    }else{
+        require_once "vistas/VistaTerminadoE.php";
+    }
 
-if (isset($_POST['modificar'])) {
+}else if (isset($_POST['modificar'])) {
     $empleado=BD::DameEmpleado($_POST["empleado"]);
     include ("vistas/VistaModifica.php");
+
 }else if(isset($_POST['modifica'])){
     $cod=$_POST["cod"];
     $empleado=BD::DameEmpleado($cod);
     foreach ($empleado as $emple) {
         if(empty($_POST["c1"])){
-            $nombre=$_POST["nombre"];
+            if(empty($_POST["nombre"])){
+                $nombre=$emple->nombre;
+            }else{
+                $nombre=$emple->nombre;
+            }
         }else{
             $nombre=$emple->nombre; 
-        } 
+        }
+
         if(empty($_POST["c2"])){
-            $dni=$_POST["dni"];
+            if(empty($_POST["dni"])){
+                $dni=$emple->dni;
+            }else{
+                $dni=$_POST["dni"];
+            }
         }else{
             $dni=$emple->dni;
         }
+
         if(empty($_POST["c3"])){
-            $apellido1=$_POST["apellido1"];
+            if(empty($_POST["nombre"])){
+                $apellido1=$emple->apellido1;
+            }else{
+                $apellido1=$_POST["apellido1"];
+            }
         }else{
             $apellido1=$emple->apellido1;
         }
+
         if(empty($_POST["c4"])){
-            $apellido2=$_POST["apellido2"];
+            if(empty($_POST["nombre"])){
+                $apellido2=$emple->apellido2;
+            }else{
+                $apellido2=$_POST["apellido2"];
+            }
         }else{
             $apellido2=$emple->apellido2;
         }
+
         if(empty($_POST["c5"])){
-            $localidad=$_POST["localidad"];
+            if(empty($_POST["nombre"])){
+                $localidad=$emple->localidad;
+            }else{
+                $localidad=$_POST["localidad"];
+            }
         }else{
             $localidad=$emple->localidad;
         }
+
         if(empty($_POST["c6"])){
-            $movil=$_POST["movil"];
+            if(empty($_POST["nombre"])){
+                $movil=$emple->movil;
+            }else{
+                $movil=$_POST["movil"];
+            }
         }else{
             $movil=$emple->movil;
         }
+
         if(empty($_POST["c7"])){
-            $saldo=$_POST["vacas"];
+            if(empty($_POST["nombre"])){
+                $saldo=$emple->saldo;
+            }else{
+                $saldo=$_POST["vacas"];
+            }
         }else{
            $saldo=$emple->saldo;
         }
+
         if(empty($_POST["c8"])){
-           $comentario=$_POST["comentario"];
+            if(empty($_POST["nombre"])){
+                $comentarios=$emple->comentarios;
+            }else{
+                $comentarios=$_POST["comentario"];
+            }
+            
         }else{ 
-            $comentario=$emple->comentarios;
+            $comentarios=$emple->comentarios;
         }
     }
-    echo $cod."///".$nombre."///".$dni."///".$apellido1."///".$apellido2."///". $localidad."///".$movil."///".$saldo."///".$comentario;
-    //$estado=BD::modificaEmpleado($_POST["cod"], $_POST["nombre"], $_POST["dni"], $_POST["apellido1"], $_POST["apellido2"],  $_POST["localidad"], $_POST["movil"], $_POST["vacas"], $_POST["comentario"]);
-    if(BD::modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentario)){
-        require_once "vistas/VistaTerminado.php";
-    }else{
+    
+    $estado=BD::modificaEmpleado($cod, $nombre, $dni, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentarios);
+    
+    if($estado=="false"){
         require_once "vistas/VistaTerminadoE.php";
+    }else{
+        require_once "vistas/VistaTerminado.php";
     }
 }else if(isset($_POST["borra"])){
     $estado=BD::borraEmpleado($_POST["empleado"]) ;
-    if($estado==true){
+    if($estado=="true"){
         require_once "vistas/VistaTerminado.php";
     }else{
         require_once "vistas/VistaTerminadoE.php";
@@ -177,6 +234,7 @@ if (isset($_POST['modificar'])) {
         
 }else if(isset($_POST["cancelar"])){
     require_once "vistas/vistaPrincipal.php";
+
 }else if (isset($_POST["generar"])){
     if(isset($_POST["excel"])==0){
         $empleados=BD::cargaExcel();
@@ -204,6 +262,8 @@ if (isset($_POST['modificar'])) {
         $empleados=BD::cargaExcel();
         echo "Dentro de value=5 ";
     }
+} else {
+    require_once "vistas/vistaPrincipal.php";
 }
 
 

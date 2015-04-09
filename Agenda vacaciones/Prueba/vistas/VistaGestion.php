@@ -2,7 +2,17 @@
 require_once "header.php"; 
  ?>
 
- 
+ <div class="text-center">
+	
+	<div id='contenido' class='row responsive'>
+		<table id='table' class="table table-hover">
+			<thead>
+				<tr>
+					<h1>Introduce los datos del nuevo empleado</h1>
+					<hr>
+				</tr>
+			</thead>
+			<tbody>
 <hr>
 <tr>
 	<div class="row">
@@ -20,7 +30,7 @@ require_once "header.php";
 			<h3>DNI</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input type="text "  required name="dni" placeholder="DNI">
+			<input type="text" required name="dni" placeholder="DNI">
 		</div>
 	</div>
 </tr>
@@ -50,7 +60,7 @@ require_once "header.php";
 			<h3>Localidad de trabajo</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-			<input witype="text" width="60" name="local" required placeholder="Localidad de trabajo">
+			<input type="text" name="localidad" required placeholder="Localidad de trabajo">
 		</div>
 	</div>
 </tr>
@@ -69,17 +79,29 @@ require_once "header.php";
 <tr>
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<h3>Saldo de dias de vacaciones</h3>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+			<input type="text" name="vacas" required placeholder="Saldo inicial de vacaciones">
+		</div>
+	</div>
+</tr>
+<tr>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<h3>Comentarios</h3>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
 			<input type="text" name="coment" placeholder="Comentarios">
-		</br>
-		<input type="checkbox" name="coment" value="Sincoment">Sin comentarios
+		</div>
 	</div>
-</div>
 </tr>
 <hr>
 <div class="row">
-	<button type="submit" class="btn btn-success">CREAR</button>
+	<button type="submit" name="altaE" class="btn btn-success">CREAR</button>
 </div>
 </form>
+
+<?php 
+include_once "pie.php";
+?>
