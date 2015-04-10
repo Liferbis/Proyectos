@@ -307,22 +307,22 @@ class BD {
 		$vbpcomen=array();
 		
 		while($vaca=$resultado->fetch_object()){
-			$vbpcomen [] =  new Vacacion ( 
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],
-								$vaca["vacaciones"],
-								$vaca["PerRetri"],
-								$vaca["PerNoRetri"],
-								$vaca["Bec"],	
-								$vaca["Bal"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+			$vbpcomen [] =  new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 		}
 		$dwes->close();	
 		return $vbpcomen;
@@ -334,33 +334,33 @@ class BD {
 	public static function cargaExcel(){
 		$dwes = BD::conect();
 		
-		$c="SELECT * FROM dias ";
+		$c="SELECT * FROM dias";
 
 		$resultado = $dwes->query($c);
 		
-		$vbpcomen=array();
+		$vbpcu=array();
 		
 		while($vaca=$resultado->fetch_object()){
-			$vbpcomen [] = new Vacacion (
-							$vaca["cod_dias"],
-							$vaca["cod_empleado"],
-							$vaca["FechaInicio"],
-							$vaca["FechaFin"],
-							$vaca["dias_Natu"],
-							$vaca["dias_lab"],
-							$vaca["aumentoDias"],
-							$vaca["SALDO_DIAS"],
-							$vaca["vacaciones"],
-							$vaca["PerRetri"],
-							$vaca["PerNoRetri"],
-							$vaca["Bec"],							
-							$vaca["Bal"],
-							$vaca["Comentarios"],
-							$vaca["user_login"]);
+			$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 		}
 
-		$dwes->close();	
-		return $vbpcomen;
+		$dwes->close();
+		return $vbpcu;
 	}
 
 /////// EXCEL ////////// Funcion que genera todos los datos del EXCEL ///////
@@ -375,22 +375,26 @@ class BD {
 
 			$resultado = $dwes->query($c);
 			
-			$vbpcomen=array();
+			$vbpcu=array();
 			
 			while($vaca=$resultado->fetch_object()){
 				
-				$vbpcomen [] = new Vacacion (
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],
-								$vaca["vacaciones"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+				$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 			}
 		}
 
@@ -401,22 +405,26 @@ class BD {
 
 			$resultado = $dwes->query($c);
 			
-			$vbpcomen=array();
+			$vbpcu=array();
 			
 			while($vaca=$resultado->fetch_object()){
 				
-				$vbpcomen [] = new Vacacion (
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],
-								$vaca["PerRetri"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+				$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 			}
 		}
 
@@ -427,22 +435,26 @@ class BD {
 
 			$resultado = $dwes->query($c);
 			
-			$vbpcomen=array();
+			$vbpcu=array();
 			
 			while($vaca=$resultado->fetch_object()){
 				
-				$vbpcomen [] = new Vacacion (
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],
-								$vaca["PerNoRetri"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+				$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 			}
 		}
 
@@ -453,22 +465,26 @@ class BD {
 
 			$resultado = $dwes->query($c);
 			
-			$vbpcomen=array();
+			$vbpcu=array();
 			
 			while($vaca=$resultado->fetch_object()){
 				
-				$vbpcomen [] = new Vacacion (
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],
-								$vaca["Bec"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+				$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 			}
 		}
 
@@ -479,27 +495,31 @@ class BD {
 
 			$resultado = $dwes->query($c);
 			
-			$vbpcomen=array();
+			$vbpcu=array();
 			
 			while($vaca=$resultado->fetch_object()){
 				
-				$vbpcomen [] = new Vacacion (
-								$vaca["cod_dias"],
-								$vaca["cod_empleado"],
-								$vaca["FechaInicio"],
-								$vaca["FechaFin"],
-								$vaca["dias_Natu"],
-								$vaca["dias_lab"],
-								$vaca["aumentoDias"],
-								$vaca["SALDO_DIAS"],							
-								$vaca["Bal"],
-								$vaca["Comentarios"],
-								$vaca["user_login"]);
+				$vbpcu [] = new vacacion ( 
+								$vaca->cod_dias,
+								$vaca->cod_empleado,
+								$vaca->FechaInicio,
+								$vaca->FechaFin,
+								$vaca->dias_Natu,
+								$vaca->dias_lab,
+								$vaca->aumentoDias,
+								$vaca->SALDO_DIAS,
+								$vaca->vacaciones,
+								$vaca->PerRetri,
+								$vaca->PerNoRetri,
+								$vaca->Bec,	
+								$vaca->Bal,
+								$vaca->Comentarios,
+								$vaca->user_login);
 			}
 		}
 		
 		$dwes->close();	
-		return $vbpcomen;	
+		return $vbpcu;	
 	}
 
 ///////////////////////////////////////////////////////////////////////

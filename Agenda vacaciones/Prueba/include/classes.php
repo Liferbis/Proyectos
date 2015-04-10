@@ -89,21 +89,21 @@ class Festivos {
 /////////////////////    la clase VACACION     ////////////////////////
 
 class vacacion {
-	protected $cod_dias;
-	protected $cod_emplead;
-	protected $FechaInicio;
-	protected $FechaFin;
-	protected $dias_Natu;
-	protected $dias_lab;
-	protected $aumentoDias;
-	protected $SALDO_DIAS;
-	protected $vacaciones;
-	protected $PerRetri;
-	protected $PerNoRetri;
-	protected $Bec;
-	protected $Bal;
-	protected $Comentarios;
-	protected $user_login;
+	private $cod_dias;
+	private $cod_emplead;
+	private $FechaInicio;
+	private $FechaFin;
+	private $dias_Natu;
+	private $dias_lab;
+	private $aumentoDias;
+	private $SALDO_DIAS;
+	private $vacaciones;
+	private $PerRetri;
+	private $PerNoRetri;
+	private $Bec;
+	private $Bal;
+	private $Comentarios;
+	private $user_login;
 
 	function __construct( $cod_dias, $cod_emplead, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
 		

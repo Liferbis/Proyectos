@@ -1,124 +1,161 @@
-<?php require_once "header.php" ?>
-
+<?php 
+include_once "header.php";
+?>
 <div class="text-center">
-	<h1 class="text-center" >Informe de vacaciones y otros permisos</h1>
 	
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-           <span class="glyphicon glyphicon-chevron-down"></span>
-           <strong>~ Ver codigo de los empleados ~</strong>
-           <span class="glyphicon glyphicon-chevron-down"></span>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        <table class="table table-hover">
-			<thead>
-				<tr class="text-center">
-					<th class="text-center">
-						Nombre y apellido
-					</th>
-					<th class="text-center">
-						Código
-					</th>
+	<table id='table' class="table table-hover">
+		<thead>
+			<tr>
+				<h1>Escoge la opción para generar el informe</h1>
+				<hr>
+			</tr>
+		</thead>
+		<tbody>
+			<form action="index.php" method="POST" role="form">
+				<tr>
+					<td colspan="2">
+						<label>Seleccionando TODO</label>
+					</td>
 				</tr>
-			</thead>
-			<tbody>
-				<?php foreach ($empleados as $emple) { ?>
+				<tr>
+					<td>De Todos</td>
+					<td>De empleados especificos</td>
+				</tr>
 				<tr>
 					<td>
-						<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e0" aria-label="...">
+							</span>
+							<input type="text" disabled="true" class="form-control" placeholder="Generar TODO de TODOS">
+						</div>
 					</td>
 					<td>
-						<?php echo $emple->codigo; ?>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e1" aria-label="...">
+							</span>
+							<select  name="num1" id="input" class="form-control" required>
+								<option  value=" "> -- Seleciona un empleado -- </option>
+								<?php 
+								foreach ($empleados as $emple) { 
+									?>
+									<option  value="<?php echo $emple->codigo; ?>">
+										<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+									</option>
+									<?php 
+								}
+								?>		
+							</select>
+							<!-- <input type="text" class="form-control" aria-label="..."> -->
+						</div><!-- /input-group -->
 					</td>
 				</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-      </div>
-    </div>
-  </div>
-</div>
-	<form action="index.php" method="POST">
-		<div class="row well">
-			<h4 class="text-center">Seleccionando TODO </h4>	
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="0" checked="checked">
-					Generar TODO de TODOS
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="1">
-					Generar TODO de un empleado especifico
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="int" name="num1" placeholder="codigo de empleado">
-				</div>
-			</div>
+				<hr>
 
-			<h4 class="text-center">Selección por tipo </h4>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					Seleccione tipo:
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<select name="tipo">
-						<option>---- Seleccione tipo ----</option>
-						<option value="vaca">Vacaciones</option>
-						<option value="pnr">Permiso no retribuido</option>
-						<option value="pr">Permiso retribuido</option>
-						<option value="bec">Baja enfermedad comun</option>
-						<option value="bal">Baja accidente laboral</option>
-					</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="2">
-					Generar tipo de TODOS
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="3">
-					Generar tipo de un empleado especifico
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="int" name="num2" placeholder="codigo de empleado">
-				</div>
-			</div>
-			</br>
-			<h4 class="text-center">Selección por año</h4>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="4">
-					Generar año de TODOS
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="int" name="anio1" placeholder="año de busqueda (YYYY)">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="radio" name="excel" value="5">
-					Generar año de un empleado especifico
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<input type="int" name="anio2" placeholder="año de busqueda (YYYY)">
-					<input type="int" name="num3" placeholder="codigo de empleado">
-				</div>
-			</div>
-		</div>
-		<div class="text-center">
-			<button type="submit" name="generar" class="btn btn-success">Gernerar informe</button>
-		</div>
-	</form>
+				<tr>
+					<td colspan="2">
+						<label>Selección por tipo</label>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<select name="tipo" class="form-control">
+								<option class="" >---- Seleccione tipo ----</option>
+								<option class="text-center" value="vaca">Vacaciones</option>
+								<option class="text-center" value="pnr">Permiso no retribuido</option>
+								<option class="text-center" value="pr">Permiso retribuido</option>
+								<option class="text-center" value="bec">Baja enfermedad comun</option>
+								<option class="text-center" value="bal">Baja accidente laboral</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>De Todos</td>
+					<td>De empleados especificos</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e2" >
+							</span>
+							<input type="text" disabled="true" class="form-control" placeholder="Generar TIPO de TODOS" >
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e3" aria-label="...">
+							</span>
+							<select  name="num2" id="input" class="form-control" required>
+								<option  value=" "> -- Seleciona un empleado -- </option>
+								<?php 
+								foreach ($empleados as $emple) { 
+									?>
+									<option  value="<?php echo $emple->codigo; ?>">
+										<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+									</option>
+									<?php 
+								}
+								?>		
+							</select>
+							<!-- <input type="text" class="form-control" aria-label="..."> -->
+						</div><!-- /input-group -->
+					</td>
+				</tr>
+				<hr>
+
+				<tr>
+					<td colspan="2">
+						<label>Selección por AÑO</label>
+					</td>
+				</tr>
+				<tr>
+					<td>De Todos</td>
+					<td>De empleados especificos</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e4" >
+							</span>
+							<input type="text" name="anio1" class="form-control" placeholder="Introduce el año" aria-label="...">
+						</div>
+					</td>
+					<td>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<input type="checkbox" name="e5" aria-label="...">
+							</span>
+							<input type="text" name="anio2" class="form-control" placeholder="Introduce el año">
+							<select  name="num3" id="input" class="form-control" required>
+								<option  value=" "> -- Seleciona un empleado -- </option>
+								<?php 
+								foreach ($empleados as $emple) { 
+									?>
+									<option  value="<?php echo $emple->codigo; ?>">
+										<?php echo $emple->nombre." ".$emple->apellido1." ".$emple->apellido2; ?>
+									</option>
+									<?php 
+								}
+								?>		
+							</select>
+							<!-- <input type="text" class="form-control" aria-label="..."> -->
+						</div><!-- /input-group -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit" name="generar" class="btn btn-success">Gernerar informe</button>
+					</td>
+				</tr>
+			</form>
+		</tbody>
+	</table>
 </div>
 <?php require_once "pie.php" ?>
