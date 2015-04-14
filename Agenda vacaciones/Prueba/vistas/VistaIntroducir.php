@@ -9,7 +9,7 @@ include_once "header.php";
 				<h3>Selecciona el empleado</h3>
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<select  name="empleado" id="input" class="form-control" required>
+				<select  name="empleado" id="input" class="form-control" >
 					<option  value=" "> -- Seleciona un empleado -- </option>
 					<?php 
 					foreach ($empleados as $emple) { ?>
@@ -27,7 +27,7 @@ include_once "header.php";
 			<h3>Fecha Inicio</h3>
 		</div>
 		<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
-			<input type="date" name="fechaI" class="form-control" required>
+			<input type="date" name="fechaI" class="form-control" >
 			<p>
 				<div class="checkbox">
 					Medio Dia
@@ -41,7 +41,7 @@ include_once "header.php";
 			<h3>Fecha Fin</h3>
 		</div>
 		<div class="col-xs-12 col-sm4 col-md-4 col-lg-4">
-			<input type="date" name="fechaF" class="form-control" required>
+			<input type="date" name="fechaF" class="form-control" >
 			<p>
 				<div class="checkbox">
 					Medio Dia
@@ -55,7 +55,7 @@ include_once "header.php";
 			<h3>Tipo:</h3>
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-			<select name="tipe" id="input" class="form-control" required>
+			<select name="tipe" id="input" class="form-control" >
 				<option>-- Selecciona Tipo --</option>
 				<option value="vacaciones">Vacaciones</option>
 				<option value="PerRe">Permiso Retribuido</option>
@@ -70,7 +70,7 @@ include_once "header.php";
 			<h3>Comentario: </h3>
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-			<textarea class="form-control" name="comentario" required rows="3">
+			<textarea class="form-control" name="comentario"  rows="3">
 			</textarea><br>
 		</div>
 	</div> 

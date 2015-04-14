@@ -20,7 +20,7 @@ include_once "header.php";
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<form action="index.php" method="POST">
 							<select  name="empleado" id="input" class="form-control" >
-								<option name="empleado" value=""> ---- Seleccione empleado ---- </option>
+								<option name="empleado" value="0"> ---- Seleccione empleado ---- </option>
 								
 								<?php 
 								$empleados=BD::CargaEmpleados();
@@ -40,7 +40,8 @@ include_once "header.php";
 				<hr>
 				<tr >
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<button type="submit" name="borra" class="btn btn-success">BORRAR</button>
+						<button type="submit" name="borra" class="btn btn-success">Borrar</button>
+						<button type="submit" name="cancelar" class="btn btn-danger"/>Cancelar</button>
 					</div>
 									</form>
 				</tr>

@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Vacaciones</title>
-		<link href="../include/estilo.css" rel="stylesheet">
+		<link href="include/estilo.css" rel="stylesheet">
 		<!-- Bootstrap CSS -->
 		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<!-- <link href="estil.css" rel="stylesheet"> -->
@@ -65,23 +65,26 @@
 							<b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-							<li>
-								<a href="index.php?gestor=gestion">
-									<span id="gliphicon" class="glyphicon glyphicon-check"></span> Alta Empleado
-								</a>
-							</li>
+							
 							<li>
 								<a href="index.php?gestor=modiE">
 									<span id="gliphicon" class="glyphicon glyphicon-edit"></span>
 									Modificar empleado
 								</a>
 							</li>
-							<!-- <li>
-								<a href="comentarios.php">
-									<span id="gliphicon" class="glyphicon glyphicon-tag"></span>
-									Añadir/Quitar comentario
+							<li>
+								<a href="index.php?gestor=aumentoD">
+									<span id="gliphicon" class="glyphicon glyphicon-plus"></span>
+									Aumentar dias
 								</a>
-							</li> -->
+							</li>
+							<hr>
+							<li>
+								<a href="index.php?gestor=gestion">
+									<span id="gliphicon" class="glyphicon glyphicon-check"></span> 
+									Alta Empleado
+								</a>
+							</li>
 							<li>
 								<a href="index.php?gestor=borrarE">
 									<span id="gliphicon" class="glyphicon glyphicon-remove"></span>

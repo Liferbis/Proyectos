@@ -9,8 +9,9 @@ include_once "header.php";
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<button type="submit"class="btn btn-success">
-					<span id="gliphicon" class="glyphicon glyphicon-home"></span>
-					<a href="index.php">Pagina Principal</a>
+					<span  class="glyphicon glyphicon-home"></span>
+					<a href="index.php" style="color:white"> Pagina Principal </a>
+					<span  class="glyphicon glyphicon-home"></span>
 				</button>
 			</div>
 		</div>

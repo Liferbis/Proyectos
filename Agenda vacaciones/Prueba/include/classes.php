@@ -105,23 +105,26 @@ class vacacion {
 	private $Comentarios;
 	private $user_login;
 
-	function __construct( $cod_dias, $cod_emplead, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
+	function __construct( $cod_dias, $cod_emplead, $nombre, $apellido1, $apellido2, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
 		
-		$this->cod_dias;
-		$this->cod_emplead;
-		$this->FechaInicio;
-		$this->FechaFin;
-		$this->dias_Natu;
-		$this->dias_lab;
-		$this->aumentoDias;
-		$this->SALDO_DIAS;
-		$this->vacaciones;
-		$this->PerRetri;
-		$this->PerNoRetri;
-		$this->Bec;
-		$this->Bal;
-		$this->Comentarios;
-		$this->user_login;
+		$this->cod_dias=$cod_dias;
+		$this->cod_emplead=$cod_emplead;
+		$this->nombre=$nombre;
+		$this->apellido1=$apellido1;
+		$this->apellido2=$apellido2;
+		$this->FechaInicio=$FechaInicio;
+		$this->FechaFin=$FechaFin;
+		$this->dias_Natu=$dias_Natu;
+		$this->dias_lab=$dias_lab;
+		$this->aumentoDias=$aumentoDias;
+		$this->SALDO_DIAS=$SALDO_DIAS;
+		$this->vacaciones=$vacaciones;
+		$this->PerRetri=$PerRetri;
+		$this->PerNoRetri=$PerNoRetri;
+		$this->Bec=$Bec;
+		$this->Bal=$Bal;
+		$this->Comentarios=$Comentarios;
+		$this->user_login=$user_login;
 		
 	}
 
