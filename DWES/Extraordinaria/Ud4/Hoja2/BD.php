@@ -34,8 +34,6 @@ class BD {
 	 	}
 	}
 
-
-
 	public static function asientos(){
 		$dwes=BD::conect();
 
@@ -75,7 +73,32 @@ class BD {
 	}
 
 	public static function modifica(){
-		
+	//function cargaTabla (){
+		$dwes=BD::conect();
+
+		$plazas="SELECT * FROM plazas";
+		$resultado = $dwes->query($plazas);	
+				
+		while($pl=$resultado->fetch_object()){
+?>
+			<div class="form-group">
+				<label>
+					<?php 
+						echo $pl->numero; 
+					?>
+				</label>
+				<input type="text " class="precio" name=
+					<?php 
+					 	echo '"'.$pl->numero.'"';
+					?>
+				value=
+					 <?php 
+					 	echo '"'.$pl->precio.'"';
+					?>
+				>
+			</div>
+<?php 
+		}
 	}
 
 }

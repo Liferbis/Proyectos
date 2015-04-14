@@ -17,24 +17,29 @@
 		<![endif]-->
 	</head>
 	<body>
-		<h1 class="text-center">Gestión del funicular</h1>
-		
-			<legend class="text-center">Elija una opción:</legend>
-			<a href="reservar.php" >
-				<button type="button" name="reser" class="btn btn-large btn-block btn-primary">
-					Reservar Plaza
-				</button>	
-			</a>
-			<a href="llegada.php" >
-				<button type="button" name="llegada" class="btn btn-large btn-block btn-warning">
-					Llegada al destino
-				</button>
-			</a>
-			<a href="plazas.php">
-				<button type="button" name="llegada" class="btn btn-large btn-block btn-success">
-					Modificar plazas
-				</button>
-			</a>
+		<h1 class="text-center">Gestión de las plazas</h1>
+		<hr>
+		<div class="text-center">
+			<form action="" method="POST" role="form">
+				<?php BD::modifica(); ?>
+				<button type="button" name="modi" class="btn btn-large btn-block btn-primary">
+						Modificar
+					</button>	
+				</a>
+				<a href="index.php" >
+					<button type="button" class="btn btn-large btn-block btn-warning">
+						Volver
+					</button>
+				</a>
+			</form>
+			
+		</div>
+
+		<?php 
+			if(isset($_POST["modi"])){
+				
+			}
+		 ?>
 		
 		
 		<!-- jQuery -->
