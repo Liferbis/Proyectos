@@ -73,31 +73,66 @@ class BD {
 	}
 
 	public static function modifica(){
-	//function cargaTabla (){
+
 		$dwes=BD::conect();
 
 		$plazas="SELECT * FROM plazas";
 		$resultado = $dwes->query($plazas);	
-				
+		$i=0;	
 		while($pl=$resultado->fetch_object()){
 ?>
 			<div class="form-group">
 				<label>
 					<?php 
-						echo $pl->numero; 
+						echo "Plaza ".$pl->numero.":"; 
 					?>
 				</label>
-				<input type="text " class="precio" name=
-					<?php 
-					 	echo '"'.$pl->numero.'"';
-					?>
-				value=
-					 <?php 
-					 	echo '"'.$pl->precio.'"';
-					?>
-				>
+				<input type="text" name="<?php echo $i;?>" value="<?php echo $pl->precio ?>">€
 			</div>
 <?php 
+			$i++;
+		}
+	}
+
+	public static function numAsientos(){
+		$dwes=BD::conect();
+
+		$plazas="SELECT * FROM plazas";
+		$resultado = $dwes->query($plazas);	
+		$asiento=array();
+		$i=0;	
+		while($pl=$resultado->fetch_object()){
+			$asiento["$i"]=$pl->numero;
+			$i++;
+		}
+		$dwes->close();
+		return $asiento;
+	}
+
+	public static function actualiza($plaza){
+		$dwes=BD::conect();
+		$asiento=BD::numAsientos();
+		$dwes->autocommit(false);
+		$n=count($asiento);
+		for ($i=0; $i < $n ; $i++) { 
+				
+			$aux=$plaza["$i"];
+			$aux1=$asiento["$i"];
+			
+			$d="UPDATE plazas SET precio = '$aux' WHERE numero= '$aux1';";
+			
+			$res = $dwes->query($d);
+			
+			if(!$dwes->commit()){
+				$dwes->rollback();
+				$dwes->close();
+ 				return false;
+	 		}
+		}
+
+		if($dwes->commit()){
+			$dwes->close();
+			return true;
 		}
 	}
 

@@ -20,14 +20,21 @@
 		<h1 class="text-center">Gestión del funicular</h1>
 		
 			<legend class="text-center">Elija una opción:</legend>
-			<button type="button" name="reser" class="btn btn-large btn-block btn-primary">
-				<a href="reservar.php" style="color:white"> 
+			<a href="reservar.php" >
+				<button type="button" name="reser" class="btn btn-large btn-block btn-primary">
 					Reservar Plaza
-				</a>	
-			</button>
-			<button type="button" name="llegada" class="btn btn-large btn-block btn-warning">
-				<a href="llegada.php" style="color:black">Llegada al destino</a>
-			</button>
+				</button>	
+			</a>
+			<a href="llegada.php" >
+				<button type="button" name="llegada" class="btn btn-large btn-block btn-warning">
+					Llegada al destino
+				</button>
+			</a>
+			<a href="plazas.php">
+				<button type="button" name="llegada" class="btn btn-large btn-block btn-success">
+					Modificar plazas
+				</button>
+			</a>
 		
 		
 		<!-- jQuery -->

@@ -45,10 +45,12 @@ require_once "BD.php";
 			if(isset($_POST["modi"])){
 				$plazas=array();
 				$num=BD::numAsientos();
-				
+				var_dump($num);
+
 				for ($i=0; $i < count($num)  ; $i++) { 
 					$plazas["$i"]=$_POST["$i"];
-				}		
+				}
+			var_dump($plazas);		
 				if(!BD::actualiza($plazas)){
 			?>
 					<div class="alert alert-danger">
