@@ -1,8 +1,20 @@
 <?php
 require_once "include/BaseDeDatos.php";
 require_once "include/classes.php";
+// session_start();
 
-if (isset($_SESSION["usuario"])){
+if(!$_SESSION['usuario']){
+    require_once "vistas/VistaLogin.php";
+
+}else if (isset($_POST["login"])){
+        $usuario=$_POST["nombre"];
+        $ctv=md5($_POST["ctv"]);
+        $estado=BD::verifica($usuario, $ctv);
+        if($estado=="true"){
+           $_SESSION["usuario"]=$usuario;
+           require_once "vistaPrincipal.php";
+         }
+}else{
     if (isset($_GET['gestor'])) {
         $gestor = $_GET['gestor'];
         if ($gestor == "calendario") {
@@ -20,8 +32,8 @@ if (isset($_SESSION["usuario"])){
         } else if ($gestor == "log-out") {
             include ('vistas/VistaLog-Out.php');
 
-        } else if ($gestor == "login") {
-            include ('vistas/VistaLogin.php');
+        } else if ($gestor == "logeo") {
+            include ('vistas/VistaLogeo.php');
 
         } else if ($gestor == "aumentoD"){
             $sesion=$_SESSION["usuario"];
@@ -54,7 +66,7 @@ if (isset($_SESSION["usuario"])){
         if($_POST["sesion"]=="1"){
             session_unset();
         }else if($_POST["sesion"]=="0"){
-            require_once "index.php";
+            require_once "vistas/vistaPrincipal.php";
         }
     }
     else if(isset($_POST['modifica'])){
@@ -208,7 +220,7 @@ if (isset($_SESSION["usuario"])){
                         //echo date('Y-m-d',$fechaI) . '<br />';
                         $diaslab++;
                     }                     
-                 }//else{
+                }//else{
                 //     echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
                 // }
             }
@@ -303,25 +315,5 @@ if (isset($_SESSION["usuario"])){
     } else {
         require_once "vistas/vistaPrincipal.php";
     }
-}else if(isset($_POST["login"])){
-        $usuario=$_POST["nombre"];
-        $ctv=md5($_POST["ctv"]);
-        $estado=BD::verifica($usuario, $ctv);
-        if($estado=="true"){
-           session_start();
-           $_SESSION["usuario"]=$usuario;
-           header("Location: index.php");
-        }
-        // else{
-        //     echo "<div class='alert alert-danger'>
-        //                     <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-        //                     <strong>ERROR!!</strong> Datos de usuario incorrectos
-        //                 </div>";
-        //     require_once "vistas/VistaLogin.php";
-        // }
-}else{
-    require_once "vistas/VistaLogin.php";
 }
-
-
 ?>

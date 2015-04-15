@@ -42,7 +42,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="index.php?gestor=login">		
+						<a href="index.php?gestor=logeo">		
 							<span id="gliphicon" class="glyphicon glyphicon-user"></span> Login
 						</a>
 					</li>
