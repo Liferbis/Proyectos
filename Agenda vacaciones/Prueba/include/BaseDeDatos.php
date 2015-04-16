@@ -183,25 +183,20 @@ class BD {
 		//el siguiente metodo nos devuelve la tabla a la que tiene acceso el usuario que se ha logeado
 	public function sesiones($usu){//(){ 
 		$dwes = BD::conect();
-	 	$usu='usu1';
 		$c="SELECT tabla FROM usuarios WHERE usuario='$usu' ";
 
 		$resultado = $dwes->query($c);
-		$tabla=$resultado->fetch_object();
-
-		if($tabla=="empleoficina"){
-			$dwes->close();
-			return "empleoficina";
-		}else if ($tabla=="emplealmacen"){
-			$dwes->close();
-			return "emplealmacen";
-		}
+		$usu=$resultado->fetch_array();
+		$tabla=$usu["tabla"];	
+		$dwes->close();	
+		return $tabla;
 	}
 
 	public static function CargaEmpleados($usuario){
 		$dwes = BD::conect();
 		$tabla=BD::sesiones($usuario);
-		$c="SELECT * FROM '$tabla' ";
+		echo $tabla;
+		$c="SELECT * FROM $tabla ";
 
 		$resultado = $dwes->query($c);
 		
@@ -278,14 +273,18 @@ class BD {
 
 	public static function damefestivos(){
 		$dwes = BD::conect();
-		$festivo=array();
+		
 		$c="SELECT * FROM 'festivos' ORDER BY 'fecha' ASC";
+
 		$resultado = $dwes->query($c);
+
+		$festivo=array();
+
 		while($fes=$resultado->fetch_object()){
 			$festivo [] =  new Festivos( 
 								$fes->ambito,
-								$fes->comentarios,
-								$fes->fecha);
+								$fes->fecha,
+								$fes->comentarios);
 		}
 		$dwes->close();	
 		return $festivo;
@@ -293,12 +292,11 @@ class BD {
 
 	public static function damefestivosfechas(){
 		$dwes = BD::conect();
+		$festivos=BD::damefestivos();
 		$festivo=array();
-		$c="SELECT fecha FROM 'festivos' ORDER BY 'fecha' ASC";
-		$resultado = $dwes->query($c);
-		while($fes=$resultado->fetch_object()){
-			$festivo [] =  new Festivos( 
-								$fes->fecha);
+
+		for ($i=0; $i < count($festivos); $i++) { 
+			$festivo [] =	$festivos->fecha;
 		}
 		$dwes->close();	
 		return $festivo;

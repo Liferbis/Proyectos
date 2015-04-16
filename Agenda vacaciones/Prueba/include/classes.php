@@ -57,14 +57,15 @@
 /////// CLASE ////// en esta clase se encuentr todo lo referente //////
 /////////////////// /////    la clase FESTIVO    //////////////////////
 class Festivos {
-	public $ambito;
-	public $fecha;
-	public $comentarios;
+	private $ambito;
+	private $comentarios;
+	private $fecha;
 
-	function __construct($ambito, $comentarios, $fecha){
+	function __construct($ambito,$fecha, $comentarios){
 		$this->ambito=$ambito;
-		$this->comentarios=$comentarios;
 		$this->fecha=$fecha;
+		$this->comentarios=$comentarios;
+		
 	}
 
 	public function __set($var, $valor) {

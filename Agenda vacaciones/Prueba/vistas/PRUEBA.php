@@ -1,9 +1,16 @@
+<?php 
+require_once "../include/BaseDeDatos.php"
+ ?>
 
 <div class="table-responsive">
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th></th>
+				<th><?php 
+						$_SESSION["usuario"]="usu1";
+						$tabla= BD::sesiones($_SESSION["usuario"]);
+						print_r($tabla);
+				 ?></th>
 			</tr>
 		</thead>
 		<?php foreach ($empleados as $em) { ?>

@@ -46,8 +46,7 @@
 							<span id="gliphicon" class="glyphicon glyphicon-user"></span> Login
 						</a>
 					</li>
-				<?php 
-					session_start();
+				<?php
 					if (isset($_SESSION["usuario"])){
 				?>
 					<li>
