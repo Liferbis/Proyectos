@@ -56,12 +56,13 @@
 
 /////// CLASE ////// en esta clase se encuentr todo lo referente //////
 /////////////////// /////    la clase FESTIVO    //////////////////////
-class Festivos {
+class fiestas {
 	private $ambito;
-	private $comentarios;
 	private $fecha;
+	private $comentarios;
+	
 
-	function __construct($ambito,$fecha, $comentarios){
+	function __construct($ambito, $fecha, $comentarios){
 		$this->ambito=$ambito;
 		$this->fecha=$fecha;
 		$this->comentarios=$comentarios;

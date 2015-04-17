@@ -58,32 +58,73 @@ class BD {
 			return $verifica;
 		}
 	}
+	
+	// public static function pr($diasL){
+	// 	$dwes=BD::conect();
+	// 	$c="INSERT INTO pr (dias) VALUES($diasL)";
+	// 	$resultado = $dwes->query($c);
+	// 	$dwes->close();
+	// 	return "true";
+	// }
 
-	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $saldo, $tipo, $comentario, $sesion){
-
-		$empleado=BD::DameEmpleado($sesion, $cEmpleado);
-		$nombre=$empleado["nombre"];
-		$apellido1=$empleado["apellido1"];
-		$apellido2=$empleado["apellido2"];
-		$saldo=$empleado["saldo"];
-		$saldo= $saldo-$diaslab;
-
-		if($tipo=="vacaciones"){
-			$c="INSERT INTO dias (cod_dias, cod_empleado, nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', 'si', '-', '-', '-', '-', '$comentario', '$sesion')";
-		}else if($tipo=="PerRe"){
-			$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', 'si', '-', '-', '-', '$comentario', '$sesion')";
-		}else if($tipo=="PerNoRe"){
-			$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '-', '$comentario', '$sesion')";
-		}else if($tipo=="bec"){
-			$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '$comentario', '$sesion')";
-		}else if($tipo=="bal"){
-			$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', '-', '-', 'si', '$comentario', '$sesion')";
-		}
-
+	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $tipo, $comentario, $sesion){
+		
 		$dwes=BD::conect();
+		$error=false;
+		$empleado=BD::DameEmpleado($sesion, $cEmpleado);
+		foreach ($empleado as $emple) {
+			$nombre=$emple->nombre;
+			$apellido1=$emple->apellido1;
+			$apellido2=$emple->apellido2;
+			$saldo=$emple->saldo;
+		}
+		
+		$saldo= $saldo-$diasL;
 
-		$resultado = $dwes->query($c);
+		if(empty($tipo)){
+			$error=true;
+			return $error;
+		}else{
+			if($tipo=="vacaciones"){
+				echo $diasL;
+				$c="INSERT INTO dias (cod_dias, cod_empleado, nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', 'si', '-', '-', '-', '-', '$comentario', '$sesion')";
+				$resultado = $dwes->query($c);
+				if($resultado){
+					$error=false;
+				}
+
+			}else if($tipo=="PerRe"){
+				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', 'si', '-', '-', '-', '$comentario', '$sesion')";
+				$resultado = $dwes->query($c);
+				if($resultado){
+					$error=false;
+				}
+
+			}else if($tipo=="PerNoRe"){
+				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '-', '$comentario', '$sesion')";
+				$resultado = $dwes->query($c);
+				if($resultado){
+					$error=false;
+				}
+
+			}else if($tipo=="bec"){
+				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '$comentario', '$sesion')";
+				$resultado = $dwes->query($c);
+				if($resultado){
+					$error=false;
+				}
+
+			}else if($tipo=="bal"){
+				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', '-', '-', 'si', '$comentario', '$sesion')";
+				$resultado = $dwes->query($c);
+				if($resultado){
+					$error=false;
+				}
+				
+			}
 		$dwes->close();
+		return $error;
+		}
 	}
 
 ///////////////////////  MODIFICAR  //////////////////////////////////////////////////////////////
@@ -223,7 +264,7 @@ class BD {
 
 		$tabla=BD::sesiones($usuario);
 
-		$c="SELECT * FROM '$tabla' WHERE codigo='$codigo'";
+		$c="SELECT * FROM $tabla WHERE codigo='$codigo'";
 
 		$resultado = $dwes->query($c);
 		
@@ -273,15 +314,17 @@ class BD {
 
 	public static function damefestivos(){
 		$dwes = BD::conect();
-		
-		$c="SELECT * FROM 'festivos' ORDER BY 'fecha' ASC";
+		$festivo=array();
+
+		$c="SELECT * FROM festivos ORDER BY fecha ASC";
+		//  SELECT * FROM `festivos` ORDER BY fecha ASC
 
 		$resultado = $dwes->query($c);
 
-		$festivo=array();
+		
 
-		while($fes=$resultado->fetch_object()){
-			$festivo [] =  new Festivos( 
+		while($fes= $resultado->fetch_object() ){
+			$festivo [] =  new fiestas( 
 								$fes->ambito,
 								$fes->fecha,
 								$fes->comentarios);
@@ -295,9 +338,10 @@ class BD {
 		$festivos=BD::damefestivos();
 		$festivo=array();
 
-		for ($i=0; $i < count($festivos); $i++) { 
-			$festivo [] =	$festivos->fecha;
+		foreach ($festivos as $f) {
+			$festivo [] =	$f->fecha;
 		}
+		
 		$dwes->close();	
 		return $festivo;
 	}

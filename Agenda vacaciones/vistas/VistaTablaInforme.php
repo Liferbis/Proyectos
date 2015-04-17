@@ -58,41 +58,43 @@
 //Crear excel con php    http://www.taringa.net/posts/linux/15716598/Crear-documentos-excel-con-PHP.html
 
 				// We give the path to our file here
-				// $workbook = new Spreadsheet_Excel_Writer('$ruta/prueba1.xls');
+				
 
-				// $worksheet = $workbook->addWorksheet('My first worksheet');
+				$workbook = new Spreadsheet_Excel_Writer('$ruta/prueba1.xls');
 
-				// $objPHPExcel->setActiveSheetIndex(0)	
-				// 	->setCellValue('A1','Empleado')
-				// 	->setCellValue('B1', 'Vacaciones')
-				// 	->setCellValue('C1', '')
-				// 	->setCellValue('D1', '')
-				// 	->setCellValue('E1', '')
-				// 	->setCellValue('F1', '')
-				// 	->setCellValue('G1', '')
-				// 	->setCellValue('H1', 'Otros')
-				// 	->setCellValue('I1', '')
-				// 	->setCellValue('J1', 'Baja')
-				// 	->setCellValue('K1', '')
-				// 	->setCellValue('L1', 'Datos')
-				// 	->setCellValue('M1', '')
+				$worksheet = $workbook->addWorksheet('My first worksheet');
 
-				// 	->setCellValue('A2', 'Empleado')
-				// 	->setCellValue('B2', 'Fecha Inicio')
-				// 	->setCellValue('C2', 'Fecha Fin')
-				// 	->setCellValue('D2', 'Dias Naturales')
-				// 	->setCellValue('E2', 'Dias laborables')
-				// 	->setCellValue('F2', 'Aumento Vac.')
-				// 	->setCellValue('G2', 'Saldo')
-				// 	->setCellValue('H2', 'Permiso Retribuido')
-				// 	->setCellValue('I2', 'Permiso NO Retribuido')
-				// 	->setCellValue('J2', 'Baja AL')
-				// 	->setCellValue('K2', 'Baja EC')
-				// 	->setCellValue('L2', 'Comentarios')
-				// 	->setCellValue('M2', 'Usuario')
+				$objPHPExcel->setActiveSheetIndex(0)	
+					->setCellValue('A1','Empleado')
+					->setCellValue('B1', 'Vacaciones')
+					->setCellValue('C1', '')
+					->setCellValue('D1', '')
+					->setCellValue('E1', '')
+					->setCellValue('F1', '')
+					->setCellValue('G1', '')
+					->setCellValue('H1', 'Otros')
+					->setCellValue('I1', '')
+					->setCellValue('J1', 'Baja')
+					->setCellValue('K1', '')
+					->setCellValue('L1', 'Datos')
+					->setCellValue('M1', '')
+
+					->setCellValue('A2', 'Empleado')
+					->setCellValue('B2', 'Fecha Inicio')
+					->setCellValue('C2', 'Fecha Fin')
+					->setCellValue('D2', 'Dias Naturales')
+					->setCellValue('E2', 'Dias laborables')
+					->setCellValue('F2', 'Aumento Vac.')
+					->setCellValue('G2', 'Saldo')
+					->setCellValue('H2', 'Permiso Retribuido')
+					->setCellValue('I2', 'Permiso NO Retribuido')
+					->setCellValue('J2', 'Baja AL')
+					->setCellValue('K2', 'Baja EC')
+					->setCellValue('L2', 'Comentarios')
+					->setCellValue('M2', 'Usuario')
 
 				//cargamos todo sobre el empleado en un array
-				//$empleado = BD::cargaExcel($cod_emple);
+				$empleado = BD::cargaExcel($cod_emple);
 
 				//Se agregan los datos de los alumnos
  			//	$i = 3; //Numero de fila donde se va a comenzar a rellenar

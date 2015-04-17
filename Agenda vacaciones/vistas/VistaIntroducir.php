@@ -31,7 +31,7 @@ include_once "header.php";
 			<p>
 				<div class="checkbox">
 					Medio Dia
-					<input type="checkbox" value="1" name="medio1">
+					<input type="checkbox" name="medio1" value="0.5">
 				</div>
 			</p>
 		</div>
@@ -45,7 +45,7 @@ include_once "header.php";
 			<p>
 				<div class="checkbox">
 					Medio Dia
-					<input type="checkbox" name="medio2">
+					<input type="checkbox" name="medio2" value="0.5">
 				</div>
 			</p>
 		</div>
@@ -75,7 +75,7 @@ include_once "header.php";
 		</div>
 	</div> 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<input type="submit" name="aceptar" value="Aceptar" class="btn btn-success"/>
+		<input type="submit" name="intro" value="Aceptar" class="btn btn-success"/>
 		<input type="submit" name="cancelar" value="Cancelar" class="btn btn-danger"/>
 	</div>
 </form>					

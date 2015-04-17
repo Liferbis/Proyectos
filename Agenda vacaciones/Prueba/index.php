@@ -180,17 +180,14 @@ if (isset($_SESSION["usuario"])){
     }else if(isset($_POST["calendario"])){
         require_once "vistas/VistaCalendario.php";
 
-    }else if (isset($_POST["intro"])){
+    }else if (isset($_POST["aceptar"])){
             $tipo=$_POST["tipe"];
         //////  RECOGEMOS DE LA BASE DE DATOS UN ARRAY CON LOS DIAS!!!! FESTIVOS DE EL AÑO EN CUESTION  ////////////////////////////
             $festivos=BD::damefestivosfechas();
         //////  CALCULA LOS DIAS NATURALES Y LABORABLES EXCLULLENDO LOS FESTIVOS               /////////
-            
             $fechaI=strtotime($_POST["fechaI"]);
-            $fechaIn=date('Y-m-d',$fechaI);
             $fechaF=strtotime($_POST["fechaF"]);
             $dias=0;
-            $num=count($festivos);
             $fiesta=0;
             $diaslab=0;
             $fies=false;
@@ -199,11 +196,11 @@ if (isset($_SESSION["usuario"])){
                 $dias++;
                 ////// excluye del array los sabados y domingos/////////
                 if( (strcmp (date('D',$fechaI),'Sun')!=0) & (strcmp(date('D',$fechaI),'Sat')!=0) ){
-                    for ($i=0; $i < $num; $i++) { 
+                    for ($i=0; $i <= $num-1; $i++) { 
                         if( $fechaI==strtotime($festivos[$i]) ){
                             $fiesta++;
                             $fies=true;
-                           // echo '<h1>'.date('Y-m-d',$fechaI) . '->FESTIVOOOOOOO!!!!</h1><br />';
+                            //echo '<h1>'.date('Y-m-d',$fechaI) . '->FESTIVOOOOOOO!!!!</h1><br />';
                         }
                     }
                     if($fies==true){
@@ -212,40 +209,52 @@ if (isset($_SESSION["usuario"])){
                         //echo date('Y-m-d',$fechaI) . '<br />';
                         $diaslab++;
                     }                     
-                }// else{
-                //      echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
+                }//else{
+                //     echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
                 // }
             }
-            
-            //echo "<hr>".$tipo."<br>".$diaslab;
+            if(isset($_POST["medio1"])){
+                $diaslab=$diaslab-0.5;
+            }else if(isset($_POST["medio2"])){
+                $diaslab=$diaslab-0.5;
+            }
             
             $cod_emple=$_POST["empleado"];
             $comentario=$_POST["comentario"];
             $sesion=$_SESSION["usuario"];
-            $aumento="-";
-            
-            $fechafi=date('Y-m-d',$fechaF);
-            $medio=0;
-            if(isset($_POST["medio1"])){
-                $medio++;
+            // $emp=BD::DameEmpleado($sesion, $cod_emple);
+            // $saldo=BD::DameSaldo($sesion, $cod_emple);
+            // $saldo= $saldo-$diaslab;
+            //BD::modificaAumento($cod_emple, $num, $comentario);
+            BD::dias($sesion, $cod_emple, $fechaI, $fechaF, $dias, $diaslab, $aumento, $comentario);
+            foreach ($emp as $emple) {
+                $nombre=$emple->nombre;
+                $apellido1=$emple->apellido1;
             }
-            if(isset($_POST["medio2"])){
-                $medio++;
-            }
-            if ($medio==1) {
-                $diaslab=$diaslab-0.5;
-            }else if ($medio==2) {
-                $diaslab=$diaslab-1;
-            }
-             //$estado=BD::pr($diaslab);   
-            $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $aumento, $tipo, $comentario, $sesion);
-            if($estado="true"){
-                require_once "vistas/VistaTerminado.php";
-            }else{
-                require_once "vistas/VistaTerminadoE.php";
-            }
-            
 
+            $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+            if(file_exists($dir)){
+                $fecha=date('Y-m-d');//'2015-01-01';
+                $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
+                echo $ruta;
+                $folder=mkdir($ruta, 0755, true);
+                if(!$folder){
+                    die('Fallo en la ruta de la carpeta');
+                }else{
+                    die('Creado correctamente');
+                }
+            }else{
+                $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+                $fecha=date('Y-m-d');//'2015-01-01';
+                $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
+                $folder=mkdir($ruta, 0755, true);
+                if(!$folder){
+                    echo 'Fallo en la ruta de la carpeta';
+                }else{
+                    echo 'Creado correctamente';            
+                }
+            }
+            
     }else if(isset($_POST["cancelar"])){
         require_once "vistas/vistaPrincipal.php";
 
