@@ -17,7 +17,7 @@ class BD {
 	const bd="vacaciones";
 
 	public static function conect(){
-		 $dwes = new mysqli(BD::localhost, BD::usu , BD::ctv, BD::bd);
+		$dwes = new mysqli(BD::localhost, BD::usu , BD::ctv, BD::bd);
 		return $dwes;
 	}
 
@@ -58,72 +58,131 @@ class BD {
 			return $verifica;
 		}
 	}
-	
-	// public static function pr($diasL){
-	// 	$dwes=BD::conect();
-	// 	$c="INSERT INTO pr (dias) VALUES($diasL)";
-	// 	$resultado = $dwes->query($c);
-	// 	$dwes->close();
-	// 	return "true";
-	// }
 
-	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $aumento, $tipo, $comentario, $sesion){
+	public static function dias($cEmpleado, $fechaI, $fechaF, $diasN, $diasL, $tipo, $comentario, $sesion){
 		
 		$dwes=BD::conect();
-		$error=false;
-		$empleado=BD::DameEmpleado($sesion, $cEmpleado);
+
+		$dwes->autocommit(false);
+
+		//echo $_SESSION["usuario"];
+
+		$tabla=BD::sesiones($_SESSION["usuario"]);
+
+		//echo $tabla."-".$cEmpleado;
+		$empleado=BD::DameEmpleado($_SESSION["usuario"], $cEmpleado);
+
 		foreach ($empleado as $emple) {
 			$nombre=$emple->nombre;
 			$apellido1=$emple->apellido1;
 			$apellido2=$emple->apellido2;
 			$saldo=$emple->saldo;
+			$coment=$emple->comentarios;
 		}
 		
-		$saldo= $saldo-$diasL;
+		$hoy=date("Y-m-d H:i:s");
 
 		if(empty($tipo)){
-			$error=true;
-			return $error;
+			return "true";
 		}else{
 			if($tipo=="vacaciones"){
-				echo $diasL;
-				$c="INSERT INTO dias (cod_dias, cod_empleado, nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', 'si', '-', '-', '-', '-', '$comentario', '$sesion')";
-				$resultado = $dwes->query($c);
-				if($resultado){
-					$error=false;
+				$saldo= $saldo-$diasL;
+				$c="INSERT INTO `vacaciones`.`dias` (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', 'Si', '-', '-', '-', '-', '$comentario', '$sesion', '$hoy');";
+				
+				$coment=$coment."****---****".$hoy.": Vacaciones->".$comentario;
+				
+				$d="UPDATE $tabla SET comentarios = '$coment', saldo = '$saldo' WHERE codigo = '$cEmpleado' ;";
+				
+				$r1 = $dwes->query($c);
+				$r2 = $dwes->query($d);
+					
+				if($dwes->commit()){
+					$dwes->close();
+					return "true";
+				}else{
+					$dwes->rollback();
+					$dwes->close();
+					return "false";
 				}
-
 			}else if($tipo=="PerRe"){
-				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', 'si', '-', '-', '-', '$comentario', '$sesion')";
-				$resultado = $dwes->query($c);
-				if($resultado){
-					$error=false;
+				$c="INSERT INTO dias (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', '-', 'Si', '-', '-', '-', '$comentario', '$sesion', '$hoy');";
+				
+				$coment=$coment."****---****".$hoy.": Permiso retribuido ->".$comentario;
+
+				$d="UPDATE $tabla SET comentarios = '$coment' WHERE codigo = '$cEmpleado' ;";
+
+				$r1 = $dwes->query($c);
+				$r2 = $dwes->query($d);
+
+				if($dwes->commit()){
+					$dwes->close();
+					return "true";
+				}else{
+					$dwes->rollback();
+					$dwes->close();
+					return "false";
 				}
 
 			}else if($tipo=="PerNoRe"){
-				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '-', '$comentario', '$sesion')";
-				$resultado = $dwes->query($c);
-				if($resultado){
-					$error=false;
+				$c="INSERT INTO dias (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', '-', '-', 'Si', '-', '-', '$comentario', '$sesion', '$hoy');";
+				
+				$coment=$coment."****---****".$hoy.": Permiso no retribuido ->".$comentario;
+
+				$d="UPDATE $tabla SET comentarios = '$coment' WHERE codigo = '$cEmpleado' ;";
+
+				$r1 = $dwes->query($c);
+				$r2 = $dwes->query($d);
+
+				if($dwes->commit()){
+					$dwes->close();
+					return "true";
+				}else{
+					$dwes->rollback();
+					$dwes->close();
+					return "false";
 				}
 
 			}else if($tipo=="bec"){
-				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', 'si', '-', '$comentario', '$sesion')";
-				$resultado = $dwes->query($c);
-				if($resultado){
-					$error=false;
+				$c="INSERT INTO dias (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', '-', '-', '-', 'Si', '-', '$comentario', '$sesion', '$hoy');";
+				
+				$coment=$coment."****---****".$hoy.": Baja enfermedad común ->".$comentario;
+
+				$d="UPDATE $tabla SET comentarios = '$coment' WHERE codigo = '$cEmpleado' ;";
+
+				$r1 = $dwes->query($c);
+				$r2 = $dwes->query($d);
+
+				if($dwes->commit()){
+					$dwes->close();
+					return "true";
+				}else{
+					$dwes->rollback();
+					$dwes->close();
+					return "false";
 				}
 
 			}else if($tipo=="bal"){
-				$c="INSERT INTO dias (cod_dias, cod_empleado,nombre, apellido1, apellido2, FechaInicio, FechaFin, dias_Natu, dias_lab, aumentoDias, SALDO_DIAS, vacaciones, PerRetri, PerNoRetri, Bec, Bal, Comentarios, user_login) VALUES (NULL, '$cEmpleado','$nombre', '$apellido1', '$apellido2', '$fechaI', ' $fechaF', '$diasN', '$diasL', '$aumento', '$saldo', '-', '-', '-', '-', 'si', '$comentario', '$sesion')";
-				$resultado = $dwes->query($c);
-				if($resultado){
-					$error=false;
+				$c="INSERT INTO dias (`cod_dias`, `cod_empleado`, `nombre`, `apellido1`, `apellido2`, `FechaInicio`, `FechaFin`, `dias_Natu`, `dias_lab`, `aumentoDias`, `SALDO_DIAS`, `vacaciones`, `PerRetri`, `PerNoRetri`, `Bec`, `Bal`, `Comentarios`, `user_login`, `hoy`) VALUES (NULL, '$cEmpleado', '$nombre', '$apellido1', '$apellido2', '$fechaI', '$fechaF', '$diasN', '$diasL', '-', '$saldo', '-', '-', '-', '-', 'Si', '$comentario', '$sesion', '$hoy');";
+				
+				$coment=$coment."****---****".$hoy.": Baja accidente laboral ->".$comentario;
+
+				$d="UPDATE $tabla SET comentarios = '$coment' WHERE codigo = '$cEmpleado' ;";
+
+				$r1 = $dwes->query($c);
+				$r2 = $dwes->query($d);
+
+				if($dwes->commit()){
+					$dwes->close();
+					return "true";
+				}else{
+					$dwes->rollback();
+					$dwes->close();
+					return "false";
 				}
 				
 			}
-		$dwes->close();
-		return $error;
+			$dwes->close();
+			
 		}
 	}
 
@@ -155,6 +214,7 @@ class BD {
 		$verifica="false";
 		$dwes=BD::conect();
 		$aDias=0;
+		$hoy=date("Y-m-d H:i:s");
 		$aTexto=" ";
 		$aux=BD::DameEmpleado($codigo);
 		foreach ($aux as $a) {
@@ -162,10 +222,11 @@ class BD {
 			$aDias=$a->saldo;
 		}
 
-		$comentarios=$aTexto."<br>".$comentario;
+		$coment=$aTexto."****---****".$hoy.": Modificacion de aumento ->".$comentario;
+
 		$saldo=$aDias+$num;
 
-		$c="UPDATE empleoficina SET comentarios = '$comentarios', saldo = '$saldo' WHERE codigo = '$codigo' ;";
+		$c="UPDATE empleoficina SET comentarios = '$coment', saldo = '$saldo' WHERE codigo = '$codigo' ;";
 		
 		$resultado = $dwes->query($c);
 		
@@ -222,7 +283,7 @@ class BD {
 		}
 	}
 		//el siguiente metodo nos devuelve la tabla a la que tiene acceso el usuario que se ha logeado
-	public function sesiones($usu){//(){ 
+	public function sesiones($usu){
 		$dwes = BD::conect();
 		$c="SELECT tabla FROM usuarios WHERE usuario='$usu' ";
 
@@ -236,7 +297,7 @@ class BD {
 	public static function CargaEmpleados($usuario){
 		$dwes = BD::conect();
 		$tabla=BD::sesiones($usuario);
-		echo $tabla;
+		
 		$c="SELECT * FROM $tabla ";
 
 		$resultado = $dwes->query($c);
@@ -245,26 +306,26 @@ class BD {
 		
 		while($emple=$resultado->fetch_object()){
 			$empleados [] = new Empleado( $emple->codigo,
-											$emple->dni,
-											$emple->nombre, 
-											$emple->apellido1, 
-											$emple->apellido2, 
-											$emple->localidad,
-											$emple->movil,
-											$emple->comentarios,
-											$emple->saldo);	
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
 		}
 		$dwes->close();	
 		return $empleados;
 	}
 
-	public static function DameEmpleado($usuario, $codigo){
+	public static function DameEmpleado($usu, $codigo){
 		
 		$dwes = BD::conect();
 
-		$tabla=BD::sesiones($usuario);
+		$tabla= BD::sesiones($usu);
 
-		$c="SELECT * FROM $tabla WHERE codigo='$codigo'";
+		$c="SELECT * FROM $tabla WHERE codigo ='$codigo' ";
 
 		$resultado = $dwes->query($c);
 		
@@ -272,14 +333,14 @@ class BD {
 		
 		while($emple=$resultado->fetch_object()){
 			$empleado [] = new Empleado( $emple->codigo,
-											$emple->dni,
-											$emple->nombre, 
-											$emple->apellido1, 
-											$emple->apellido2, 
-											$emple->localidad,
-											$emple->movil,
-											$emple->comentarios,
-											$emple->saldo);	
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
 		}
 		$dwes->close();	
 		return $empleado;
@@ -298,14 +359,14 @@ class BD {
 		
 		while($emple=$resultado->fetch_object()){
 			$empleado [] = new Empleado( $emple->codigo,
-											$emple->dni,
-											$emple->nombre, 
-											$emple->apellido1, 
-											$emple->apellido2, 
-											$emple->localidad,
-											$emple->movil,
-											$emple->comentarios,
-											$emple->saldo);	
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
 		}
 		$saldo=$empleado["saldo"];
 		$dwes->close();	
@@ -325,9 +386,9 @@ class BD {
 
 		while($fes= $resultado->fetch_object() ){
 			$festivo [] =  new fiestas( 
-								$fes->ambito,
-								$fes->fecha,
-								$fes->comentarios);
+				$fes->ambito,
+				$fes->fecha,
+				$fes->comentarios);
 		}
 		$dwes->close();	
 		return $festivo;
@@ -384,21 +445,21 @@ class BD {
 		
 		while($vaca=$resultado->fetch_object()){
 			$vbpcomen [] =  new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+				$vaca->cod_dias,
+				$vaca->cod_empleado,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 		}
 		$dwes->close();	
 		return $vbpcomen;
@@ -418,21 +479,25 @@ class BD {
 		
 		while($vaca=$resultado->fetch_object()){
 			$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+				$vaca->cod_dias,
+				
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->cod_empleado,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 		}
 
 		$dwes->close();
@@ -446,7 +511,7 @@ class BD {
 		
 		if($clase=="vaca"){
 			$dwes = BD::conect();
-		
+
 			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND vacaciones='SI'";
 
 			$resultado = $dwes->query($c);
@@ -456,27 +521,27 @@ class BD {
 			while($vaca=$resultado->fetch_object()){
 				
 				$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+					$vaca->cod_dias,
+					$vaca->cod_empleado,
+					$vaca->FechaInicio,
+					$vaca->FechaFin,
+					$vaca->dias_Natu,
+					$vaca->dias_lab,
+					$vaca->aumentoDias,
+					$vaca->SALDO_DIAS,
+					$vaca->vacaciones,
+					$vaca->PerRetri,
+					$vaca->PerNoRetri,
+					$vaca->Bec,	
+					$vaca->Bal,
+					$vaca->Comentarios,
+					$vaca->user_login);
 			}
 		}
 
 		if($clase=="PerRetri"){
 			$dwes = BD::conect();
-		
+
 			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND PerRetri='SI' ";
 
 			$resultado = $dwes->query($c);
@@ -486,27 +551,27 @@ class BD {
 			while($vaca=$resultado->fetch_object()){
 				
 				$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+					$vaca->cod_dias,
+					$vaca->cod_empleado,
+					$vaca->FechaInicio,
+					$vaca->FechaFin,
+					$vaca->dias_Natu,
+					$vaca->dias_lab,
+					$vaca->aumentoDias,
+					$vaca->SALDO_DIAS,
+					$vaca->vacaciones,
+					$vaca->PerRetri,
+					$vaca->PerNoRetri,
+					$vaca->Bec,	
+					$vaca->Bal,
+					$vaca->Comentarios,
+					$vaca->user_login);
 			}
 		}
 
 		if($case=="PerNoRetri"){
 			$dwes = BD::conect();
-		
+
 			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND PerNoRetri='SI'";
 
 			$resultado = $dwes->query($c);
@@ -516,27 +581,27 @@ class BD {
 			while($vaca=$resultado->fetch_object()){
 				
 				$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+					$vaca->cod_dias,
+					$vaca->cod_empleado,
+					$vaca->FechaInicio,
+					$vaca->FechaFin,
+					$vaca->dias_Natu,
+					$vaca->dias_lab,
+					$vaca->aumentoDias,
+					$vaca->SALDO_DIAS,
+					$vaca->vacaciones,
+					$vaca->PerRetri,
+					$vaca->PerNoRetri,
+					$vaca->Bec,	
+					$vaca->Bal,
+					$vaca->Comentarios,
+					$vaca->user_login);
 			}
 		}
 
 		if($clase=="Bec"){
 			$dwes = BD::conect();
-		
+
 			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND Bec='SI'";
 
 			$resultado = $dwes->query($c);
@@ -546,27 +611,27 @@ class BD {
 			while($vaca=$resultado->fetch_object()){
 				
 				$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+					$vaca->cod_dias,
+					$vaca->cod_empleado,
+					$vaca->FechaInicio,
+					$vaca->FechaFin,
+					$vaca->dias_Natu,
+					$vaca->dias_lab,
+					$vaca->aumentoDias,
+					$vaca->SALDO_DIAS,
+					$vaca->vacaciones,
+					$vaca->PerRetri,
+					$vaca->PerNoRetri,
+					$vaca->Bec,	
+					$vaca->Bal,
+					$vaca->Comentarios,
+					$vaca->user_login);
 			}
 		}
 
 		if($clase=="Bal"){
 			$dwes = BD::conect();
-		
+
 			$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND Bal='SI'";
 
 			$resultado = $dwes->query($c);
@@ -576,21 +641,21 @@ class BD {
 			while($vaca=$resultado->fetch_object()){
 				
 				$vbpcu [] = new vacacion ( 
-								$vaca->cod_dias,
-								$vaca->cod_empleado,
-								$vaca->FechaInicio,
-								$vaca->FechaFin,
-								$vaca->dias_Natu,
-								$vaca->dias_lab,
-								$vaca->aumentoDias,
-								$vaca->SALDO_DIAS,
-								$vaca->vacaciones,
-								$vaca->PerRetri,
-								$vaca->PerNoRetri,
-								$vaca->Bec,	
-								$vaca->Bal,
-								$vaca->Comentarios,
-								$vaca->user_login);
+					$vaca->cod_dias,
+					$vaca->cod_empleado,
+					$vaca->FechaInicio,
+					$vaca->FechaFin,
+					$vaca->dias_Natu,
+					$vaca->dias_lab,
+					$vaca->aumentoDias,
+					$vaca->SALDO_DIAS,
+					$vaca->vacaciones,
+					$vaca->PerRetri,
+					$vaca->PerNoRetri,
+					$vaca->Bec,	
+					$vaca->Bal,
+					$vaca->Comentarios,
+					$vaca->user_login);
 			}
 		}
 		

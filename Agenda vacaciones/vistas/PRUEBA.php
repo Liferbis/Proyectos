@@ -1,39 +1,99 @@
 <?php 
-require_once "../include/BaseDeDatos.php"
+//require_once "include/BaseDeDatos.php"
  ?>
+<?php require_once "header.php" ?>
+<?php //require_once "libreria/PHPExcel/Classes/PHPExcel.php" ?>
+
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th class="text-center" colspan="6"><h3>Vacaciones</h3></th>
+			</tr>
+			<tr>
+				<th colspan="2">Empleados</th>
+
+				<th>Fecha Inicio</th>
+				<th>Fecha Fin</th>
+				<th>Dias Naturales</th>
+				<th>Dias laborables</th>
+				<th>Saldo</th>
+				<th>vacaciones</th>
+				<th>PerRetri</th>
+				<th>PerNoRetri</th>
+				<th>Bec</th>
+				<th>Bal</th>
+				<th>Comentarios</th>
+				<th>Usuario</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($empleados as $em) { ?>
+			<tr>
+				<td>
+					<?php echo $em->nombre; ?>
+				</td>
+				<td>
+					<?php echo $em->apellido1; ?>
+				</td>
+				<td>
+					<?php  echo $em->FechaInicio; ?>
+				</td>
+			
+				<td>
+					<?php  echo $em->FechaFin; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->dias_Natu; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->dias_lab; ?>
+				</td>
+			
+				<td>
+					<?php  echo $em->aumentoDias; ?>
+				</td>
+			
+				<td>
+					<?php  echo $em->SALDO_DIAS; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->vacaciones; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->PerRetri; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->PerNoRetri; ?>
+				</td>
+			
+				<td>
+					<?php  echo $em->Bec; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->Bal; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->Comentarios; ?>
+				</td>
+			
+				<td>
+					<?php echo $em->user_login; ?>
+				</td>
+			</tr>
+		<?php } ?>
+		</tbody>
+	</table>
 
 
 
-<?php
-
-foreach ($emp as $emple) {
-                $nombre=$emple->nombre;
-                $apellido1=$emple->apellido1;
-            }
-
- $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
-            if(file_exists($dir)){
-                $fecha=date('Y-m-d');//'2015-01-01';
-                $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
-                echo $ruta;
-                $folder=mkdir($ruta, 0755, true);
-                if(!$folder){
-                    die('Fallo en la ruta de la carpeta');
-                }else{
-                    die('Creado correctamente');
-                }
-            }else{
-                $dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
-                $fecha=date('Y-m-d');//'2015-01-01';
-                $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
-                $folder=mkdir($ruta, 0755, true);
-                if(!$folder){
-                    echo 'Fallo en la ruta de la carpeta';
-                }else{
-                    echo 'Creado correctamente';            
-                }
-            }
-?>
 
 
 
@@ -67,95 +127,4 @@ foreach ($emp as $emple) {
 
  
 
-<div class="table-responsive">
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th><?php 
-						$_SESSION["usuario"]="usu1";
-						$tabla= BD::sesiones($_SESSION["usuario"]);
-						print_r($tabla);
-				 ?></th>
-			</tr>
-		</thead>
-		<?php foreach ($empleados as $em) { ?>
-		<tbody>
-			<tr>
-				<td>
-					<?php echo $em->cod_dias; ?>
-           		</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->cod_empleado; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php  echo $em->FechaInicio; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php  echo $em->FechaFin; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->dias_Natu; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->dias_lab; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php  echo $em->aumentoDias; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php  echo $em->SALDO_DIAS; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->vacaciones; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->PerRetri; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->PerNoRetri; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php  echo $em->Bec; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->Bal; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->Comentarios; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo $em->user_login; ?>
-				</td>
-			</tr>
-		<?php } ?>
-		</tbody>
-	</table>
-</div>
+

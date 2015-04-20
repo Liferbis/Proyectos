@@ -8,22 +8,71 @@
 				<th class="text-center" colspan="6"><h3>Vacaciones</h3></th>
 			</tr>
 			<tr>
-				<th>Empleados</th>
+				<th colspan="2">Empleados</th>
+
 				<th>Fecha Inicio</th>
 				<th>Fecha Fin</th>
 				<th>Dias Naturales</th>
 				<th>Dias laborables</th>
 				<th>Saldo</th>
+
+				<th>Comentarios</th>
+				<th>Usuario</th>
 			</tr>
 		</thead>
 		<tbody>
+			<?php foreach ($vacas as $vemp) { ?>
 			<tr>
 				<td>
 					<?php 
-								//echo $cod_emple;
+						echo $vemp->nombre." ".$vemp->apellido1;
 					?>
 				</td>
+				<td>
+					<?php 
+						echo $vemp->fechaInicio;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->FechaFin;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->dias_Natu;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->dias_lab;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->SALDO_DIAS;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->Comentarios;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						echo $vemp->user_login;
+					 ?>
+				</td>
+				<td>
+					<?php 
+						//echo $vemp->
+					 ?>
+				</td>
+
 			</tr>
+			<?php 
+				}
+			 ?>
 		</tbody>
 	</table>
 	<?php

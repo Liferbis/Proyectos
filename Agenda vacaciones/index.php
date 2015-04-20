@@ -238,8 +238,8 @@ if (isset($_SESSION["usuario"])){
                 $diaslab=$diaslab-1;
             }
              //$estado=BD::pr($diaslab);   
-            $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $aumento, $tipo, $comentario, $sesion);
-            if($estado="true"){
+            $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
+            if($estado=="true"){
                 require_once "vistas/VistaTerminado.php";
             }else{
                 require_once "vistas/VistaTerminadoE.php";

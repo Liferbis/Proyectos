@@ -92,7 +92,10 @@ class fiestas {
 
 class vacacion {
 	private $cod_dias;
-	private $cod_emplead;
+	private $cod_empleado;
+	private $nombre;
+	private $apellido1;
+	private $apellido2;
 	private $FechaInicio;
 	private $FechaFin;
 	private $dias_Natu;
@@ -107,10 +110,10 @@ class vacacion {
 	private $Comentarios;
 	private $user_login;
 
-	function __construct( $cod_dias, $cod_emplead, $nombre, $apellido1, $apellido2, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
+	function __construct( $cod_dias, $cod_empleado, $nombre, $apellido1, $apellido2, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
 		
 		$this->cod_dias=$cod_dias;
-		$this->cod_emplead=$cod_emplead;
+		$this->cod_empleado=$cod_empleado;
 		$this->nombre=$nombre;
 		$this->apellido1=$apellido1;
 		$this->apellido2=$apellido2;
