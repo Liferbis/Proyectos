@@ -1,6 +1,3 @@
-<?php 
-require_once "BD.php";
- ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -20,53 +17,42 @@ require_once "BD.php";
 		<![endif]-->
 	</head>
 	<body>
-		<h1 class="text-center">Gestión de las plazas</h1>
+		<h1 class="text-center">Llegada</h1>
 		<hr>
-		<div class="text-center well">
+		<div class="text-center">
 			<form action="" method="POST" role="form">
-				<?php
-					BD::modifica(); 
-				?>
-
-				<button type="submit" name="modi" class="btn btn-large btn-block btn-primary">
-						Modificar
-				</button>	
-				</a>
-				<a href="index.php" >
-					<button type="button" class="btn btn-large btn-block btn-warning">
-						Volver
+				<button type="submit" name="llegar" class="btn btn-large btn-block btn-info">
+					<strong>
+						Llegada
+					</strong>
+				</button>
+				<br>
+				<a href="index.php" style="color:white">
+					<button type="button" name="volver" class="btn btn-large btn-block btn-danger">
+						<strong>
+							Volver
+						</strong>
 					</button>
 				</a>
 			</form>
-			
 		</div>
 
 		<?php 
-			if(isset($_POST["modi"])){
-				$plazas=array();
-				$num=BD::numAsientos();
-				
-				for ($i=0; $i < count($num)  ; $i++) { 
-					$plazas["$i"]=$_POST["$i"];
-				}
-			
-				if(!BD::actualiza($plazas)){
+			require_once "BD.php";
+			if(isset($_POST["llegar"])){
+				if(BD::llegada()){
 			?>
-					<div class="alert alert-danger">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>EROOR</strong> Intentelo de nuevo mas tarde
-					</div>
+				<hr>
+				<h3 class="text-center">Los cambios se han hecho correctamente</h3>
 			<?php 
 				}else{
 			?>
-					<hr>
-					<h3 class="text-center">Los cambios se han hecho correctamente</h3>
-			<?php 
+				<hr>
+				<h3 class="text-center">ERROR !! Inténtelo de nuevo mas tarde</h3>
+			<?php		
 				}
 			}
 		 ?>
-		
-		
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<!-- Bootstrap JavaScript -->

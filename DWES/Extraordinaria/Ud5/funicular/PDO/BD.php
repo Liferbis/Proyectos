@@ -16,6 +16,41 @@ class BD {
 	 	return $dwes;
 	}
 
+	public static function verifica($usuario, $ctv){
+		$dwes = BD::conectPDO();
+		$verifica="false";
+		
+		$c="SELECT * FROM usuarios WHERE usuario='$usuario' AND ctv='$ctv'";
+		
+		$resultado = $dwes->query($c);	
+		$acceso= $resultado->fetch();
+
+		if(!$acceso){
+			unset($dwes);
+			return $verifica;
+		}else{
+			unset($dwes);
+			$verifica="true";
+			return $verifica;
+		}
+	}
+
+	public static function registra($usuario, $ctv){
+		$dwes = BD::conectPDO();
+		$verifica="false";
+		
+		$c="INSERT INTO `funicular`.`usuarios` (`usuario`, `ctv`) VALUES ('$usuario', '$ctv');";
+		
+		if($dwes->exec($c) == 0){
+			unset($dwes);
+			return $verifica;
+		}else{
+			unset($dwes);
+			$verifica="true";
+			return $verifica;
+		}
+	}
+
 	public static function llegada(){
 	 	$dwes = BD::conectPDO();
 	 	$todo_bien = true; 

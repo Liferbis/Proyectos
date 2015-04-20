@@ -48,8 +48,7 @@ require_once "BD.php";
 				
 				for ($i=0; $i < count($num)  ; $i++) { 
 					$plazas["$i"]=$_POST["$i"];
-				}
-			
+				}		
 				if(!BD::actualiza($plazas)){
 			?>
 					<div class="alert alert-danger">
