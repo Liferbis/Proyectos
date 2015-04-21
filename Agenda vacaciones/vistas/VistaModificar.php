@@ -23,7 +23,7 @@ include_once "header.php";
 									
 
 									<?php 
-									$empleados=BD::CargaEmpleados();
+									
 									foreach ($empleados as $emple) { 
 										?>
 

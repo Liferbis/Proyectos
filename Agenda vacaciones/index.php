@@ -13,6 +13,8 @@ if (isset($_SESSION["usuario"])){
             include ('vistas/VistaGestion.php');
              
         } else if ($gestor == "modiE") {
+            $sesion=$_SESSION["usuario"];
+            $empleados=BD::CargaEmpleados($sesion);
             include ('vistas/VistaModificar.php');
             
         } else if ($gestor == "borrarE") {
@@ -28,6 +30,10 @@ if (isset($_SESSION["usuario"])){
             $sesion=$_SESSION["usuario"];
             $empleados=BD::CargaEmpleados($sesion);
             include ('vistas/VistaAumento.php');
+
+        } else if ($gestor == "excel") {
+            include ('vistas/VistaGenerada.php');
+             
         }
 
     }else if(isset($_POST["altaE"])){
@@ -263,31 +269,35 @@ if (isset($_SESSION["usuario"])){
     }else if (isset($_POST["generar"])){
         if(isset($_POST["e0"])){
             $empleados=BD::cargaExcel();
-            require_once "vistas/PRUEBA.php";
+             require_once "vistas/VistaTablaInforme.php";
             //echo "Dentro de value=0 ";
             
         }else if(isset($_POST["e1"]) & isset($_POST["num1"])){
             $empl=$_POST["num1"];
-            $empleados=BD::cargarExcel($empl);
-            require_once "vistas/PRUEBA.php";
+            $empleados=BD::cargarExcel($empl, $_SESSION["usuario"]);
+            require_once "vistas/VistaTablaInforme.php";
             //echo "Dentro de value=1 ".$empl;
         }else if(isset($_POST["e2"])=="2"){
             $tipo=$_POST["tipo"];
             $empleados=BD::cargaExcel($tipo);
+             require_once "vistas/VistaTablaInforme.php";
             //echo "Dentro de value=2 ";
         }else if(isset($_POST["e3"]) & isset($_POST["num2"])){
             $tipo=$_POST["tipo"];
             $empl=$_POST["num2"];
             $empleados=BD::cargaExcels($empl, $tipo);
+            require_once "vistas/VistaTablaInforme.php";
             //echo "Dentro de value=3 ";
         }else if(isset($_POST["e4"]) & isset($_POST["anio1"])){
             $anio=$_POST["anio1"];
            // $empleados=BD::cargaExcel();
+            //require_once "vistas/VistaTablaInforme.php";
             echo "Dentro de value=4 ";
         }else if(isset($_POST["e5"]) & isset($_POST["anio2"]) & isset($_POST["num3"])){
             $anio=$_POST["anio2"];
             $empl=$_POST["num3"];
             //$empleados=BD::cargaExcel();
+            //require_once "vistas/VistaTablaInforme.php";
             echo "Dentro de value=5 ";
         }else{
             require_once "vistas/VistaTerminadoE.php";

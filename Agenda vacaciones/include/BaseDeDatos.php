@@ -437,7 +437,7 @@ class BD {
 	public static function cargarExcel($codigo){
 		$dwes = BD::conect();
 		
-		$c="SELECT * FROM dias WHERE cod_empleado='$codigo'";
+		$c="SELECT * FROM dias WHERE cod_empleado='$codigo' AND ";
 
 		$resultado = $dwes->query($c);
 		
@@ -459,7 +459,8 @@ class BD {
 				$vaca->Bec,	
 				$vaca->Bal,
 				$vaca->Comentarios,
-				$vaca->user_login);
+				$vaca->user_login,
+				$vaca->hoy);
 		}
 		$dwes->close();	
 		return $vbpcomen;
@@ -480,11 +481,10 @@ class BD {
 		while($vaca=$resultado->fetch_object()){
 			$vbpcu [] = new vacacion ( 
 				$vaca->cod_dias,
-				
+				$vaca->cod_empleado,
 				$vaca->nombre,
 				$vaca->apellido1,
 				$vaca->apellido2,
-				$vaca->cod_empleado,
 				$vaca->FechaInicio,
 				$vaca->FechaFin,
 				$vaca->dias_Natu,
@@ -497,7 +497,8 @@ class BD {
 				$vaca->Bec,	
 				$vaca->Bal,
 				$vaca->Comentarios,
-				$vaca->user_login);
+				$vaca->user_login,
+				$vaca->hoy);
 		}
 
 		$dwes->close();
@@ -522,20 +523,23 @@ class BD {
 				
 				$vbpcu [] = new vacacion ( 
 					$vaca->cod_dias,
-					$vaca->cod_empleado,
-					$vaca->FechaInicio,
-					$vaca->FechaFin,
-					$vaca->dias_Natu,
-					$vaca->dias_lab,
-					$vaca->aumentoDias,
-					$vaca->SALDO_DIAS,
-					$vaca->vacaciones,
-					$vaca->PerRetri,
-					$vaca->PerNoRetri,
-					$vaca->Bec,	
-					$vaca->Bal,
-					$vaca->Comentarios,
-					$vaca->user_login);
+				$vaca->cod_empleado,
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 			}
 		}
 
@@ -552,20 +556,23 @@ class BD {
 				
 				$vbpcu [] = new vacacion ( 
 					$vaca->cod_dias,
-					$vaca->cod_empleado,
-					$vaca->FechaInicio,
-					$vaca->FechaFin,
-					$vaca->dias_Natu,
-					$vaca->dias_lab,
-					$vaca->aumentoDias,
-					$vaca->SALDO_DIAS,
-					$vaca->vacaciones,
-					$vaca->PerRetri,
-					$vaca->PerNoRetri,
-					$vaca->Bec,	
-					$vaca->Bal,
-					$vaca->Comentarios,
-					$vaca->user_login);
+				$vaca->cod_empleado,
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 			}
 		}
 
@@ -582,20 +589,23 @@ class BD {
 				
 				$vbpcu [] = new vacacion ( 
 					$vaca->cod_dias,
-					$vaca->cod_empleado,
-					$vaca->FechaInicio,
-					$vaca->FechaFin,
-					$vaca->dias_Natu,
-					$vaca->dias_lab,
-					$vaca->aumentoDias,
-					$vaca->SALDO_DIAS,
-					$vaca->vacaciones,
-					$vaca->PerRetri,
-					$vaca->PerNoRetri,
-					$vaca->Bec,	
-					$vaca->Bal,
-					$vaca->Comentarios,
-					$vaca->user_login);
+				$vaca->cod_empleado,
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 			}
 		}
 
@@ -612,20 +622,23 @@ class BD {
 				
 				$vbpcu [] = new vacacion ( 
 					$vaca->cod_dias,
-					$vaca->cod_empleado,
-					$vaca->FechaInicio,
-					$vaca->FechaFin,
-					$vaca->dias_Natu,
-					$vaca->dias_lab,
-					$vaca->aumentoDias,
-					$vaca->SALDO_DIAS,
-					$vaca->vacaciones,
-					$vaca->PerRetri,
-					$vaca->PerNoRetri,
-					$vaca->Bec,	
-					$vaca->Bal,
-					$vaca->Comentarios,
-					$vaca->user_login);
+				$vaca->cod_empleado,
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 			}
 		}
 
@@ -642,20 +655,23 @@ class BD {
 				
 				$vbpcu [] = new vacacion ( 
 					$vaca->cod_dias,
-					$vaca->cod_empleado,
-					$vaca->FechaInicio,
-					$vaca->FechaFin,
-					$vaca->dias_Natu,
-					$vaca->dias_lab,
-					$vaca->aumentoDias,
-					$vaca->SALDO_DIAS,
-					$vaca->vacaciones,
-					$vaca->PerRetri,
-					$vaca->PerNoRetri,
-					$vaca->Bec,	
-					$vaca->Bal,
-					$vaca->Comentarios,
-					$vaca->user_login);
+				$vaca->cod_empleado,
+				$vaca->nombre,
+				$vaca->apellido1,
+				$vaca->apellido2,
+				$vaca->FechaInicio,
+				$vaca->FechaFin,
+				$vaca->dias_Natu,
+				$vaca->dias_lab,
+				$vaca->aumentoDias,
+				$vaca->SALDO_DIAS,
+				$vaca->vacaciones,
+				$vaca->PerRetri,
+				$vaca->PerNoRetri,
+				$vaca->Bec,	
+				$vaca->Bal,
+				$vaca->Comentarios,
+				$vaca->user_login);
 			}
 		}
 		

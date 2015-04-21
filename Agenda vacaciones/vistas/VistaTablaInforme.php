@@ -1,178 +1,111 @@
 <?php require_once "header.php" ?>
 <?php require_once "libreria/PHPExcel/Classes/PHPExcel.php" ?>
+<?php require_once "header.php" ?>
+<?php //require_once "libreria/PHPExcel/Classes/PHPExcel.php" ?>
 
 <div class="table-responsive">
-	<table class="table table-hover">
+	<table class="table table-hover" id='infoTabla' >
 		<thead>
 			<tr>
-				<th class="text-center" colspan="6"><h3>Vacaciones</h3></th>
+				<th colspan="15" id="infoTi">Gestor</th>
 			</tr>
-			<tr>
-				<th colspan="2">Empleados</th>
+			<tr >
+				<th colspan="2" id="info1" >Empleados</th>
+				<th colspan="5" id="info2" >Datos</th>
+				<th colspan="3" id="info3">Tipo</th>
+				<th colspan="2" id="info4">Baja</th>
+				<th id="info5">Información</th>
+				<th colspan="2" id="info6">Responsable</th>
 
-				<th>Fecha Inicio</th>
-				<th>Fecha Fin</th>
-				<th>Dias Naturales</th>
-				<th>Dias laborables</th>
-				<th>Saldo</th>
-
-				<th>Comentarios</th>
-				<th>Usuario</th>
+			</tr>
+			<tr class="text-center">
+				
+				<th id="info1">Nombre</th>
+				<th id="info1">Apellido</th>
+				<th id="info2">Fecha Inicio</th>
+				<th id="info2">Fecha Fin</th>
+				<th id="info2">Dias Naturales</th>
+				<th id="info2">Dias laborables</th>
+				<th id="info2">Saldo</th>
+				<th id="info3">vacaciones</th>
+				<th id="info3">PerRetri</th>
+				<th id="info3">PerNoRetri</th>
+				<th id="info4">Bec</th>
+				<th id="info4">Bal</th>
+				<th id="info5">Comentarios</th>
+				<th id="info6">Usuario</th>
+				<th id="info6">Fecha</th>
 			</tr>
 		</thead>
-		<tbody>
-			<?php foreach ($vacas as $vemp) { ?>
-			<tr>
-				<td>
-					<?php 
-						echo $vemp->nombre." ".$vemp->apellido1;
-					?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->fechaInicio;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->FechaFin;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->dias_Natu;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->dias_lab;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->SALDO_DIAS;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->Comentarios;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						echo $vemp->user_login;
-					 ?>
-				</td>
-				<td>
-					<?php 
-						//echo $vemp->
-					 ?>
-				</td>
 
+		<tbody >
+			<?php foreach ($empleados as $em) { ?>
+			<tr class="text-center">
+				<td id="info1R">
+					<?php echo $em->nombre; ?>
+				</td>
+				<td id="info1R">
+					<?php echo $em->apellido1; ?>
+				</td>
+				<td id="info2R">
+					<?php  echo $em->FechaInicio; ?>
+				</td>
+			
+				<td id="info2R">
+					<?php  echo $em->FechaFin; ?>
+				</td>
+			
+				<td id="info2R">
+					<?php echo $em->dias_Natu; ?>
+				</td>
+			
+				<td id="info2R">
+					<?php echo $em->dias_lab; ?>
+				</td>
+				<td id="info2R">
+					<?php  echo $em->SALDO_DIAS; ?>
+				</td>
+			
+				<td id="info3R">
+					<?php echo $em->vacaciones; ?>
+				</td>
+			
+				<td id="info3R">
+					<?php echo $em->PerRetri; ?>
+				</td>
+			
+				<td id="info3R">
+					<?php echo $em->PerNoRetri; ?>
+				</td>
+			
+				<td id="info4R">
+					<?php  echo $em->Bec; ?>
+				</td>
+			
+				<td id="info4R">
+					<?php echo $em->Bal; ?>
+				</td>
+			
+				<td id="info5R">
+					<?php echo $em->Comentarios; ?>
+				</td>
+			
+				<td id="info6R">
+					<?php echo $em->user_login; ?>
+				</td>
+				<td id="info6R">
+					<?php echo $em->hoy; ?>
+				</td>
 			</tr>
-			<?php 
-				}
-			 ?>
+		<?php } ?>
 		</tbody>
 	</table>
-	<?php
-	$objPHPExcel = new PHPExcel();
 
-	$objPHPExcel->getProperties()
-	->setCreator("Cattivo")
-	->setLastModifiedBy("Cattivo")
-	->setTitle("Documento Excel de Prueba")
-	->setSubject("Documento Excel de Prueba")
-	->setDescription("Demostracion sobre como crear archivos de Excel desde PHP.")
-	->setKeywords("Excel Office 2007 openxml php")
-	->setCategory("Pruebas de Excel");
+	<hr>
 
+	<div class="row text-center">
+		<a href="index.php?gestor=excel" style="color:white"><button type="submit" class="btn btn-success">Excel .xls</button></a>
+		<a href="index.php" style="color:white"><button type="submit" class="btn btn-danger">Cancelar</button></a>
+	</div>
 
-// $contador = 0; 
-// $conexion = mysql_connect("localhost","host", ""); 
-// if(!$conexion){ echo "Error al conectar a la base de datos"; } 
-// if(!mysql_select_db("prueba",$conexion)) 
-// { echo "Error al seleccionar la tabla"; } 
-
-// $res = mysql_query("consulta", $conexion); 
-// while($fila == mysql_fetch_array($res)) 
-// { 
-// $contador++; 
-// $prueba->setActiveSheetIndex(0)->setCellValue("A" . $contador, $fila["valor"]);
-// // <---- con esto podrias llenar toda la fila A1 al momento de que entre otro registro se 
-// //cambiaria a A2 y asi =) 
-// }
-
-
-//Crear excel con php    http://www.taringa.net/posts/linux/15716598/Crear-documentos-excel-con-PHP.html
-
-				// We give the path to our file here
-				
-
-				$workbook = new Spreadsheet_Excel_Writer('$ruta/prueba1.xls');
-
-				$worksheet = $workbook->addWorksheet('My first worksheet');
-
-				$objPHPExcel->setActiveSheetIndex(0)	
-					->setCellValue('A1','Empleado')
-					->setCellValue('B1', 'Vacaciones')
-					->setCellValue('C1', '')
-					->setCellValue('D1', '')
-					->setCellValue('E1', '')
-					->setCellValue('F1', '')
-					->setCellValue('G1', '')
-					->setCellValue('H1', 'Otros')
-					->setCellValue('I1', '')
-					->setCellValue('J1', 'Baja')
-					->setCellValue('K1', '')
-					->setCellValue('L1', 'Datos')
-					->setCellValue('M1', '')
-
-					->setCellValue('A2', 'Empleado')
-					->setCellValue('B2', 'Fecha Inicio')
-					->setCellValue('C2', 'Fecha Fin')
-					->setCellValue('D2', 'Dias Naturales')
-					->setCellValue('E2', 'Dias laborables')
-					->setCellValue('F2', 'Aumento Vac.')
-					->setCellValue('G2', 'Saldo')
-					->setCellValue('H2', 'Permiso Retribuido')
-					->setCellValue('I2', 'Permiso NO Retribuido')
-					->setCellValue('J2', 'Baja AL')
-					->setCellValue('K2', 'Baja EC')
-					->setCellValue('L2', 'Comentarios')
-					->setCellValue('M2', 'Usuario')
-
-				//cargamos todo sobre el empleado en un array
-				$empleado = BD::cargaExcel($cod_emple);
-
-				//Se agregan los datos de los alumnos
- 			//	$i = 3; //Numero de fila donde se va a comenzar a rellenar
- 				// while ($fila = $resultado->fetch_array()) {
-
-					// ->setCellValue('A'.$i, 'Empleado')
-					// ->setCellValue('B'.$i, 'Fecha Inicio')
-					// ->setCellValue('C'.$i, 'Fecha Fin')
-					// ->setCellValue('D'.$i, 'Dias Naturales')
-					// ->setCellValue('E'.$i, 'Dias laborables')
-					// ->setCellValue('F'.$i, 'Aumento Vac.')
-					// ->setCellValue('G'.$i, 'Saldo')
-					// ->setCellValue('H'.$i, 'Permiso Retribuido')
-					// ->setCellValue('I'.$i, 'Permiso NO Retribuido')
-					// ->setCellValue('J'.$i, 'Baja AL')
-					// ->setCellValue('K'.$i, 'Baja EC')
-					// ->setCellValue('L'.$i, 'Comentarios')
-					// ->setCellValue('M'.$i, 'Usuario');
-
-					// $objPHPExcel->getActiveSheet()->setTitle('Prueba1');			
-
-				// header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-				// header('Content-Disposition: attachment;filename=""');
-				// header('Cache-Control: max-age=0');
-			//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-			//$objWriter->save('pruebaReal.xlsx');
-			//exit;
-				// We still need toC explicitly close the workbook
-				//$workbook->close();
-	?>
-</div>
 <?php require_once "pie.php" ?>

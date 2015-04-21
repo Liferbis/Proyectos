@@ -71,3 +71,80 @@ head {
 #todo{
 	text-align:center;
 }
+
+
+#infoTabla{
+	/*border:"1";
+	border-padding:"0";
+	border-spacing:"1";
+	border-color:"#000000";
+	border-collapse:separate;*/
+	text-align: center;
+}
+
+#infoTi{
+	background:#00CC00;
+	font-size: 24px;
+	text-align: center;
+}
+
+#info1{
+	background:#FD86C5;
+	text-align: center;
+}
+
+#info1R{
+	background:#FED6EB;
+	text-align: center;
+}
+
+#info2{
+	background:#C9FE10;
+	text-align: center;
+}
+
+#info2R{
+	background:#EDFFB0;
+	text-align: center;
+}
+
+#info3{
+	background:#66FDE7;
+	text-align: center;
+}
+
+#info3R{
+	background:#C7FEF5;
+	text-align: center;
+}
+
+#info4{
+	background:#FCBD67;
+	text-align: center;
+}
+
+#info4R{
+	background:#FDD9A8;
+	text-align: center;
+}
+
+#info5{
+	background:#FFFFCC;
+	text-align: center;
+}
+
+#info5R{
+	background:#FFFFDD;
+	text-align: center;
+}
+
+#info6{
+	background:#FF4828;
+	text-align: center;
+}
+
+#info6R{
+	background:#FF8671;
+	text-align: center;
+}
+

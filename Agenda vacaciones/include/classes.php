@@ -109,8 +109,9 @@ class vacacion {
 	private $Bal;
 	private $Comentarios;
 	private $user_login;
+	private $hoy;
 
-	function __construct( $cod_dias, $cod_empleado, $nombre, $apellido1, $apellido2, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login){
+	function __construct( $cod_dias, $cod_empleado, $nombre, $apellido1, $apellido2, $FechaInicio, $FechaFin, $dias_Natu, $dias_lab, $aumentoDias, $SALDO_DIAS, $vacaciones, $PerRetri, $PerNoRetri, $Bec, $Bal, $Comentarios, $user_login, $hoy){
 		
 		$this->cod_dias=$cod_dias;
 		$this->cod_empleado=$cod_empleado;
@@ -130,6 +131,7 @@ class vacacion {
 		$this->Bal=$Bal;
 		$this->Comentarios=$Comentarios;
 		$this->user_login=$user_login;
+		$this->hoy=$hoy;
 		
 	}
 
