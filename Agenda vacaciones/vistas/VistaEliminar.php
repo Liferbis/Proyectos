@@ -23,7 +23,7 @@ include_once "header.php";
 								<option name="empleado" value="0"> ---- Seleccione empleado ---- </option>
 								
 								<?php 
-								$empleados=BD::CargaEmpleados();
+								
 								foreach ($empleados as $emple) { 
 									?>
 									

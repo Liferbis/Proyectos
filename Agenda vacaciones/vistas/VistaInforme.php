@@ -65,10 +65,10 @@ include_once "header.php";
 							<select name="tipo" class="form-control">
 								<option class="" >---- Seleccione tipo ----</option>
 								<option class="text-center" value="vaca">Vacaciones</option>
-								<option class="text-center" value="pnr">Permiso no retribuido</option>
-								<option class="text-center" value="pr">Permiso retribuido</option>
-								<option class="text-center" value="bec">Baja enfermedad comun</option>
-								<option class="text-center" value="bal">Baja accidente laboral</option>
+								<option class="text-center" value="PerNoRetri">Permiso no retribuido</option>
+								<option class="text-center" value="PerRetri">Permiso retribuido</option>
+								<option class="text-center" value="Bec">Baja enfermedad comun</option>
+								<option class="text-center" value="Bal">Baja accidente laboral</option>
 							</select>
 						</div>
 					</td>
