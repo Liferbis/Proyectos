@@ -12,8 +12,8 @@ include_once "header.php";
 		</thead>
 		<tbody>
 			<form action="index.php" method="POST" role="form">
-				<tr id="infoTi1" >
-					<td colspan="2">
+				<tr id="infoTi1">
+					<td  colspan="2">
 						<label>Seleccionando TODO</label>
 					</td>
 				</tr>
@@ -21,7 +21,7 @@ include_once "header.php";
 					<td>De Todos</td>
 					<td>De empleados especificos</td>
 				</tr>
-				<tr  id="info1R">
+				<tr id="info1R" >
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">
@@ -52,13 +52,13 @@ include_once "header.php";
 					</td>
 				</tr>
 				<tr><td></td></tr>
-				<tr id="infoTi2">
+				<tr id="infoTi2" >
 					<td colspan="2">
 						<label>Selección por tipo</label>
 					</td>
 				</tr>
 
-				<tr id="info2R">
+				<tr id="info2R" >
 					<td colspan="2">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<select name="tipo" class="form-control">
@@ -72,11 +72,11 @@ include_once "header.php";
 						</div>
 					</td>
 				</tr>
-				<tr id="info2R">
+				<tr id="info2R" >
 					<td>De Todos</td>
 					<td>De empleados especificos</td>
 				</tr>
-				<tr id="info2R">
+				<tr id="info2R" >
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">
@@ -107,16 +107,16 @@ include_once "header.php";
 					</td>
 				</tr>
 				<tr><td></td></tr>
-				<tr id="infoTi3">
+				<tr  id="infoTi3" >
 					<td colspan="2">
 						<label>Selección por AÑO</label>
 					</td>
 				</tr>
-				<tr id="info3R">
+				<tr id="info3R" >
 					<td>De Todos</td>
 					<td>De empleados especificos</td>
 				</tr>
-				<tr id="info3R">
+				<tr id="info3R" >
 					<td>
 						<div class="input-group">
 							<span class="input-group-addon">
@@ -149,7 +149,7 @@ include_once "header.php";
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="submit" name="generarI" class="btn btn-success">Gernerar informe</button>
+						<button type="submit" name="generarE" class="btn btn-success">Gernerar excel</button>
 					</td>
 				</tr>
 			</form>

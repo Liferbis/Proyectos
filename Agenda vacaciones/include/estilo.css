@@ -4,9 +4,6 @@ body{
 	color:	#00CC00;
 	font: 'Sansation';
 }
-#dropdown{
-	background: #000;
-}
 
 #gliphicon{
 	color:#00CC00;	
@@ -88,13 +85,31 @@ head {
 	text-align: center;
 }
 
+#infoTi1{
+	background:#FCBD67;
+	font-size: 24px;
+	text-align: center;
+}
+
+#infoTi2{
+	background:#C9FE10;
+	font-size: 24px;
+	text-align: center;
+}
+#infoTi3{
+	background:#66FDE7;
+	font-size: 24px;
+	text-align: center;
+}
+
+
 #info1{
-	background:#FD86C5;
+	background:#FDD9A8;
 	text-align: center;
 }
 
 #info1R{
-	background:#FED6EB;
+	background:#FDD9A8;
 	text-align: center;
 }
 

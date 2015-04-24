@@ -104,8 +104,7 @@
 	<hr>
 
 	<div class="row text-center">
-		<a href="index.php?gestor=excel" style="color:white"><button type="submit" class="btn btn-success">Excel .xls</button></a>
-		<a href="index.php" style="color:white"><button type="submit" class="btn btn-danger">Cancelar</button></a>
+		<a href="index.php" style="color:white"><button type="submit" class="btn btn-danger">Volver</button></a>
 	</div>
 
 <?php require_once "pie.php" ?>
