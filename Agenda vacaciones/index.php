@@ -230,64 +230,21 @@ if (isset($_SESSION["usuario"])){
     ////////////////////////////////////////////////////////////////////////////
     ///////   INTRODUCIR VACACIONES CONTANDO CON LOS FESTIVOS  !!!!!!///////////
     ////////////////////////////////////////////////////////////////////////////
-    }else if (isset($_POST["intro"])){
-        $tipo=$_POST["tipe"];
-            //////  RECOGEMOS DE LA BASE DE DATOS UN ARRAY CON LOS DIAS!!!! FESTIVOS DE EL AÑO EN CUESTION  ////////////////////////////
-        $festivos=BD::damefestivosfechas();
-            //////  CALCULA LOS DIAS NATURALES Y LABORABLES EXCLULLENDO LOS FESTIVOS               /////////
-
-        $fechaI=strtotime($_POST["fechaI"]);
-        $fechaIn=date('Y-m-d',$fechaI);
-        $fechaF=strtotime($_POST["fechaF"]);
-        $dias=0;
-        $num=count($festivos);
-        $fiesta=0;
-        $diaslab=0;
-        $fies=false;
-
-        for( $fechaI; $fechaI<=$fechaF; $fechaI=strtotime( '+1 day ' . date('Y-m-d',$fechaI) ) ){
-            $dias++;
-                ////// excluye del array los sabados y domingos/////////
-            if( (strcmp (date('D',$fechaI),'Sun')!=0) & (strcmp(date('D',$fechaI),'Sat')!=0) ){
-                for ($i=0; $i < $num; $i++) { 
-                    if( $fechaI==strtotime($festivos[$i]) ){
-                        $fiesta++;
-                        $fies=true;
-                               // echo '<h1>'.date('Y-m-d',$fechaI) . '->FESTIVOOOOOOO!!!!</h1><br />';
-                    }
-                }
-                if($fies==true){
-                    $fies=false;
-                }else{
-                            //echo date('Y-m-d',$fechaI) . '<br />';
-                    $diaslab++;
-                }                     
-            }// else{
-                //      echo '<h1>'.date('Y-m-d',$fechaI) . '---->FINDEEEEE!!!!</h1><br />';
-                // }
-        }
-
-        //echo "<hr>".$tipo."<br>".$diaslab;
-        $cod_emple=$_POST["empleado"];
-        $comentario=$_POST["comentario"];
+    }else if(isset($_POST["introW"])){
         $sesion=$_SESSION["usuario"];
-        $aumento="-";
+        require_once "include/Introdicir.php";
+        $emple=BD::DameEmpleado($sesion, $cod_emple);
+        $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
+        if($estado=="false"){
+            require_once "vistas/VistaTerminadoE.php";
+        }else{
+            require_once "vistas/VistaWord.php";
+            require_once "vistas/VistaTerminado.php";
+        }
+    }else if (isset($_POST["intro"])){
 
-        $fechafi=date('Y-m-d',$fechaF);
-        $medio=0;
-        if(isset($_POST["medio1"])){
-            $medio++;
-        }
-        if(isset($_POST["medio2"])){
-            $medio++;
-        }
+        require_once "include/Introdicir.php";
 
-        if ($medio==1) {
-            $diaslab=$diaslab-0.5;
-        }else if ($medio==2) {
-            $diaslab=$diaslab-1;
-        }
-             //$estado=BD::pr($diaslab);   
         $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
         if($estado=="true"){
             require_once "vistas/VistaTerminado.php";
@@ -389,6 +346,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=1;
                 require_once "vistas/VistaExcel.php";
             }
 
@@ -398,6 +356,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=0;
                 require_once "vistas/VistaExcel.php";
             }
 
@@ -407,6 +366,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=2;
                 require_once "vistas/VistaExcel.php";
             }
         }else if(isset($_POST["e3"]) & isset($_POST["num2"])){
@@ -417,6 +377,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=0;
                 require_once "vistas/VistaExcel.php";
             }
 
@@ -426,6 +387,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=3;
                 require_once "vistas/VistaExcel.php";
             }
 
@@ -437,6 +399,7 @@ if (isset($_SESSION["usuario"])){
             if($empleados==0){
                 require_once "vistas/VistaNoPerson.php";
             }else{
+                $todos=0;
                 require_once "vistas/VistaExcel.php";
             }
 

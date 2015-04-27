@@ -75,8 +75,9 @@ include_once "header.php";
 		</div>
 	</div> 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<input type="submit" name="intro" value="Aceptar" class="btn btn-success"/>
+		<input type="submit" name="introW" value="Aceptar y generar Word" class="btn btn-success"/>
 		<input type="submit" name="cancelar" value="Cancelar" class="btn btn-danger"/>
+		<input type="submit" name="intro" value="Aceptar" class="btn btn-success"/>
 	</div>
 </form>					
 </div>

@@ -69,6 +69,10 @@ head {
 	text-align:center;
 }
 
+#imagen{
+	text-align:center;
+	margin:auto;
+}
 
 #infoTabla{
 	/*border:"1";
