@@ -90,6 +90,13 @@
 									Borrar empleado
 								</a>
 							</li>
+							<hr>
+							<li>
+								<a href="index.php?gestor=nuevo">
+									<span id="gliphicon" class="glyphicon glyphicon-tower"></span> 
+									Nuevo usuario
+								</a>
+							</li>
 						</ul>
 					</li>
 					

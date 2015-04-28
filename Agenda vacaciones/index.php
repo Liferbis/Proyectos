@@ -39,8 +39,34 @@ if (isset($_SESSION["usuario"])){
             $sesion=$_SESSION["usuario"];
             $empleados=BD::CargaEmpleados($sesion);
             include ('vistas/VistaAumento.php');
-        } 
+        } else if ($gestor == "nuevo") {
+            include ('vistas/VistaUsuNuevo.php');
 
+        }
+
+    ////////////////////////////////////////////////////////////////////////////
+    ///////  NUEVO USUARIO !!!!! ///////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    }else if(isset($_POST["nuevoN"])){
+        $sesion=$_SESSION["usuario"];
+        $dni=$_POST["dni"];
+        $usuario=$_POST["usuario"];
+        $ctv=$_POST["ctv"];
+        if( isset($ctv) == isset($_POST["ctv1"]) ){
+            if(isset($_POST["usuario"]) & isset($_POST["dni"])){
+                $ctv=md5($ctv);
+                $estado=BD::registro($sesion, $usuario, $ctv, $dni);
+                if($estado=="true"){
+                    require_once "vistas/VistaTerminado.php";
+                }else{
+                    require_once "vistas/VistaTerminadoE.php";
+                }
+            }else{
+                require_once "vistas/VistaTerminadoE.php";
+            }
+        }else{
+            require_once "vistas/VistaTerminadoE.php";
+        }
     ////////////////////////////////////////////////////////////////////////////
     ///////  NUEVO EMPLEADO !!!!! //////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
@@ -234,12 +260,15 @@ if (isset($_SESSION["usuario"])){
         $sesion=$_SESSION["usuario"];
         require_once "include/Introdicir.php";
         $emple=BD::DameEmpleado($sesion, $cod_emple);
-        $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
+        //$estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
         if($estado=="false"){
             require_once "vistas/VistaTerminadoE.php";
         }else{
-            require_once "vistas/VistaWord.php";
-            require_once "vistas/VistaTerminado.php";
+            if($tipo=="bec" || $tipo=="bal"){
+                require_once "vistas/VistaTerminado.php";
+            }else{
+                require_once "vistas/VistaWord.php";
+            }
         }
     }else if (isset($_POST["intro"])){
 

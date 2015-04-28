@@ -23,25 +23,24 @@ class BD {
 
 //////////////////////   INSERT INTO   //////////////////////////////////////////////////////////////
 	
-	public static function registro($usuario,$ctv,$admin,$dni){
+	public static function registro($sesion, $usuario, $ctv, $dni){
 
 		$dwes = BD::conect();
 
-		$cons="INSERT INTO usuarios (usuario, ctv,admin ) VALUES ('$usuario','$ctv','$admin')";
+		$tabla=BD::sesiones($sesion);
+
+		$cons="INSERT INTO usuarios (usuario, ctv, tabla, dni) VALUES ('$usuario', '$ctv', '$tabla', '$dni');";
 
 		$resultado = $dwes->query($cons);
 		if(!$resultado){
 			$dwes->close();
-			return false;
+			return "false";
 		}else{
 			$dwes->close();
-			return true;
+			return "true";
 		}
 	}
 	
-	public static function privilegios(){
-		$sentencia="GRANT [permiso] ON [nombre de bases de datos].[nombre de tabla] TO '[nombre de usuario]'@'localhost'";
-	}
 
 	public static function nuevoEmpleado($sesion, $dni, $nombre, $apellido1, $apellido2, $localidad, $movil, $saldo, $comentarios){
 		$dwes = BD::conect();
