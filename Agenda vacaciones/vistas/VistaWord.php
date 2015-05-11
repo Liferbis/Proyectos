@@ -10,29 +10,38 @@ foreach ($emple as $empleado) {
 			$movil=$empleado->movil;
 			$comentarios=$empleado->comentarios;
 			$saldo=$empleado->saldo;
-} 
-							
-	header("Content-type: application/vnd.ms-word");
-	header("Content-Disposition: attachment;Filename=documento.doc");
- ?>
- <html>
+}
+
+$hoy=date("Y-m-d H:i:s");
+$hoy1=date("Y-m-d");
+$docu=$nombre."_".$apellido1."-".$hoy1;
+
+header('Content-type: application/vnd.ms-word');
+header('Content-Disposition: attachment;Filename='.$docu.'.doc');
+header('Pragma: no-cache');
+header('Expires: 0');
+
+
+
+?>
+<html>
  	<meta http-equiv=\'Content-Type\'content=\'text/html; charset=Windows-1252\'>
  	<body>
- 		<div class="contenedor">
- 			<div class="empleado">
-				<table width=100%  style="border:1px solid black">
+ 		<div class='contenedor'>
+ 			<div class='empleado'>
+				<table width=100%  style='border:1px solid black'>
 					<thead>
-						<tr colspan="2">
-							<th colspan="2"><h3>SOLICITUD DE VACACIONES-PERMISOS</h3></th>
+						<tr colspan='2'>
+							<th colspan='2'><h3>SOLICITUD DE VACACIONES-PERMISOS</h3></th>
 						</tr>
 					</thead>
-					<tbody style="text-aling:center">
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>DATOS PERSONALES</h4></td>
+					<tbody style='text-aling:center'>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>DATOS PERSONALES</h4></td>
 						</tr>
 						<tr>
 							<td>Nombre y apellidos: </td>
-							<td><?php echo $nombre." ".$apellido1; ?></td>
+							<td><?php echo $nombre.' '.$apellido1; ?></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
@@ -42,8 +51,8 @@ foreach ($emple as $empleado) {
 							<td>Localidad de trabajo</td>
 							<td><?php echo $localidad; ?></td>
 						</tr>
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>VACACIONES-PERMISOS</h4></td>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>VACACIONES-PERMISOS</h4></td>
 						</tr>
 						<tr>
 							<td>Desde</td>
@@ -63,46 +72,34 @@ foreach ($emple as $empleado) {
 						</tr>
 						<tr>
 							<td>Con el caracter de:</td>
-							
-					<?php 
-						if($tipo=="vacaciones"){
-					?>
-							<td>
-								PERMISO RETRIBUIDO
-								<br>
-								<li>VACACIONES</li>
-								<br>
-								PERMISO NO RETRIBUIDO
-							</td>
-							
-						
-					<?php 
-						}else if($tipo=="PerRe"){
-					?>
-							<td>
-								<li>PERMISO RETRIBUIDO</li>
-								VACACIONES
-								<br>
-								PERMISO NO RETRIBUIDO
-							</td>
-					<?php 
-						}else if($tipo=="PerNoRe"){
-					?>
-							<td>
-								PERMISO RETRIBUIDO
-								<br>
-								VACACIONES
-								<li>PERMISO NO RETRIBUIDO</li>
-							</td>
-					<?php 
-						}
-					?>
+					
+							<?php  
+								if($tipo=='vacaciones'){
+							?>	
+									<td>
+										VACACIONES
+									</td>	
+							<?php 
+								}else if($tipo=='PerRe'){ 
+							?>
+									<td>
+										PERMISO RETRIBUIDO
+									</td>
+							<?php 
+								}else if($tipo=='PerNoRe'){ 
+							?>
+									<td>
+										PERMISO NO RETRIBUIDO
+									</td>
+							<?php  
+								}
+							?>
 						</tr>
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>OBSERVACIONES</h4></td>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>OBSERVACIONES</h4></td>
 						</tr>
-						<tr colspan="2">
-							<td colspan="2"><?php echo $comentario; ?><br></td>
+						<tr colspan='2'>
+							<td colspan='2'><?php echo $comentario; ?><br></td>
 						</tr>
 					</tbody>
 				</table>
@@ -119,26 +116,26 @@ foreach ($emple as $empleado) {
 						<tr></tr>
 						<tr></tr>
 						<tr>
-							<td colspan="2">COPIA PARA EL EMPLEADO</td>
+							<td colspan='2'>COPIA PARA EL EMPLEADO <?php echo $hoy ?></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			 <hr>
-			<div class="empresa">
-				<table width=100%  style="border:1px solid black">
+			<hr>
+			<div class='empresa'>
+				<table width=100%  style='border:1px solid black'>
 					<thead>
-						<tr colspan="2">
-							<th colspan="2"><h3>SOLICITUD DE VACACIONES-PERMISOS</h3></th>
+						<tr colspan='2'>
+							<th colspan='2'><h3>SOLICITUD DE VACACIONES-PERMISOS</h3></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>DATOS PERSONALES</h4></td>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>DATOS PERSONALES</h4></td>
 						</tr>
 						<tr>
 							<td>Nombre y apellidos: </td>
-							<td><?php echo $nombre." ".$apellido1; ?></td>
+							<td><?php echo $nombre.' '.$apellido1; ?></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
@@ -148,8 +145,8 @@ foreach ($emple as $empleado) {
 							<td>Localidad de trabajo</td>
 							<td><?php echo $localidad; ?></td>
 						</tr>
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>VACACIONES-PERMISOS</h4></td>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>VACACIONES-PERMISOS</h4></td>
 						</tr>
 						<tr>
 							<td>Desde</td>
@@ -169,46 +166,34 @@ foreach ($emple as $empleado) {
 						</tr>
 						<tr>
 							<td>Con el caracter de:</td>
-							
-					<?php 
-						if($tipo=="vacaciones"){
-					?>
-							<td>
-								PERMISO RETRIBUIDO
-								<br>
-								<li>VACACIONES</li>
-								<br>
-								PERMISO NO RETRIBUIDO
-							</td>
-							
-						
-					<?php 
-						}else if($tipo=="PerRe"){
-					?>
-							<td>
-								<li>PERMISO RETRIBUIDO</li>
-								VACACIONES
-								<br>
-								PERMISO NO RETRIBUIDO
-							</td>
-					<?php 
-						}else if($tipo=="PerNoRe"){
-					?>
-							<td>
-								PERMISO RETRIBUIDO
-								<br>
-								VACACIONES
-								<li>PERMISO NO RETRIBUIDO</li>
-							</td>
-					<?php 
-						}
-					?>
+					
+							<?php  
+								if($tipo=='vacaciones'){
+							?>	
+									<td>
+										VACACIONES
+									</td>	
+							<?php 
+								}else if($tipo=='PerRe'){ 
+							?>
+									<td>
+										PERMISO RETRIBUIDO
+									</td>
+							<?php 
+								}else if($tipo=='PerNoRe'){ 
+							?>
+									<td>
+										PERMISO NO RETRIBUIDO
+									</td>
+							<?php  
+								}
+							?>
 						</tr>
-						<tr colspan="2" >
-							<td colspan="2" style="border:1px solid black"><h4>OBSERVACIONES</h4></td>
+						<tr colspan='2' >
+							<td colspan='2' style='border:1px solid black'><h4>OBSERVACIONES</h4></td>
 						</tr>
-						<tr colspan="2">
-							<td colspan="2"><?php echo $comentario; ?><br></td>
+						<tr colspan='2'>
+							<td colspan='2'><?php echo $comentario; ?><br></td>
 						</tr>
 					</tbody>
 				</table>
@@ -225,13 +210,14 @@ foreach ($emple as $empleado) {
 						<tr></tr>
 						<tr></tr>
 						<tr>
-							<td colspan="2">COPIA PARA EL EMPLEADO</td>
+							<td colspan='2'>COPIA PARA LA EMPRESA <small style='color:gray'></small><?php echo $hoy ?></td>
 						</tr>
 					</tbody>
 				</table>
-				
 			</div>
-			
 		</div>
  	</body>
- </html>
+</html>
+<?php 
+require_once "VistaPrincipal.php";
+ ?>
