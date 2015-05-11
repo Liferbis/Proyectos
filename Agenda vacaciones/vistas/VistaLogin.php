@@ -29,7 +29,7 @@ include_once "header.php";
 								<h3>Introduzca la contraseña</h3>
 							</div>
 							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<input type="text" name="ctv" placeholder="Introduzca la contraseña">
+								<input type="password" name="ctv" placeholder="Introduzca la contraseña">
 							</div>
 						</div>
 					</tr>

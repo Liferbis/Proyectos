@@ -36,7 +36,5 @@ require_once "libreria\Excel-PHP\PHPExcel.php";
 	</div>
 </div>
 <?php 
-
-			
-include_once "pie.php";
+	include_once "pie.php";
 ?>

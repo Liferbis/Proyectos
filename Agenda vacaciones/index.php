@@ -42,6 +42,10 @@ if (isset($_SESSION["usuario"])){
         } else if ($gestor == "nuevo") {
             include ('vistas/VistaUsuNuevo.php');
 
+        } else if ($gestor == "copiaSeg") {
+
+            include ('vistas/VistaAjustes.php');
+            // $empleados=BD::copiaSeg();
         }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -260,7 +264,7 @@ if (isset($_SESSION["usuario"])){
         $sesion=$_SESSION["usuario"];
         require_once "include/Introdicir.php";
         $emple=BD::DameEmpleado($sesion, $cod_emple);
-        //$estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
+        $estado= BD::dias($cod_emple, $fechaIn, $fechafi, $dias, $diaslab, $tipo, $comentario, $sesion);
         if($estado=="false"){
             require_once "vistas/VistaTerminadoE.php";
         }else{

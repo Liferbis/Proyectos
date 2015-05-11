@@ -99,6 +99,11 @@
 							</li>
 						</ul>
 					</li>
+					<li>
+						<a href="index.php?gestor=copiaSeg">
+							<span id="gliphicon" class="glyphicon glyphicon-lock"></span> Copia Seguridad
+						</a>
+					</li>
 					
 				</ul>
 			</div><!-- /.navbar-collapse -->

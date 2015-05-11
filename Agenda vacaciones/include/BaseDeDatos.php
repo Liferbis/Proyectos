@@ -18,8 +18,52 @@ class BD {
 
 	public static function conect(){
 		$dwes = new mysqli(BD::localhost, BD::usu , BD::ctv, BD::bd);
+		$dwes->set_charset("utf8");
 		return $dwes;
 	}
+
+//////////////////////   COPIA DE SEGURIDAD  ////////////////////////////////////////////////////////
+	// public static function copiaSeg(){
+		// variables
+		// $dbhost = BD::localhost;
+		// $dbname = BD::bd;
+		// $dbuser = BD::usu;
+		// $dbpass = BD::ctv;
+
+		// $dwes = BD::conect();
+
+		// $ruta="C:/GestorDeVacaciones/CopiaSeguridadBaseDeDatos/" . $dbname . date("Y-m-d-H-i-s"); 
+		// $filename = $dbname . date("Y-m-d-H-i-s") . '.sql';
+
+		// $tables=array();
+
+		// $c="Show tables;";
+
+		// $resultado = $dwes->query($cons);
+
+		// while($tab=$resultado->fetch_object()){
+		// 	$tables[]=
+		// }
+		// header("Pragma: no-cache"); 
+		// header("Expires: 0"); 
+		// header("Content-Transfer-Encoding: binary"); 
+		// header("Content-type: application/force-download"); 
+		// header("Content-Disposition: attachment; filename=$filename"); 
+		 
+		// comandos a ejecutar
+		// $commands = array("mysqldump --opt -h $dbhost -u $dbuser -p $dbpass -v $dbname > $backup_file", "bzip2 $backup_file");
+		// exec($command);
+		//$executa = "c://mysql//bin//mysqldump.exe -u $dbuser --password=$dbpass --opt $dbname"; 
+		//system($executa, $resultado); 
+		// ejecución y salida de éxito o errores
+		 // foreach ( $commands as $command ) {
+		 //         system($command,$output);
+		 //         echo $output;
+		 // }
+		//if ($resultado) { echo "<H1>Error ejecutando comando: $executa</H1>\n"; } 
+	// }
+
+	
 
 //////////////////////   INSERT INTO   //////////////////////////////////////////////////////////////
 	
