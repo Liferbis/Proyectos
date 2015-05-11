@@ -41,20 +41,17 @@ if(isset($_SESSION["usuario"])){
 			</div>
 			<div class="text-center">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<form action=" " method="POST" role="form">
+					<form action="reserva.php" method="POST" role="form">
 						<button type="submit" name="tras" class="btn btn-lg btn-success">Realizar reserva</button>
-						<button type="submit" name="desc" class="btn btn-lg btn-danger">Desconectar <?php echo $_SESSION["usuario"]; ?></button>
 					</form>
+					<a href="logout.php" style="color:white">
+						<button type="button" class="btn btn-lg btn-danger">
+							Desconectar <?php echo $_SESSION["usuario"]; ?>
+						</button>
+					</a>
 				</div>
 			</div>
 		</div>
-		<?php 
-			if(isset($_POST["desc"])){
-				header('Location: logout.php');
-			}else if(isset($_POST["tras"])){
-				header('Location: reserva.php');
-			}
-		 ?>
 		 
 <?php 
 }else{

@@ -3,13 +3,16 @@ require_once "head.php";
 require_once "BD.php";
 
 if(isset($_SESSION["usuario"])){
-?>
+
+	if(isset($_POST["tras"])){
+	
+ ?>
 
 <body>
 	<h1 class="text-center">Hola <?php echo $_SESSION["usuario"]; ?> - Reserva tu viaje</h1>
 	<hr>
 	<div class="row text-center">
-		<form action="" method="POST" role="form">
+		<form action=" " method="POST" role="form">
 			<div class="form-group">
 				<label for="">Viajes</label>
 				<select name="vires" id="input" class="form-control">
@@ -46,37 +49,34 @@ if(isset($_SESSION["usuario"])){
 		</a>
 	</div>
 
-	<?php 
+	<?php
+	}else{
+		$error="<div class='alert alert-danger'>
+					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+					<strong>Error !!</strong> Revise los datos e intentelo de nuevo mas tarde ..
+				</div>";
 		if (isset($_POST["trs"])) {
+			//echo $_POST["vires"];
 			if (isset($_POST["personas"])) {
-				$d=$_POST["personas"];
-				$id=$_SESSION["registro"];
-				$estado=BD::reserva($_POST["vires"], $d, $id);
-					if($estado="true"){
-						echo "<h1 class='text-center' style='color:red'><strong>Realizado CORRECTAMENTE !!!</strong></h1>";
-					}else{
-			?>
-				<div class="alert alert-danger">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Error !!</strong> Revise los datos e intentelo de nuevo mas tarde ..
-				</div>
-			<?php
-					}
-				
+				if ($_POST["vires"]!=0) {
+					$d=$_POST["personas"];
+					$id=$_SESSION["registro"];
+					$estado=BD::reserva($_POST["vires"], $d, $id);
+						if($estado=="true"){
+							echo "<h1 class='text-center' style='color:red'><strong>Realizado CORRECTAMENTE !!!</strong></h1>";
+						}else{
+							echo $error;
+						}
+				}else{
+					echo $error; 
+				}
 			}else{
-	?>
-				<div class="alert alert-danger">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Error !!</strong> Revise los datos e intentelo de nuevo mas tarde ..
-				</div>
-	<?php 
+				echo "<h1 class='text-center' style='color:red'><strong>No has seleccionado el viaje !!!</strong></h1>";
 			}
 		}else if(isset($_POST["ver"])){
 			header('Location: VerReservas.php');
 		}
-	
-
- 
+	}
 }else{
 ?>
 	<body>

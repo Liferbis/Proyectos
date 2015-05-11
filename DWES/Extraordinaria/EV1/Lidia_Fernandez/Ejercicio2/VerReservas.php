@@ -27,7 +27,8 @@ if(isset($_SESSION["usuario"])){
 							<tr>
 								<td>
 									<?php 
-										echo $_SESSION["usuario"]; 
+										$nombreC=BD::nombreClient($vr[0]);
+										echo $nombreC; 
 									?>
 								</td>
 								<td>

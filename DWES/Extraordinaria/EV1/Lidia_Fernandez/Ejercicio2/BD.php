@@ -10,6 +10,7 @@ class BD{
 
 	public static function conect(){
 	 	$dwes = new PDO('mysql:host=localhost;dbname=agencia' , BD::usu , BD::ctv);
+	 	$dwes->exec("set names utf8");
 	 	return $dwes;
 	}
 
@@ -46,7 +47,8 @@ class BD{
 
 	public static function CargaViajes(){
 		$dwes= new mysqli('localhost','root','','agencia');
-		
+		$dwes->set_charset("utf8");
+
 		$consulta=$dwes->stmt_init();
 		$consulta->prepare("SELECT nombre, precio FROM viajes ORDER BY precio ASC");
 		$consulta->execute();
