@@ -17,7 +17,7 @@ require_once "encendible.php";
 				echo "El coche no tiene gasolina!";
 			}else if($this->bateria==0){
 				echo "El coche no tiene bateria!";
-			}else if($this->estado=="apagado"){
+			}else if($this->estado=="encendido"){
 				echo "El coche YA ESTABA encendido!";
 			}else{
 				$this->gasolina-=1;
