@@ -41,7 +41,7 @@ class BD {
 		$artis=array();
 
 		while($con=$resultado->fetch_object()){
-			$artis= new Articulo ($con->titulo,
+			$artis[]= new Articulo ( $con->titulo,
 									$con->descripcion,
 									$con->fecha);
 		}

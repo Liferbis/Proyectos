@@ -4,28 +4,31 @@ require_once "head.php";
 <body>
 	<div class="text-center well">
 		<h1 class="text-center">Coleccion de articulos</h1>
-		
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 			<?php 
-				foreach ($articulos as $arti) {
-			 ?>
+			$i=0;
+			foreach ($articulos as $artis) {
+		?>
+			
 				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="headingOne">
+					<div class="panel-heading" role="tab" id="heading<?php echo $i;?>">
 						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								<?php echo $artis->titulo." ->".$artis->fecha; ?>
+							<a <?php if($i!=0){ ?> class="collapsed" aria-expanded="false"<?php }else{ ?> aria-expanded="true" <?php } ?>data-toggle="collapse" data-parent="#accordion" href="#<?php echo $i;?>" aria-controls="<?php echo $i;?>">
+								<?php echo $artis->titulo." -> ".$artis->fecha." <-"; ?>
 							</a>
 						</h4>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div id="<?php echo $i;?>" <?php if($i!=0){ ?> class="panel-collapse collapse"<?php }else{ ?> class="panel-collapse collapse in" <?php } ?> role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-							<?php echo $artis->descripcion ?>
+							<?php echo $artis->descripcion; ?>
 						</div>
 					</div>
 				</div>
-			<?php 
-				}
-			?>	
+			
+		<?php 
+				$i++;
+			}
+			?>
 		</div>
 	</div>
 	<?php 

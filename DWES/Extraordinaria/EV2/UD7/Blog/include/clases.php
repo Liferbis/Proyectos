@@ -10,22 +10,50 @@ class Usuario{
 		$this->nombre=$nombre;
 		$this->ctv=$ctv;
 	}
+
+	public function __set($var, $valor) {
+		if (property_exists(__CLASS__, $var)) {
+			$this->$var = $valor;
+		} else {
+			echo "No existe el atributo $var.";
+		}
+	}
+
+	public function __get($var) {
+		if (property_exists(__CLASS__, $var)) {
+			return $this->$var;
+		}
+		return NULL;
+	}
 }
 
 /**
 * Clase articulo 
 */
 class Articulo{
+
 	private $titulo;
 	private $descripcion;
 	private $fecha;
-	private $cod;
-	
-	function __construct($titulo, $descripcion, $fecha, $cod){
+
+	function __construct($titulo, $descripcion, $fecha){
 		$this->titulo=$titulo;
 		$this->descripcion=$descripcion;
 		$this->fecha=$fecha;
-		$this->cod=$cod;
+	}
+	public function __set($var, $valor) {
+		if (property_exists(__CLASS__, $var)) {
+			$this->$var = $valor;
+		} else {
+			echo "No existe el atributo $var.";
+		}
+	}
+
+	public function __get($var) {
+		if (property_exists(__CLASS__, $var)) {
+			return $this->$var;
+		}
+		return NULL;
 	}
 }
 
