@@ -47,10 +47,6 @@ class BD {
 		}
 		return $artis;
 	}
-
-
-
-
 }
 
 

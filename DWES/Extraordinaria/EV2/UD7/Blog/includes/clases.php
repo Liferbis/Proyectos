@@ -5,7 +5,7 @@ class Usuario{
 	private $nombre;
 	private $ctv;
 
-	function __construct($dni, $nombre, $ctv){
+	public function __construct($dni, $nombre, $ctv){
 		$this->dni=$dni;
 		$this->nombre=$nombre;
 		$this->ctv=$ctv;
@@ -36,7 +36,7 @@ class Articulo{
 	private $descripcion;
 	private $fecha;
 
-	function __construct($titulo, $descripcion, $fecha){
+	public function __construct($titulo, $descripcion, $fecha){
 		$this->titulo=$titulo;
 		$this->descripcion=$descripcion;
 		$this->fecha=$fecha;
