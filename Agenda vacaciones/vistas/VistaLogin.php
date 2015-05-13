@@ -43,7 +43,7 @@ include_once "header.php";
 			</tbody>
 		</table>	
 	<div class="text-center">
-	<small>En caso de pérdida u olvido de credenciales consulte con el gestor <a href="tel:+34658412862">Lidia Fernández</a></small>
+	<small>En caso de pérdida u olvido de credenciales consulte con el gestor <a href="mailto:l.fernandez@codelse.com">Lidia Fernández</a></small>
 </div>
 </div>
 </div>

@@ -33,7 +33,11 @@ if (isset($_SESSION["usuario"])){
             include ('vistas/VistaLog-Out.php');
 
         } else if ($gestor == "logeo") {
-            include ('vistas/VistaLogeo.php');
+            if(isset($_SESSION["usuario"])){
+                include ('vistas/VistaLogin1.php');
+            }else{
+                include ('vistas/VistaLogin.php');
+            }            
 
         } else if ($gestor == "aumentoD"){
             $sesion=$_SESSION["usuario"];
@@ -110,7 +114,7 @@ if (isset($_SESSION["usuario"])){
             session_unset();
             header('Location: index.php');
         }else if($_POST["sesion"]=="0"){
-            require_once "vistas/VistaLogin.php";
+            require_once "vistas/vistaPrincipal.php";
         }
 
     ////////////////////////////////////////////////////////////////////////////

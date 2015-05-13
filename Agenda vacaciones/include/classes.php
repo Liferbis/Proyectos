@@ -220,7 +220,7 @@ class Calendario {
 							$week++;
 						}								
 					}
-
+					$w=0;
 					foreach ( $calendar as $days ){
 						echo "		
 								<tr  >";
@@ -230,8 +230,9 @@ class Calendario {
 							echo "</td>";
 						}
 						echo "	</tr>";
+						$w++;
 					}
-					if($week<6){
+					if($w<6){
 						echo "<br>
 								<tr><td></td></tr>";
 					}
@@ -287,7 +288,7 @@ class Calendario {
 						}								
 					}
 					$diact=date("j");
-
+					$w=0;
 					foreach ( $calendar as $days ){
 						echo "		
 								<tr>";
@@ -308,8 +309,9 @@ class Calendario {
 							}
 						}
 						echo "	</tr>";
+						$w++;
 					}
-					if($week<6){
+					if($w<6){
 						echo "<br>
 								<tr><td></td></tr>";
 					}

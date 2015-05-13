@@ -23,6 +23,7 @@ body{
 	text-align:center;
 	background-color:silver;
 	color:red;
+	font-weight:bold;
 }
 
 #table #tbody{
@@ -34,8 +35,9 @@ body{
 }
 
 #table #diaHoy{
-	background-color:silver;
-	color:red;
+	background-color:#00CC00;
+	color:#000;
+	font-weight:bold;
 }
 
 #table #vista{

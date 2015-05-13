@@ -7,8 +7,8 @@ require_once "header.php";
 	<h1>Grupo Codelse</h1>
 	<form action="index.php" method="post">
 		<h3>¿Está seguro de que desea cerrar la sesión?</h3>
-		<button type="submit" class="btn btn-primary" name="sesion" value="1">Si</button>
-		<button type="submit" class="btn btn-primary" name="sesion" value="0">No</button>
+		<button type="submit" class="btn btn-success" name="sesion" value="1">Si</button>
+		<button type="submit" class="btn btn-danger" name="sesion" value="0">No</button>
 	</form>
 </div>
 

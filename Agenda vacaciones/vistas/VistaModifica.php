@@ -143,6 +143,7 @@ include_once "header.php";
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<button type="submit" name="modifica" class="btn btn-success">MODIFICAR EL EMPLEADO</button>
+		<button type="submit" name="cancelar" class="btn btn-danger"/>Cancelar</button>
 	</div>
 </tr>
 </form>

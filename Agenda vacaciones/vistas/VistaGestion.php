@@ -100,6 +100,7 @@ require_once "header.php";
 				<hr>
 				<div class="row">
 					<button type="submit" name="altaE" class="btn btn-success">CREAR</button>
+					<button type="submit" name="cancelar" class="btn btn-danger"/>Cancelar</button>
 				</div>
 			</form>
 

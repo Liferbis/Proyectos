@@ -1,49 +1,47 @@
 <?php 
 	require_once "header.php";
 	$hoy=new Calendario();
-	$year=date("Y");
+	$ye=date("Y");
 ?>
-		<h1 class="text-center">
-		<form action="" method="POST" role="form">
-			<button type="submit" name="actu" class="btn btn-success">Año <?php echo $year; ?></button>
-			<input type="number" name="calen" id="input"  placeholder="Introduzca nuevo año">
+	<h1 class="text-center">
+		<form action=" " method="POST" role="form">
+			<input type="number" name="calen" id="input" autofocus="true" placeholder="Introduzca nuevo año">
+			<h5 class="text-center"><small>(desde: 1902 || hasta: 2037 )</small></h5>
 		</form>
 	</h1>
 
-	<div id='contenido' class='row responsive'>
-<?php 
-		$hoy->getTodosMeses();
-?>
-	</div>
+
 <?php 
 	if (isset($_POST["calen"])) {
 		$year=$_POST["calen"];
-
-		require_once "header.php";
 ?>	
-		<h1 class="text-center">
+		<hr>
+		<h1 class="text-center well">
 			Año <?php echo $year;?>
 		</h1>
 
-		<div id='contenido' class='row responsive'>
+		<div id='contenido' class='row responsive well'>
 <?php
+		if($year==$ye){
+			$hoy->getTodosMeses();	
+		}else{
 			$hoy->anio($year);
+		}
 ?>
 		</div>
-<?php
-	}else if(isset($_POST["actu"])){
-		
-?>	
-		<h1 class="text-center">
-			Año <?php echo $year;?>
+<?php  
+	}else{
+?>
+		<hr>
+		<h1 class="text-center well">
+			Año <?php echo $ye;?>
 		</h1>
-
-		<div id='contenido' class='row responsive'>
+		<div id='contenido' class='row responsive well'>
 <?php 
 			$hoy->getTodosMeses();
 ?>
 		</div>
-<?php  
+<?php 
 	}
 
 	include_once "pie.php";
