@@ -19,10 +19,15 @@ body{
 	background-color:silver;
 }
 
-#table #mes{
+#table #mesM{
 	text-align:center;
 	background-color:silver;
 	color:red;
+	font-weight:bold;
+}
+#table #mes{
+	text-align:center;
+	background-color:silver;
 	font-weight:bold;
 }
 
@@ -36,7 +41,21 @@ body{
 
 #table #diaHoy{
 	background-color:#00CC00;
-	color:#000;
+	font-weight:bold;
+}
+
+#table #dia{
+	background-color:#E4E4E4;
+	font-weight:bold;
+}
+
+#table #festivo{
+	background-color:#E44E1B;
+	font-weight:bold;
+}
+
+#table #finde{
+	background-color:#FAADF8;
 	font-weight:bold;
 }
 

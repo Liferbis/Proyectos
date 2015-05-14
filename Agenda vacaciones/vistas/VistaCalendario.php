@@ -41,8 +41,42 @@
 			$hoy->getTodosMeses();
 ?>
 		</div>
+
 <?php 
 	}
-
+?>
+		<div class="leyenda">
+			<table id='table' class="table table-hover">
+				<thead >
+					<tr>
+						<th colspan='2'><h1 class="text-center">Leyenda</h1></th>
+					</tr>
+					<tr>
+						<th class="text-center">Color</th>
+						<th class="text-center">Significado</th>
+					</tr>
+				</thead>
+				<tbody class="text-center" >
+					<tr>
+						<td id="finde"></td>
+						<td>Fin de semana</td>
+					</tr>
+					<tr>
+						<td id="festivo"></td>
+						<td>Dia festivo</td>
+					</tr>
+					<tr>
+						<td id="dia"></td>
+						<td>Dia normal</td>
+					</tr>
+					<tr>
+						<td id="diaHoy"></td>
+						<td>Dia actual</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+<?php 
 	include_once "pie.php";
 ?>

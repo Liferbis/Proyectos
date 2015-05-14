@@ -10,6 +10,7 @@
 
 /////// CLASE ////// en esta clase se encuentr todo lo referente //////
 /////////////////////    la clase EMPLEADO          ///////////////////
+require_once "include/BaseDeDatos.php";
 
 	class Empleado{
 		private $codigo;
@@ -192,7 +193,7 @@ class Calendario {
 				echo "
 							<thead>
 								<tr> 
-									<th colspan='7'>";
+									<th id='mes' colspan='7'>";
 					
 				echo $d;
 				echo "
@@ -225,9 +226,26 @@ class Calendario {
 						echo "		
 								<tr  >";
 						for ( $i=1;$i<=7;$i++ ){
-							echo "<td>";
-							echo isset( $days[ $i ] ) ? $days[ $i ] : '';
-							echo "</td>";
+							if(isset( $days[ $i ] )){
+							
+								$dafes=strtotime( date( $ye.'-'.$num.'-'.$days[ $i ] ));
+								if (strcmp (date('D', $dafes ),'Sun')==0) {
+									echo "<td id='finde'>";
+									echo  $days[ $i ];
+									echo "</td>";
+								}else if (strcmp(date('D', $dafes ),'Sat')==0) {
+									echo "<td id='finde'>";
+									echo  $days[ $i ];
+									echo "</td>";
+								}else{
+									echo "<td id='dia'>";
+									echo  $days[ $i ];
+									echo "</td>";
+								}
+							}else{
+								echo "<td></td>";
+							}
+								
 						}
 						echo "	</tr>";
 						$w++;
@@ -255,11 +273,11 @@ class Calendario {
 				if($num==$M){
 					echo "
 								<tr> 
-									<th id='mes' colspan='7'>";
+									<th id='mesM' colspan='7'>";
 					}else{
 						echo "	
 								<tr> 
-									<th colspan='7'> ";
+									<th id='mes' colspan='7'> ";
 				}
 					echo $d;
 					echo "
@@ -289,6 +307,10 @@ class Calendario {
 					}
 					$diact=date("j");
 					$w=0;
+					$pintado="false";
+					$festivos=BD::damefestivosfechas();
+					$count=count($festivos);
+
 					foreach ( $calendar as $days ){
 						echo "		
 								<tr>";
@@ -300,9 +322,35 @@ class Calendario {
 									echo $days[ $i ];
 									echo "</td>";
 								}else{
-									echo "<td>";
-									echo  $days[ $i ];
-									echo "</td>";
+									$dafes=date( 'Y-'.$num.'-'.$days[ $i ] );
+									for ($j=0; $j < $count ; $j++) { 
+										if(strtotime($dafes)==strtotime($festivos[$j])){
+											echo "<td id='festivo'>";
+											echo $days[ $i ];
+											echo "</td>";
+											$pintado="true";
+										}
+									}
+									if($pintado=="true"){
+										$pintado="false";
+									}else{
+										$dafes=strtotime( date( 'Y-'.$num.'-'.$days[ $i ] ));
+										 if (strcmp (date('D', $dafes ),'Sun')==0) {
+										 	echo "<td id='finde'>";
+										 	echo  $days[ $i ];
+										 	echo "</td>";
+										 }else if (strcmp(date('D', $dafes ),'Sat')==0) {
+										 	$vas=strcmp (date('D', $dafes ),'Sun');
+										 	echo "<td id='finde'>";
+										 	echo  $days[ $i ];
+										 	echo "</td>";
+										 }else{
+											echo "<td id='dia'>";
+											echo  $days[ $i ];
+											echo "</td>";
+										}
+										
+									}
 								}
 							}else{
 								echo "<td></td>";
