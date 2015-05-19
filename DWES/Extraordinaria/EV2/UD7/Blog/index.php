@@ -18,6 +18,11 @@ if (isset($_SESSION["usuario"])){
             
         }else if($blog=="log-out"){
         	include ('vistas/VistaLogOut.php');
+
+        }else if($blog == "art"){
+            $id=$_GET['id'];
+            $articulo=BD::art($id);
+            include ('vistas/VistaArt.php');   
         }
     }else if(isset($_POST["sesion"])){
     	if($_POST["sesion"]=="1"){
@@ -26,6 +31,7 @@ if (isset($_SESSION["usuario"])){
     	}else{
     		include ('vistas/VistaArticulos.php');
     	}
+
     }else{
         include ('vistas/VistaPrincipal.php');
     }

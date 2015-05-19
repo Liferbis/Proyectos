@@ -61,11 +61,45 @@ class BD {
 		}
 	}
 
-	public function registraM($idcliente, $nombre, $especie, $raza, $fechaNacimiento, $historial){
+	// public function registraM($idcliente, $nombre, $especie, $raza, $fechaNacimiento, $historial){
+
+	// 	$dwes = BD::conect();
+
+	// 	$cons="INSERT INTO mascotas (idcliente, nombre, especie, raza, fechaNacimiento, historial) VALUES ('$idcliente','$nombre', '$especie' ,'$raza', '$fechaNacimiento', '$historial')";
+
+	// 	$resultado = $dwes->query($cons);
+		
+	// 	if(!$resultado){
+	// 		$dwes->close();
+	// 		return false;
+	// 	}else{
+	// 		$dwes->close();
+	// 		return true;
+	// 	}
+	// }
+
+	public function registraP($idcliente, $nombre, $raza, $fechaNacimiento, $historial){
 
 		$dwes = BD::conect();
 
-		$cons="INSERT INTO mascotas (idcliente, nombre, especie, raza, fechaNacimiento, historial) VALUES ('$idcliente','$nombre', '$especie' ,'$raza', '$fechaNacimiento', '$historial')";
+		$cons="INSERT INTO mascotas (idcliente, nombre, especie, raza, fechaNacimiento, historial) VALUES ('$idcliente','$nombre', 'perro' ,'$raza', '$fechaNacimiento', '$historial')";
+
+		$resultado = $dwes->query($cons);
+		
+		if(!$resultado){
+			$dwes->close();
+			return false;
+		}else{
+			$dwes->close();
+			return true;
+		}
+	}
+
+	public function registraG($idcliente, $nombre, $raza, $fechaNacimiento, $historial){
+
+		$dwes = BD::conect();
+
+		$cons="INSERT INTO mascotas (idcliente, nombre, especie, raza, fechaNacimiento, historial) VALUES ('$idcliente','$nombre', 'gato' ,'$raza', '$fechaNacimiento', '$historial')";
 
 		$resultado = $dwes->query($cons);
 		

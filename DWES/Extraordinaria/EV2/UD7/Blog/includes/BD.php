@@ -41,12 +41,32 @@ class BD {
 		$artis=array();
 
 		while($con=$resultado->fetch_object()){
-			$artis[]= new Articulo ( $con->titulo,
+			$artis[]= new Articulo ( $con->id,
+									$con->titulo,
 									$con->descripcion,
 									$con->fecha);
 		}
 		return $artis;
 	}
+
+	public static function art($id){
+		$dwes = BD::conect();
+
+		$c="SELECT * FROM articulos WHERE id='$id'";
+
+		$resultado = $dwes->query($c);
+
+		$artis=array();
+
+		while($con=$resultado->fetch_object()){
+			$artis[]= new Articulo ( $con->id,
+									$con->titulo,
+									$con->descripcion,
+									$con->fecha);
+		}
+		return $artis;
+	}
+
 }
 
 

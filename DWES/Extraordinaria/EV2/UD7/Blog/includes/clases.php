@@ -32,11 +32,13 @@ class Usuario{
 */
 class Articulo{
 
+	private $id;
 	private $titulo;
 	private $descripcion;
 	private $fecha;
 
-	public function __construct($titulo, $descripcion, $fecha){
+	public function __construct($id, $titulo, $descripcion, $fecha){
+		$this->id=$id;
 		$this->titulo=$titulo;
 		$this->descripcion=$descripcion;
 		$this->fecha=$fecha;
