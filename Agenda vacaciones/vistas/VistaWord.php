@@ -1,4 +1,5 @@
 <?php 
+require_once "./include/ArchivoWord.php";
 include_once "header.php";
 ?>
 <div class="text-center">
@@ -21,5 +22,5 @@ include_once "header.php";
 <?php 
 
 require_once "pie.php";
-require_once "include/ArchivoWord.php";
+
  ?>

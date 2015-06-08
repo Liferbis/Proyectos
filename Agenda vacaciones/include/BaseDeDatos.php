@@ -304,6 +304,25 @@ class BD {
 		}	
 	}
 
+	public static function logEdit($usuario, $ctv, $Nctv){
+		$dwes = BD::conect();
+		$verifica="false";
+		$c="UPDATE usuarios SET ctv='$Nctv' WHERE usuario='$usuario' AND ctv='$ctv'";
+
+		$resultado = $dwes->query($c);
+
+		//$acceso=$resultado->fetch_object();
+
+		if(!$resultado){
+			$dwes->close();
+			return $verifica;
+		}else{
+			$dwes->close();
+			$verifica="true";
+			return $verifica;
+		}
+	}
+
 
 ///////////////////////   BORRAR    //////////////////////////////////////////////////////////////
 
@@ -355,6 +374,46 @@ class BD {
 		return $tabla;
 	}
 
+	public static function TodosEmpleados(){
+		$dwes = BD::conect();
+		
+		$c="SELECT * FROM empleoficina ";
+
+		$resultado = $dwes->query($c);
+		
+		$empleados=array();
+		
+		while($emple=$resultado->fetch_object()){
+			$empleados [] = new Empleado( $emple->codigo,
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
+		}
+
+		$c="SELECT * FROM emplealmacen ";
+
+		$resultado = $dwes->query($c);
+		
+		while($emple=$resultado->fetch_object()){
+			$empleados [] = new Empleado( $emple->codigo,
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
+		}
+		$dwes->close();	
+		return $empleados;
+	}
+
 	public static function CargaEmpleados($usuario){
 		$dwes = BD::conect();
 		$tabla=BD::sesiones($usuario);
@@ -378,6 +437,37 @@ class BD {
 		}
 		$dwes->close();	
 		return $empleados;
+	}
+
+	public static function UnEmpleado( $codigo){
+		$co=substr($codigo, 0,2);
+		if($co=="eo"){
+			$tabla="empleoficina";
+		}else{
+			$tabla="emplealmacen";
+		}
+
+		$dwes = BD::conect();
+		
+		$c="SELECT * FROM $tabla WHERE codigo ='$codigo' ";
+
+		$resultado = $dwes->query($c);
+		
+		$empleado=array();
+		
+		while($emple=$resultado->fetch_object()){
+			$empleado [] = new Empleado( $emple->codigo,
+				$emple->dni,
+				$emple->nombre, 
+				$emple->apellido1, 
+				$emple->apellido2, 
+				$emple->localidad,
+				$emple->movil,
+				$emple->comentarios,
+				$emple->saldo);	
+		}
+		$dwes->close();	
+		return $empleado;
 	}
 
 	public static function DameEmpleado($usu, $codigo){

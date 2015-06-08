@@ -19,6 +19,10 @@ if (isset($_SESSION["usuario"])){
         } else if ($gestor == "gestion") {
             include ('vistas/VistaGestion.php');
 
+        } else if ($gestor == "log") {
+             $sesion=$_SESSION["usuario"];
+            include ('vistas/VistaCredenciales.php');
+
         } else if ($gestor == "modiE") {
             $sesion=$_SESSION["usuario"];
             $empleados=BD::CargaEmpleados($sesion);
@@ -106,6 +110,30 @@ if (isset($_SESSION["usuario"])){
         $empleado=BD::DameEmpleado($sesion, $_POST["empleado"]);
         include ("vistas/VistaModifica.php");
 
+    ////////////////////////////////////////////////////////////////////////////
+    ///////  MODIFICAR CREDENCIALES DE USUARIO  !!!!!  ///////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    }else if ( isset($_POST['nlog']) ){
+        $ctv=md5($_POST['cod1']);
+        $estado=BD::verifica($_SESSION["usuario"], $ctv);
+        if($estado=="true"){
+            if($_POST['cod2']==$_POST['cod3']){
+                $Nctv=md5($_POST['cod2']);
+                $estado=BD::logEdit($_SESSION["usuario"], $ctv, $Nctv);
+                if($estado=="true"){
+                    require_once "vistas/VistaTerminado.php";
+                }else{
+                    echo "1";
+                    require_once "vistas/VistaTerminadoE.php";
+                }
+            }else{
+                echo "01";
+                require_once "vistas/VistaTerminadoE.php";
+            }
+        }else{
+            echo "001";
+            require_once "vistas/VistaTerminadoE.php";
+        }
     ////////////////////////////////////////////////////////////////////////////
     ///////  LOG-OUT  !!!!!  ///////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
@@ -459,16 +487,29 @@ if (isset($_SESSION["usuario"])){
 ////////////  COMPROBACION DE CREDENCIATES !!!!!!!!   //////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 }else if (isset($_POST["login"])){
-        $usuario=$_POST["nombre"];
-        $ctv=md5($_POST["ctv"]);
-        $estado=BD::verifica($usuario, $ctv);
-        if($estado=="true"){
-           //session_start(); 
-            $_SESSION["usuario"]=$usuario;
-            require_once "vistas/vistaPrincipal.php";
-        }else{
-            require_once "vistas/VistaLogin.php";
-        }
+    $usuario=$_POST["nombre"];
+    $ctv=md5($_POST["ctv"]);
+    $estado=BD::verifica($usuario, $ctv);
+    if($estado=="true"){
+       //session_start(); 
+        $_SESSION["usuario"]=$usuario;
+        require_once "vistas/vistaPrincipal.php";
+    }else{
+        require_once "vistas/VistaLogin.php";
+    }
+
+}else if (isset($_GET['gestor'])=='solicitud') {
+    
+    $empleados=BD::TodosEmpleados();
+    require_once "vistas/VistaGenWord.php";
+
+}else if(isset($_POST["word"])){
+    
+    require_once "include/Introdicir.php";
+    $emple=BD::UnEmpleado($cod_emple);
+    require_once "include/ArchivoWord.php";
+    
+
 
 ////////////////////////////////////////////////////////////////////////////////
 ///////   NO SE ACCEDE SIN ESTAR LOGEADO !!!!///////////////////////////////////

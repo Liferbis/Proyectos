@@ -39,6 +39,11 @@
 							<span id="gliphicon" class="glyphicon glyphicon-calendar"></span> Calendario 
 						</a>
 					</li>
+					<li >
+						<a href="index.php?gestor=solicitudes">
+							<span id="gliphicon" class="glyphicon glyphicon-list-alt"></span> Generar Solicitud 
+						</a>
+					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
@@ -49,6 +54,11 @@
 				<?php
 					if (isset($_SESSION["usuario"])){
 				?>
+					<li>
+						<a href="index.php?gestor=log">
+							<span id="gliphicon" class="glyphicon glyphicon-pencil"></span> Modificar Login
+						</a>
+					</li>
 					<li>
 						<a href="index.php?gestor=log-out">
 							<span id="gliphicon" class="glyphicon glyphicon-off"></span> Login-Off
@@ -99,11 +109,11 @@
 							</li>
 						</ul>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="index.php?gestor=copiaSeg">
 							<span id="gliphicon" class="glyphicon glyphicon-lock"></span> Copia Seguridad
 						</a>
-					</li>
+					</li> -->
 					
 				</ul>
 			</div><!-- /.navbar-collapse -->

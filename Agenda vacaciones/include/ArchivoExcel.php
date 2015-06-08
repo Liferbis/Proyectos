@@ -172,22 +172,22 @@
 		$fecha=date('Y-m-d');//'2015-01-01';
 
 		if($todos==1){
-			$ruta="C:/GestorDeVacaciones/Todos/".$fecha;
+			$ruta="//server/vacaciones/Todos/".$fecha;
 			if(!file_exists($ruta)){
 				$folder=mkdir($ruta, 0755, true);
 			}
 		}else if($todos==2){
-			$ruta="C:/GestorDeVacaciones/Tipo/".$fecha;
+			$ruta="file://server/vacaciones/Tipo/".$fecha;
 			if(!file_exists($ruta)){
 				$folder=mkdir($ruta, 0755, true);
 			}
 		}else if($todos==3){
-			$ruta="C:/GestorDeVacaciones/Anio/".$fecha;
+			$ruta="file://server/vacaciones/Anio/".$fecha;
 			if(!file_exists($ruta)){
 				$folder=mkdir($ruta, 0755, true);
 			}
 		}else if($todos==0){
-			$dir="C:/GestorDeVacaciones/".$nombre."_".$apellido1;
+			$dir="file://server/vacaciones/".$nombre."_".$apellido1;
 	        if(file_exists($dir)){
 	            $ruta=$dir."/".$nombre."_".$apellido1."_".$fecha;
 	            $folder=mkdir($ruta, 0755, true);
@@ -204,7 +204,7 @@
 	// inicio escribimos en el libro
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-		$objWriter->save($ruta.'/pruebaReal.xlsx');
+		$objWriter->save($ruta.'/Vacaciones.xlsx');
 	// fin escribimos en el libro
 
 

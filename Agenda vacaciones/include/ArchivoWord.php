@@ -218,3 +218,6 @@ header('Expires: 0');
 		</div>
  	</body>
 </html>
+<?php 
+require_once "vistas/vistaPrincipal.php";
+ ?>
