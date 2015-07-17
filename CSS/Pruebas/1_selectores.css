@@ -1,0 +1,23 @@
+body, html{
+	font:10px  ;	
+	margin: 0 auto;
+	background-color: #c0c0c0;
+    animation: mymove 2s infinite;
+  	text-align: justify;
+  	width: 70%;
+  	color:#FFF;
+}
+@keyframes mymove {
+    50% {background-color: #000;}
+    
+    
+}
+h1{
+	text-decoration: underline;
+}
+p:first-letter { 
+	text-transform: uppercase;
+	font-size: 2em; 
+}
+
+

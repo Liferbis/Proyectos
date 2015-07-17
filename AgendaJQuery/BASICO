@@ -1,0 +1,19 @@
+BASICO
+
+JavaScript:
+
+*-Sin comprimir: jquery.mobile-1.4.5.js (útil para la depuración)
+*-Minified y gzip: jquery.mobile-1.4.5.min.js (completa biblioteca, listo para implementar)
+
+CSS:
+
+*-Sin comprimir con Tema por defecto: jquery.mobile-1.4.5.css (útil para la depuración)
+*-Minified y gzipped con el tema por defecto: jquery.mobile-1.4.5.min.css (completa biblioteca, listo para implementar)
+*-Estructura sin comprimir y sin un tema : jquery.mobile-1.4.5.css (útil para el desarrollo temático)
+*-Estructura Minified y gzipped sin un tema : jquery.mobile-1.4.5.min.css (para ser utilizado con tema personalizado y el icono de CSS, listo para desplegar)
+
+SCRIP
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>

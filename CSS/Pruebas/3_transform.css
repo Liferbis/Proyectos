@@ -1,0 +1,24 @@
+#contenedor{
+    text-align: center;
+    margin: 0 auto;
+}
+#myDIV {
+    margin: auto;
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    background-color: #C0C0C0;
+    color: white;
+    /*-webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 3s 1;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {-webkit-transform: rotate(360deg);}
+}
+
+/* Standard syntax 
+@keyframes mymove {
+    50% {transform: rotate(360deg);}
+}*/
