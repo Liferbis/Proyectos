@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title></title>
+	<meta chaeset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<link rel="stylesheet" href="../libreriaJQ/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+
+	<script type="text/javascript" src="../libreriaJQ/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="../libreriaJQ/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		
+</head>
+<body>
+	<div data-role="page" data-theme="b">
+		<div data-role="header" data-theme="c">
+			<h1>Cabececera</h1>
+		</div>
+		<!-- 
+			 la clasa ui-grid-a nos divide el contenido en dos columnas
+			 Si fuebe ui-grid-b nos lo dividiria en 3 columnas 
+			 a=2
+			 b=3
+			 c=4
+			 ...
+		-->
+		<div  data-role="content" data-theme="a">
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="" data-role="button" >Boton1</a></div>
+				<div class="ui-block-b"><a href="" data-role="button" >Boton2</a></div>
+			</div>
+		</div>
+		<div data-role="footer" data-theme="a">
+			<h3>footer</h3>
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><a href="" data-role="button" >Boton1</a></div>
+				<div class="ui-block-b"><a href="" data-role="button" >Boton2</a></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

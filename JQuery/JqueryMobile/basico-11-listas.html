@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title></title>
+	<meta chaeset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<link rel="stylesheet" href="../libreriaJQ/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+
+	<script type="text/javascript" src="../libreriaJQ/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="../libreriaJQ/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		
+</head>
+<body>
+	<!--INICIO PAGINA 1 -->
+	<div data-role="page" data-theme="b" id="pag1">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>LISTAS</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pag1" data-role="buton" data-transition="slide" class="ui-btn-active">Lista normal</a></li>
+					<li><a href="#pag2" data-role="buton" data-transition="slide">Lista interctiva</a></li>
+					<li><a href="#pag3" data-role="buton" data-transition="slide">Lista anidada </a></li>
+					<li><a href="#pag4" data-role="buton" data-transition="slide">Lista anidada II</a></li>
+					<li><a href="#pag5" data-role="buton" data-transition="slide">Divisores de lista</a></li>
+				</ul>
+			</div>
+		</div>
+		<div  data-role="content" data-theme="a">
+			<h2>Lista normal</h2>
+			<ul data-role="listview" data-inset="true">
+				<li>mi lista n0 0</li>
+				<li>mi lista n0 1</li>
+				<li>mi lista n0 2</li>
+				<li>mi lista n0 3</li>
+				<li>mi lista n0 4</li>
+				<li>mi lista n0 5</li>
+				<li>mi lista n0 6</li>
+				<li>mi lista n0 7</li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" id="pie" data-theme="b" data-id="pie">
+			<div id="pie" data-role="navbar">
+				<ul>
+					<li><a href="#pag3" data-role="button" data-icon="plus">Agregar</a></li>
+					<li><a href="#pag3" data-role="button" data-icon="delete">Eliminar</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--FINNN PAGINA  -->
+<!------------------------------------>
+	<!--INICIO PAGINA 2 -->
+	<div data-role="page" data-theme="b" id="pag2">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>LISTAS</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pag1" data-role="buton" data-transition="slideup" >Lista normal</a></li>
+					<li><a href="#pag2" data-role="buton" data-transition="slide" class="ui-btn-active">Lista interctiva</a></li>
+					<li><a href="#pag3" data-role="buton" data-transition="slide">Lista anidada </a></li>
+					<li><a href="#pag4" data-role="buton" data-transition="slide">Lista anidada II</a></li>
+					<li><a href="#pag5" data-role="buton" data-transition="slide">Divisores de lista</a></li>
+				</ul>
+			</div>
+		</div>
+		<div  data-role="content" data-theme="a">
+			<h2>Lista interactiva</h2>
+			<ul data-role="listview" data-inset="true">
+				<li><a href="">mi lista n0 10</a></li>
+				<li><a href="">mi lista n0 11</a></li>
+				<li><a href="">mi lista n0 12</a></li>
+				<li><a href="">mi lista n0 13</a></li>
+				<li><a href="">mi lista n0 14</a></li>
+				<li><a href="">mi lista n0 15</a></li>
+				<li><a href="">mi lista n0 16</a></li>
+				<li><a href="">mi lista n0 17</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" id="pie" data-theme="b" data-id="pie">
+			<div id="pie" data-role="navbar">
+				<ul>
+					<li><a href="#pag3" data-role="button" data-icon="plus">Agregar</a></li>
+					<li><a href="#pag3" data-role="button" data-icon="delete">Eliminar</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--FINNN PAGINA  -->
+<!------------------------------------>	
+	<!--INICIO PAGINA 3 -->
+	<div data-role="page" data-theme="b" id="pag3">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>LISTAS</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pag1" data-role="buton" data-transition="slideup">Lista normal</a></li>
+					<li><a href="#pag2" data-role="buton" data-transition="slideup">Lista interctiva</a></li>
+					<li><a href="#pag3" data-role="buton" data-transition="slide"class="ui-btn-active">Lista anidada I</a></li>
+					<li><a href="#pag4" data-role="buton" data-transition="slide">Lista anidada II</a></li>
+					<li><a href="#pag5" data-role="buton" data-transition="slide">Divisores de lista</a></li>
+				</ul>
+			</div>
+		</div>
+		<div  data-role="content" data-theme="a">
+			<h2>Lista anidada I</h2>
+			<div data-role="collapsibleset" data-theme="a" data-content-theme="b">
+				<div data-role="collapsible">
+					<h2>mi lista n0 20</h2>
+					<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b">
+						<li><a href="">20-0</a></li>
+						<li><a href="">20-1</a></li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 21</h2>
+					<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b">
+						<li><a href="">20-0</a></li>
+						<li><a href="">20-1</a></li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 22</h2>
+					<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b">
+						<li>22-0-0</li>
+						<li>22-0-1</li>
+						<li>22-0-2</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 22</h2>
+					<ul data-role="listview" data-filter="true" data-filter-theme="a" data-divider-theme="b">
+						<li>22-0-0</li>
+						<li>22-0-1</li>
+						<li>22-0-2</li>
+					</ul>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 23</h2>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 24</h2>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 25</h2>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 26</h2>
+				</div>
+				<div data-role="collapsible">
+					<h2>mi lista n0 27</h2>
+				</div>				
+			</div>
+		</div>
+		<div data-role="footer" data-position="fixed" id="pie" data-theme="b" data-id="pie">
+			<div id="pie" data-role="navbar">
+				<ul>
+					<li><a href="#pag3" data-role="button" data-icon="plus">Agregar</a></li>
+					<li><a href="#pag3" data-role="button" data-icon="delete">Eliminar</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--FINNN PAGINA  -->
+<!------------------------------------>	
+	<!--INICIO PAGINA 4 -->
+	<div data-role="page" data-theme="b" id="pag4">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>LISTAS</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pag1" data-role="buton" data-transition="slideup">Lista normal</a></li>
+					<li><a href="#pag2" data-role="buton" data-transition="slideup">Lista interctiva</a></li>
+					<li><a href="#pag3" data-role="buton" data-transition="slideup" >Lista anidada I</a></li>
+					<li><a href="#pag4" data-role="buton" data-transition="slide"class="ui-btn-active">Lista anidada II</a></li>
+					<li><a href="#pag5" data-role="buton" data-transition="slide">Divisores de lista</a></li>
+				</ul>
+			</div>
+		</div>
+		<div  data-role="content" data-theme="a">
+			<h2>Lista anidada II</h2>
+			<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Busca..." data-inset="true">
+				<li>mi lista n0 30</li>
+				<li>mi lista n0 31
+					<ul data-role="listview" data-inset="true">
+						<li>mi lista n0 31.0</li>
+						<li>mi lista n0 31.1</li>
+					</ul>
+				</li>
+				<li>mi lista n0 32</li>
+				<li>mi lista n0 33</li>
+				<li>mi lista n0 34</li>
+				<li>mi lista n0 35</li>
+				<li>mi lista n0 36</li>
+				<li>mi lista n0 37</li>
+			</ul>			
+			
+		</div>
+		<div data-role="footer" data-position="fixed" id="pie" data-theme="b" data-id="pie">
+			<div id="pie" data-role="navbar">
+				<ul>
+					<li><a href="#pag3" data-role="button" data-icon="plus">Agregar</a></li>
+					<li><a href="#pag3" data-role="button" data-icon="delete">Eliminar</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--FINNN PAGINA  -->
+<!------------------------------------>
+	<!--INICIO PAGINA 5 -->
+	<div data-role="page" data-theme="b" id="pag5">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<h1>LISTAS</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#pag1" data-role="buton" data-transition="slideup">Lista normal</a></li>
+					<li><a href="#pag2" data-role="buton" data-transition="slideup">Lista interctiva</a></li>
+					<li><a href="#pag3" data-role="buton" data-transition="slideup">Lista anidada I</a></li>
+					<li><a href="#pag4" data-role="buton" data-transition="slideup">Lista anidada II</a></li>
+					<li><a href="#pag5" data-role="buton" data-transition="slide" class="ui-btn-active">Divisores de lista</a></li>
+				</ul>
+			</div>
+		</div>
+		<div  data-role="content" data-theme="a">
+			<h2>Divisores de listas</h2>
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider">Lenguajes de programacion</li>
+				<li>C++ n0 40</li>
+				<li>PHP lista n0 41</li>
+				<li>JAVA lista n0 42</li>
+
+				<li data-role="list-divider">Lenguajes de Hipertexto</li>
+				<li>HTML lista n0 43</li>
+				<li>JavaScript lista n0 44</li>
+				<li>CSS lista n0 45</li>
+
+				<li data-role="list-divider">Lenguajes de Diseño</li>
+				<li>Photoshop lista n0 46</li>
+				<li>Flash lista n0 47</li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" id="pie" data-theme="b" data-id="pie">
+			<div id="pie" data-role="navbar">
+				<ul>
+					<li><a href="#pag3" data-role="button" data-icon="plus">Agregar</a></li>
+					<li><a href="#pag3" data-role="button" data-icon="delete">Eliminar</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--FINNN PAGINA  -->
+</body>
+</html>
