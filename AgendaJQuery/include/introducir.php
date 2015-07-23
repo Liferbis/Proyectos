@@ -1,13 +1,18 @@
-<?php        
-        $tipo=$_POST["tipe"];
-            //////  RECOGEMOS DE LA BASE DE DATOS UN ARRAY CON LOS DIAS!!!! FESTIVOS DE EL AÑO EN CUESTION  ////////////////////////////
-        $festivos=BD::damefestivosfechas();
-            //////  CALCULA LOS DIAS NATURALES Y LABORABLES EXCLULLENDO LOS FESTIVOS               /////////
-        
-        $fechaI=strtotime($_POST["fechaI"]);
+<?php   
+require_once "BaseDeDatos.php";
+
+    if(isset($_POST["aceptarW"])){     
+        get_intro($_POST["empleado"], $_POST["FechaI"], $_POST["medio1"], $_POST["FechaF"], $_POST["medio2"], $_POST["tipe"], $_POST["descrip"]);
+    }
+
+    function get_intro($empleado, $FechaI, $medio1, $FechaF, $medio2, $tipe, $descrip){
+        $festivos = BD::damefestivosfechas();
+        $fechaI=strtotime($FechaI);
         $fechaIn=date('Y-m-d',$fechaI);
-        $fechaF=strtotime($_POST["fechaF"]);
+        $fechaF=strtotime($FechaF);
+        $fechafi=date('Y-m-d',$fechaF);
         $dias=0;
+        $medio=0;
         $num=count($festivos);
         $fiesta=0;
         $diaslab=0;
@@ -30,13 +35,7 @@
                 }                     
             }
         }
-        $cod_emple=$_POST["empleado"];
-        $comentario=$_POST["comentario"];
-        $sesion=$_SESSION["usuario"];
         $aumento="-";
-
-        $fechafi=date('Y-m-d',$fechaF);
-        $medio=0;
         if(isset($_POST["medio1"])){
             $medio++;
         }
@@ -49,4 +48,12 @@
         }else if ($medio==2) {
             $diaslab=$diaslab-1;
         }
+        
+        echo "DL".$diaslab."<br>DN".$dias."<br>Empleado: ".$empleado."<br>tipe: ".$tipe;
+    }
+        
+
+        
+
+
 ?>
