@@ -10,7 +10,7 @@
 
 /////// CLASE ////// en esta clase se encuentr todo lo referente //////
 /////////////////////    la clase EMPLEADO          ///////////////////
-require_once "include/BaseDeDatos.php";
+require_once "BaseDeDatos.php";
 
 	class Empleado{
 		private $codigo;
