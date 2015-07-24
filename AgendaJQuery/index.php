@@ -41,6 +41,7 @@ require_once "include/classes.php";
     <script src="libreria/jquery-ui/jquery-ui.js"></script>
     
     <script src="include/introducir.js" type="text/javascript"></script>
+    <script src="libreria/general.js" type="text/javascript"></script>
     <script src="libreria/vacas.js" type="text/javascript"></script>
 
 <!-- DATEBOX !!! -->
@@ -232,7 +233,7 @@ require_once "include/classes.php";
     <!-- -- FIN MENU -- --> 
 
     <div  data-role="content">
-        <form name="intro1" id="intro1">  
+        <form name="intro1" id="intro1" method="post">  
             <fieldset >
                 <h3>Elige empleado: </h3>
                 <?php 
@@ -286,13 +287,15 @@ require_once "include/classes.php";
             </div>
             <div class="ui-grid-b">
                 <div class="ui-block-a">
-                    <input type='button'data-role="button" name="aceptarW" value="Aceptar y Generar Word"  data-theme="c"data-icon="bullets">
+                    <button data-role="button" name="aceptarW" data-theme="c" data-icon="bullets">
+                        Aceptar y Generar Word
+                    </button>
                 </div>
                 <div class="ui-block-b" >
                     <a href="#two" data-role="button" data-theme="f" data-icon="delete" >Cancelar</a>
                 </div>
                 <div class="ui-block-c" >
-                    <input type="submit" name="aceptar" value="Aceptar" data-role="button" data-theme="g"data-icon="bullets">
+                    <input type="submit" name="aceptar" value="Aceptar" data-role="button" data-theme="g" data-icon="bullets">
                 </div>
             </div>
         </form>
