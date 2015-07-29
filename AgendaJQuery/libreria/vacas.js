@@ -1,11 +1,9 @@
 $( document ).on( "pagecreate", "#intro", function() {
-/*
- var set_intro = function(empleado, fechaI, medio1, fechaF, medio2, tipo, descrip) {
-        return $.post("include/introducir.php", {"empleado":empleado, "FechaI":fechaI, 
-                "medio1":medio1, "FechaF":fechaF, "medio2":medio2, "tipe":tipo, "descrip":descrip
+
+    var set_intro = function(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL) {
+        return $.post("../include/ArchivoWord.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
  	       });
     }
-*/
 
 // Cargar dias festivos de la base de datos
     var festivos = [];
@@ -30,6 +28,10 @@ $( document ).on( "pagecreate", "#intro", function() {
         });
 
     }
+// Genera el documento Word con los datos
+ /*   var cargarWord = function(cod) {
+        return $.post("include/ArchivoWord.php");
+    }*/
 
 // al pinchar sobre cualquier parte del input
 	$("#FechaI").off('click').on('click', function(event) {
@@ -48,6 +50,7 @@ $( document ).on( "pagecreate", "#intro", function() {
         var fechaI = $("#FechaI").val();
         var fechaF = $("#FechaF").val();
         var tipo = $("#tipe").val(); 
+        var coment = $("#descrip").val(); 
         if($("[name='medio1']").attr("data-cacheval")=='false') {
         	var medio1=$("[name='medio1']").val();
         } else {
@@ -58,7 +61,9 @@ $( document ).on( "pagecreate", "#intro", function() {
         } else {
         	var medio2 = 0;
         }
-        var descrip = CalcularDiasLaborales(fechaI, fechaF); 
+        var dias = CalcularDiasLaborales(fechaI, fechaF)
+        var diasL= dias[0]-medio1-medio2;
+        var diasN= dias[1];
     });
 
     traerFestivos();
@@ -71,6 +76,8 @@ $( document ).on( "pagecreate", "#intro", function() {
         var dif = fFecha2 - fFecha1;
         var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
         var diasLaborales = 0;
+        var diaN=0;
+
         for(var i=0; i<=dias; i++) {
             var fecha_sinParse = sumaFecha(i,fechaI);
             fecha1 = Date.parse(sumaFecha(i,fechaI));
@@ -78,17 +85,20 @@ $( document ).on( "pagecreate", "#intro", function() {
 
             // Si NO es domingo  NI sabado entra !!
             if(day.getDay()!=0 && day.getDay()!=6) {
-
+                diaN++;
                 // si la fecha NO se encuentra en el array entra!!
                 if($.inArray(fecha_sinParse, festivos)==-1) {
                    
                     // si entra suma un dia laborable!! 
                     diasLaborales++;
                 }
+                
+            }else{
+                diaN++;
             }
         }
-        alert(diasLaborales);
-        return diasLaborales;
+        var dia = new Array( diasLaborales, diaN );
+        return dia;
     }
 
     sumaFecha = function(d, fecha) {
@@ -109,6 +119,6 @@ $( document ).on( "pagecreate", "#intro", function() {
     }
 
 //envio de datos para generar word
-    
 
+    
 });

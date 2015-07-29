@@ -1,27 +1,47 @@
-<?php 
+<?php
+////////////////////////////
+//************************//
+//////  Crear PDF  /////////
+/* http://www.kabytes.com/programacion/crear-un-pdf-desde-javascript/ */
+//************************//
+////////////////////////////
 
-foreach ($empleados as $empleado) {
-			$codigo=$empleado->codigo;
-			$dni=$empleado->dni;
-			$nombre=$empleado->nombre;
-			$apellido1=$empleado->apellido1;
-			$apellido2=$empleado->apellido2;
-			$localidad=$empleado->localidad;
-			$movil=$empleado->movil;
-			$comentarios=$empleado->comentarios;
-			$saldo=$empleado->saldo;
-}
+// if( isset($_POST['empleado'], $_POST['fechaI'], $_POST['fechaF'], $_POST['tipe'], $_POST['descrip'], $_POST['diasN'], $_POST['diasL']) ) {
 
-$hoy=date("Y-m-d H:i:s");
-$hoy1=date("Y-m-d");
-$docu=$nombre."_".$apellido1."-".$hoy1;
+	introducir($_POST['empleado'], $_POST['fechaI'], $_POST['fechaF'], $_POST['tipe'], $_POST['descrip'], $_POST['diasN'], $_POST['diasL']);
+	echo "<h1>DENTROOO </h1>";
 
-header('Content-type: application/vnd.ms-word');
-header('Content-Disposition: attachment;Filename='.$docu.'.doc');
-header('Pragma: no-cache');
-header('Expires: 0');
+// } else {
+// 	$message = sprintf("Solicitud no válida.");
+// 	header($_SERVER['SERVER_PROTOCOL'] . ' ' . $message, true, 403);
+// }
 
+function introducir($empleado, $fechaIn, $fechaFi, $tipo, $comentario, $diasN, $diasL){
 
+	require_once "BaseDeDatos.php";
+
+	$emple=BD::UnEmpleado($empleado);
+
+	foreach ($emple as $em) {
+		$codigo=$em->codigo;
+		$dni=$em->dni;
+		$nombre=$em->nombre;
+		$apellido1=$em->apellido1;
+		$apellido2=$em->apellido2;
+		$localidad=$em->localidad;
+		$movil=$em->movil;
+		$comentarios=$em->comentarios;
+		$saldo=$em->saldo;
+	}
+
+	$hoy=date("Y-m-d H:i:s");
+	$hoy1=date("Y-m-d");
+	$docu=$nombre."_".$apellido1."-".$hoy1;
+	
+	header('Content-type: application/vnd.ms-word');
+	header('Content-Disposition: attachment;Filename='.$docu.'.doc');
+	header('Pragma: no-cache');
+	header('Expires: 0');
 
 ?>
 <html>
@@ -64,11 +84,11 @@ header('Expires: 0');
 						</tr>
 						<tr>
 							<td>Num Dias Naturales</td>
-							<td><?php echo $dias; ?></td>
+							<td><?php echo $diasN; ?></td>
 						</tr>
 						<tr>
 							<td>Num Dias Laborables</td>
-							<td><?php echo $diaslab; ?></td>
+							<td><?php echo $diasL; ?></td>
 						</tr>
 						<tr>
 							<td>Con el caracter de:</td>
@@ -158,11 +178,11 @@ header('Expires: 0');
 						</tr>
 						<tr>
 							<td>Num Dias Naturales</td>
-							<td><?php echo $dias; ?></td>
+							<td><?php echo $diasN; ?></td>
 						</tr>
 						<tr>
 							<td>Num Dias Laborables</td>
-							<td><?php echo $diaslab; ?></td>
+							<td><?php echo $diasL; ?></td>
 						</tr>
 						<tr>
 							<td>Con el caracter de:</td>
@@ -218,3 +238,7 @@ header('Expires: 0');
 		</div>
  	</body>
 </html>
+
+<?php 
+}
+ ?>
