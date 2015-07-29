@@ -40,7 +40,7 @@ require_once "include/classes.php";
   
     <script src="libreria/jquery-ui/jquery-ui.js"></script>
     
-    <script src="include/introducir.js" type="text/javascript"></script>
+    
     <script src="libreria/general.js" type="text/javascript"></script>
     <script src="libreria/vacas.js" type="text/javascript"></script>
 
@@ -299,6 +299,10 @@ require_once "include/classes.php";
                 </div>
             </div>
         </form>
+        <div class="festivos">
+            
+        </div>
+
     </div>
     <div data-role="footer" data-position="fixed" data-theme="b">
         Usuario <?php //echo $_SESSION['username']; ?>
