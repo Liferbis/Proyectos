@@ -1,8 +1,15 @@
+
 $( document ).on( "pagecreate", "#intro", function() {
 
     var set_intro = function(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL) {
-        return $.post("../include/ArchivoWord.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
- 	       });
+       //alert(empleado+"--"+fechaI+"--"+fechaF+"--"+tipe+"--"+descrip+"--"+diasN+"--"+diasL);
+        
+        if(tipe=="vacaciones" || tipe=="PerRe" || tipe=="PerNoRe"){
+            return $.post("include/ArchivoWord.php", {"empleado":empleado, "FechaI":fechaI, "FechaF":fechaF, "tipe":tipe, "descrip":descrip, "diasN":diasN, "diasL": diasL
+ 	          });
+        }else{
+            alert("ERRORR");
+        }
     }
 
 // Cargar dias festivos de la base de datos
@@ -28,10 +35,7 @@ $( document ).on( "pagecreate", "#intro", function() {
         });
 
     }
-// Genera el documento Word con los datos
- /*   var cargarWord = function(cod) {
-        return $.post("include/ArchivoWord.php");
-    }*/
+
 
 // al pinchar sobre cualquier parte del input
 	$("#FechaI").off('click').on('click', function(event) {
@@ -49,8 +53,8 @@ $( document ).on( "pagecreate", "#intro", function() {
         var empleado = $("#empleado").val();
         var fechaI = $("#FechaI").val();
         var fechaF = $("#FechaF").val();
-        var tipo = $("#tipe").val(); 
-        var coment = $("#descrip").val(); 
+        var tipe = $("#tipe").val(); 
+        var descrip = $("#descrip").val(); 
         if($("[name='medio1']").attr("data-cacheval")=='false') {
         	var medio1=$("[name='medio1']").val();
         } else {
@@ -64,6 +68,12 @@ $( document ).on( "pagecreate", "#intro", function() {
         var dias = CalcularDiasLaborales(fechaI, fechaF)
         var diasL= dias[0]-medio1-medio2;
         var diasN= dias[1];
+        //alert("1: "+medio1+" 2: "+medio2)
+        set_intro(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL).done( function( response ) {
+            console.log(response.message);
+        }).fail(function(jqXHR, textStatus, errorThrown ) {
+            alert(jqXHR.responseText);
+        });
     });
 
     traerFestivos();
@@ -118,7 +128,7 @@ $( document ).on( "pagecreate", "#intro", function() {
         return (fechaFinal);
     }
 
-//envio de datos para generar word
+
 
     
 });
