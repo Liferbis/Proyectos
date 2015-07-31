@@ -70,7 +70,13 @@ $( document ).on( "pagecreate", "#intro", function() {
         var diasN= dias[1];
         //alert("1: "+medio1+" 2: "+medio2)
         set_intro(empleado, fechaI, fechaF, tipe, descrip, diasN, diasL).done( function( response ) {
-            console.log(response.message);
+            if( response.success) {
+                setTimeout(function() {
+                    $.mobile.loading( 'hide');
+                }, 1000);
+            } else {
+                alert("<h1>Se ha producido un error al cargar los datos, <br/> Intentelo de nuevo mas tarde!</h1>");
+            }
         }).fail(function(jqXHR, textStatus, errorThrown ) {
             alert(jqXHR.responseText);
         });

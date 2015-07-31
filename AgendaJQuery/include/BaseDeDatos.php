@@ -87,10 +87,12 @@ class BD {
 
 		//echo $_SESSION["usuario"];
 
-		$tabla=BD::sesiones($_SESSION["usuario"]);
+		//$tabla=BD::sesiones($_SESSION["usuario"]);
+		$tabla="todos";
 
 		//echo $tabla."-".$cEmpleado;
-		$empleado=BD::DameEmpleado($_SESSION["usuario"], $cEmpleado);
+
+		$empleado=BD::DameEmpleado("l.fernandez", $cEmpleado);
 
 		foreach ($empleado as $emple) {
 			$nombre=$emple->nombre;
@@ -99,7 +101,7 @@ class BD {
 			$saldo=$emple->saldo;
 			$coment=$emple->comentarios;
 		}
-
+//$coment
 		$hoy=date("Y-m-d H:i:s");
 
 		if(empty($tipo)){
@@ -501,11 +503,11 @@ class BD {
 	public static function DameEmpleado($usu, $codigo){
 
 		$dwes = BD::conect();
-		$empleados=array();
+		$empleado=array();
 		$tabla=BD::sesiones($usu);
 		
 		if($tabla=="todos"){
-			$empleados=BD::UnEmpleado($codigo);
+			$empleado=BD::UnEmpleado($codigo);
 		}else{
 
 			$c="SELECT * FROM $tabla WHERE codigo ='$codigo' ";
