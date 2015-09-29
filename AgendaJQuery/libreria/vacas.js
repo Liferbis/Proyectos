@@ -17,7 +17,7 @@ $( document ).on( "pagecreate", "#intro", function() {
     var cargarFestivos = function() {
         return $.post("include/DiasFestivos.php");
     }
-
+ 
     var traerFestivos = function() {
         cargarFestivos().done( function( response ) {
             if( response.success) {

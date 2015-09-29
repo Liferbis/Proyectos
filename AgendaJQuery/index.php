@@ -317,7 +317,6 @@ require_once "include/classes.php";
 
 <!------------------>
 <!--INICIO CORRECTO-->
-
 <div data-role="page" data-theme="a" id="correcto">
     <!-- -- MENU -- -->
     <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left"> 
@@ -370,5 +369,59 @@ require_once "include/classes.php";
 <!--FIN CORRECTO-->
 <!------------------>
 
+
+<!------------------>
+<!--INICIO ERROR-->
+<div data-role="page" data-theme="a" id="correcto">
+    <!-- -- MENU -- -->
+    <div data-role="panel" id="navpanel" data-theme="b" data-display="overlay" data-position="left"> 
+        <div data-role="controlgroup" data-corners="false">
+            <a href="#two" data-icon="bars" data-role="button">Men&uacute;</a>
+            <a href="#ordentrabajo" data-icon="clipboard" data-role="button">Ordenes de Trabajo</a>
+            <a href="#gastos" data-icon="euro" data-role="button">Gastos</a>
+            <a href="#Agenda" data-role="button" data-icon="calendar" >Vacaciones</a>
+            <a href="#busqueda" data-role="button" data-icon="search"> B&uacute;squeda </a>
+            <?php //if($_SESSION['username']=="j.martinez" || $_SESSION['username']=="f.novoa" || $_SESSION['username'] == "c.garcia"  || $_SESSION['username'] == "f.garcia" || $_SESSION['username'] == "l.cossio") {?>
+            <a href="#asignar" data-icon="user" data-role="button">Asignar Obras</a>
+            <a href="#reabrir" data-role="button" data-icon="key">  Reabrir Obras </a>
+            <a href="#operarioObra" data-role="button" data-icon="thumb-tack">  Operario - Obra </a>
+            <a href="#informes" data-icon="euro" data-role="button">Informe de Gastos</a>
+            <!-- <a href="#graficos" data-icon="bar-chart-o" data-role="button">Gr&aacute;ficos</a> -->
+            <?php //} else { ?>
+            <a href="#autoasignar" data-role="button" data-icon="user">Auto-Asignar Obras</a>
+            <?php// } ?>
+            <?php //if($_SESSION['username']=="r.corrales"){ ?>
+            <a href="#ordenes_terminadas" data-role="button" data-icon="clipboard">&Oacute;rdenes Pendientes</a>
+            <?php //} ?>
+            <a href="#documentos" data-icon="book" data-role="button">Documentos</a>
+        </div>
+    </div>
+    <div data-role="header" data-position="fixed" data-theme="b" align="center">
+        <a  data-icon="bars" class="ui-btn-left bars-button btn_cab" style="margin-top:10px;" href="#navpanel" ><span>Men&uacute;</span></a>
+        <img src="include/logo.png" height="50" width="165" alt="main logo" vspace="2"/>
+        <a id="bars-button" data-icon="power" class="ui-btn-right btn_cab" style="margin-top:10px;"><span>Desconectar</span></a>
+    </div>
+    <!-- -- FIN MENU -- --> 
+
+    <div  data-role="content">
+        <h3 style="text-align:center">Se ha producido un error <br> Vuelva a intentarlo mas tarde</h3>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#Agenda" data-role="button" data-theme="b" data-icon="arrow-l">Atras</a>
+            </div>
+            <div class="ui-block-b" >
+                <a href="#two" data-role="button" data-theme="b" data-icon="home" >Pagina principal</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" data-theme="b">
+        Usuario <?php //echo $_SESSION['username']; ?>
+    </div>
+    <div style='display:none;' id='id_us'>
+        <?php //echo $_SESSION['idUsuario']; ?>
+    </div>
+</div>
+<!--FIN ERROR-->
+<!------------------>
 </body>
 </html>
